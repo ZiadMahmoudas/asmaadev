@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f2ede5">
+  <meta name="description" content="TIGRESS — عالم بصري يجمع الجرأة بالأصالة والتفاصيل الاستثنائية. من أسما المحيميد.">
+  <meta property="og:title" content="TIGRESS | ASMA ALMOHIMEED">
+  <meta property="og:description" content="حين تتحول الجرأة إلى فن — TIGRESS">
+  <meta property="og:image" content="assets/tigress-illustration.webp">
+  <title>TIGRESS — ASMA ALMOHIMEED</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preload" href="assets/tigress-illustration.webp" as="image" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <!-- Font Awesome optional CDN; interface SVG icons work even completely offline. -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/config.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
+    <symbol id="icon-diagonal" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"/></symbol>
+    <symbol id="icon-down" viewBox="0 0 24 24"><path d="M12 3v18m-7-7 7 7 7-7"/></symbol>
+    <symbol id="icon-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c-5 5-5 13 0 18m0-18c5 5 5 13 0 18"/></symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 7 9-7"/></symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+  </svg>
+  <a href="#main" class="skip-link" data-t="skip">تخطي إلى المحتوى</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner wrap">
+      <a class="brand-link" href="#hero" aria-label="Tigress — الصفحة الرئيسية">
+        <img src="assets/tigress-brown.png" class="logo-brown" width="165" height="65" alt="Tigress">
+        <img src="assets/tigress-white.png" class="logo-white" width="165" height="65" alt="" aria-hidden="true">
+      </a>
+      <nav class="main-nav" aria-label="القائمة الرئيسية">
+        <a href="#hero" class="nav-item current" data-t="navHome">الرئيسية</a>
+        <a href="#chapters" class="nav-item" data-t="navStory">الحكاية</a>
+        <a href="#about" class="nav-item" data-t="navAbout">من نحن</a>
+        <a href="#world" class="nav-item" data-t="navExplore">عالمنا</a>
+        <a href="#creative" class="nav-item" data-t="navCreative">مساحات الإبداع</a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-control" id="langSwitch" type="button" aria-label="Switch to English"><svg class="ico"><use href="#icon-globe"/></svg><span id="langDisplay">EN</span></button>
+        <a class="header-contact" href="#quote"><span data-t="navContact">لنتحدث</span><i class="fa-solid fa-arrow-up-right-from-square button-fa" aria-hidden="true"></i></a>
+        <button class="menu-button" id="menuBtn" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobileNav"><svg class="ico menu-open-symbol"><use href="#icon-menu"/></svg><svg class="ico menu-close-symbol"><use href="#icon-close"/></svg></button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="قائمة الهاتف" inert>
+      <a href="#hero" data-t="navHome">الرئيسية</a>
+      <a href="#chapters" data-t="navStory">الحكاية</a>
+      <a href="#about" data-t="navAbout">من نحن</a>
+      <a href="#world" data-t="navExplore">عالمنا</a>
+      <a href="#creative" data-t="navCreative">مساحات الإبداع</a>
+      <a href="#quote" data-t="navContact">لنتحدث</a>
+      <p class="mobile-signature">THE WORLD OF TIGRESS <span>✳</span></p>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Sticky scroll narrative: IntersectionObserver gates updates; progress runs only while visible. -->
+    <section class="hero-observer" id="hero" aria-labelledby="heroTitle" data-hero-scene>
+      <div class="hero-stage">
+        <div class="hero-type" aria-hidden="true">TIGRESS</div>
+        <div class="hero-content">
+          <div class="hero-content-inner">
+            <p class="micro-label hero-micro"><span class="micro-sun">✳</span><span data-t="heroKicker">حين تتحوّل الجرأة إلى فن</span><span class="micro-line"></span> 01 / 05</p>
+            <h1 id="heroTitle"><span class="hero-title-a" data-t="heroA">حضورٌ</span><span class="hero-title-b" data-t="heroB">يصنع الفرق.</span></h1>
+            <p class="hero-paragraph" data-t="heroDesc">بعض الحكايات لا تُروى بالكلمات وحدها. نمنح التفاصيل صوتًا، وللجرأة مكانًا، ونصنع حضورًا لا يمرّ دون أن يترك أثرًا.</p>
+            <div class="hero-actions"><a class="button button-black" href="#chapters"><span data-t="discover">اكتشف الحكاية</span><i class="fa-solid fa-arrow-left button-fa dir-arrow" aria-hidden="true"></i></a><span class="hero-credit">TIGRESS <b>×</b> ASMA ALMOHIMEED</span></div>
+          </div>
+          <div class="hero-bottom-label"><span>EST. IN IDEAS</span><span class="progress-rail"><span id="heroProgressFill"></span></span><span id="heroProgressText">00%</span></div>
+        </div>
+        <div class="hero-art-panel">
+          <div class="art-image-mask">
+            <picture class="hero-picture">
+              <source media="(max-width: 700px)" srcset="assets/tigress-mobile-v6.webp" type="image/webp">
+              <img src="assets/tigress-illustration.webp" alt="لوحة أصلية للنمر الذهبي بين الجبال والعمارة في أجواء ليلية" width="1800" height="1775" fetchpriority="high" class="hero-tiger">
+            </picture>
+            <div class="art-image-shade"></div>
+          </div>
+          <div class="hero-art-overlay"><span>THE WORLD OF</span><svg class="ico"><use href="#icon-star"/></svg></div>
+          <div class="hero-art-bottom"><span>WILD IN SPIRIT.<br>TIMELESS BY DESIGN.</span><strong>01 <i>/</i> TIGRESS</strong></div>
+        </div>
+        <a class="hero-scroll-trigger" href="#chapters" aria-label="انتقل إلى السلايدر"><span data-t="scrollLabel">اسحب لتكتشف</span><svg class="ico"><use href="#icon-down"/></svg></a>
+      </div>
+    </section>
+
+    <!-- Reference-style partner strip: editable logo placeholders pending original brand artwork. -->
+    <!-- Carousel sits directly after the observer Hero, as requested. -->
+    <section id="chapters" class="section section-ink chapters" aria-labelledby="chaptersTitle">
+      <div class="wrap">
+        <div class="heading-row inview">
+          <div><p class="micro-label micro-gold"><span class="label-dash"></span> <span data-t="storyKicker">الفصل الثاني / عالم TIGRESS</span></p><h2 id="chaptersTitle" class="display-title" data-t="storyTitle">حكايةٌ تبدأ <em>بالجرأة.</em></h2></div>
+          <p class="heading-aside" data-t="storyDesc">ثلاثة مشاهد، عالم واحد. حيث تستحيل التفاصيل الصغيرة إلى لغة تحمل بصمتنا.</p>
+        </div>
+        <div class="stories-carousel inview" id="storiesCarousel" role="region" aria-roledescription="carousel" aria-label="فصول الحكاية">
+          <div class="stories-screen">
+            <article class="story-slide is-active" aria-roledescription="slide" role="group" aria-label="1 من 3" aria-hidden="false"><div class="story-visual visual-one"></div><div class="story-vignette"></div><div class="story-content"><span class="story-number">01 — THE INSTINCT</span><h3 data-t="story1H">الجمال له<br><em>جانب جريء.</em></h3><p data-t="story1P">ليس كل حضور بحاجة إلى كلمات؛ أحيانًا تكفي نظرة لتبدأ الحكاية.</p></div><span class="story-watermark">01 / 03</span></article>
+            <article class="story-slide" aria-roledescription="slide" role="group" aria-label="2 من 3" aria-hidden="true"><div class="story-visual visual-two"></div><div class="story-vignette"></div><div class="story-content"><span class="story-number">02 — THE DETAIL</span><h3 data-t="story2H">قوتنا في<br><em>التفاصيل.</em></h3><p data-t="story2P">الخطّ واللون والتوازن؛ كل عنصر يحمل فكرة ويترك إحساسًا.</p></div><span class="story-watermark">02 / 03</span></article>
+            <article class="story-slide" aria-roledescription="slide" role="group" aria-label="3 من 3" aria-hidden="true"><div class="story-visual visual-three"></div><div class="story-vignette"></div><div class="story-content"><span class="story-number">03 — THE SIGNATURE</span><h3 data-t="story3H">والأثر يبقى<br><em>بعد الحكاية.</em></h3><p data-t="story3P">هوية حقيقية لا تحتاج أن تكرر اسمها حتى تُعرَف.</p></div><span class="story-watermark">03 / 03</span></article>
+          </div>
+          <div class="story-controls"><div class="story-indicators"><button type="button" class="story-dot current" data-goto="0" aria-label="الشريحة الأولى" aria-current="true"></button><button type="button" class="story-dot" data-goto="1" aria-label="الشريحة الثانية"></button><button type="button" class="story-dot" data-goto="2" aria-label="الشريحة الثالثة"></button></div><div class="story-nav-buttons"><button id="prevSlide" type="button" aria-label="السابق"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button><button id="nextSlide" type="button" aria-label="التالي"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about-ref" aria-labelledby="aboutTitle">
+      <div class="wrap">
+        <div class="about-ref-grid">
+          <div class="about-ref-copy inview" data-reveal="right">
+            <p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="aboutKicker">01 — من نحن</span></p>
+            <h2 id="aboutTitle" class="display-title about-ref-title" data-t="aboutTitle">خبرة تتجاوز عشرين عاماً<br><em>في البناء والتشييد.</em></h2>
+            <p class="about-lead" data-t="aboutP1">رمز تشييد للمقاولات شركة سعودية مقرها بريدة، تمتد خبرتها لأكثر من عشرين عاماً في تنفيذ مشاريع المقاولات والتشطيبات والديكور الداخلي للمباني السكنية والتجارية والإدارية، إضافة إلى المشاريع الحكومية.</p>
+            <p class="about-body" data-t="aboutP2">بنينا خلال هذه السنوات سمعة قائمة على الجودة والكفاءة، وهدفنا الثابت رضا عملائنا وكسب ثقتهم على المدى الطويل. نعتمد على تخطيط دقيق مبني على أسس هندسية مدروسة، ويقف خلف كل مشروع فريق متكامل من المهندسين والفنيين المؤهلين.</p>
+            <ul class="about-checks">
+              <li><i class="fa-solid fa-check"></i><span data-t="check1">الجودة والاحترافية في التنفيذ</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-t="check2">فريق متكامل من المهندسين والفنيين</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-t="check3">تخطيط دقيق على أسس هندسية مدروسة</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-t="check4">أعمال متوائمة مع رؤية المملكة 2030</span></li>
+            </ul>
+          </div>
+          <div class="about-ref-visual inview" data-reveal="left">
+            <div class="about-brand-card">
+              <img src="assets/tigress-brown.png" alt="Tigress" width="240" height="95">
+              <div class="about-brand-art"><img src="assets/tigress-illustration-small.webp" alt="تفصيل من عالم Tigress" width="620" height="620"></div>
+              <div class="about-years"><strong><span data-count="20">0</span>+</strong><span data-t="yearsText">عاماً من الخبرة</span></div>
+              <p data-t="aboutMotto">الجودة والاحترافية في التنفيذ</p>
+            </div>
+          </div>
+        </div>
+        <div class="vision-ref-grid">
+          <article class="vision-ref-card inview" data-reveal="right">
+            <span class="vision-ref-icon"><i class="fa-regular fa-eye"></i></span>
+            <h3 data-t="visionH">رؤيتنا</h3>
+            <p data-t="visionP">مواكبة التطور المتسارع وتبنّي أحدث التقنيات والتصاميم العصرية لنقدّم حلولاً مبتكرة تتجاوز تحديات مشاريع عملائنا بأعلى معايير الكفاءة والجودة.</p>
+          </article>
+          <article class="vision-ref-card inview" data-reveal="left">
+            <span class="vision-ref-icon"><i class="fa-solid fa-bullseye"></i></span>
+            <h3 data-t="missionH">رسالتنا</h3>
+            <p data-t="missionP">تقديم خدمات متقدمة، وتطوير مهاراتنا باستمرار، وإنجاز المشاريع بأقصى إمكاناتنا، وبناء علاقات طويلة الأمد قائمة على الثقة والشراكة الحقيقية.</p>
+          </article>
+        </div>
+      </div>
+      <div class="stats-ref inview" data-reveal="up">
+        <div class="wrap stats-ref-grid">
+          <div class="stat-ref"><strong><span data-count="20">0</span>+</strong><span data-t="stat1">عاماً من الخبرة</span></div>
+          <div class="stat-ref"><strong><span data-count="14">0</span>+</strong><span data-t="stat2">عميلاً يثق بنا</span></div>
+          <div class="stat-ref"><strong><span data-count="6">0</span></strong><span data-t="stat3">أقسام متخصصة</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="world" class="section-dark world" aria-labelledby="worldTitle">
+      <div class="wrap world-wrap"><p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="worldKicker">02 — جوهرنا</span></p><h2 id="worldTitle" class="world-title inview" data-t="worldTitle">ثلاثة مبادئ.<br><em>شخصية واحدة.</em></h2><div class="values-grid"><article class="value-item inview"><span>01 / THE BOLD</span><i class="fa-solid fa-bolt value-fa" aria-hidden="true"></i><strong data-t="boldH">الجرأة</strong><p data-t="boldP">لا نكتفي بما هو مألوف؛ نبحث عن المساحة التي تبدأ عندها الأفكار الجديدة.</p></article><article class="value-item inview"><span>02 / THE TRUE</span><i class="fa-regular fa-gem value-fa" aria-hidden="true"></i><strong data-t="trueH">الأصالة</strong><p data-t="trueP">التعبير الصادق عمّا نحن عليه، من دون تقليد أو ضوضاء.</p></article><article class="value-item inview"><span>03 / THE MARK</span><i class="fa-regular fa-star value-fa" aria-hidden="true"></i><strong data-t="impactH">الأثر</strong><p data-t="impactP">التفاصيل التي تبقى في الذاكرة طويلًا بعد انتهاء المشهد.</p></article></div></div>
+    </section>
+
+    <section id="creative" class="section services-ref" aria-labelledby="creativeTitle">
+      <div class="wrap">
+        <div class="section-ref-head inview" data-reveal="up"><p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="creativeKicker">02 — خدماتنا</span></p><h2 id="creativeTitle" data-t="creativeTitle">حلول متكاملة لكل مراحل مشروعك</h2><p data-t="creativeDesc">نمتلك خبرة طويلة في مجال البناء والإنشاءات لنقدّم مجموعة شاملة من الخدمات تلبي احتياجات عملائنا بكفاءة واحترافية عالية.</p></div>
+        <div class="services-ref-grid">      <article class="service-ref-card inview" data-service="contracting">
+        <div class="service-ref-top"><span class="service-ref-num">01</span><span class="service-ref-icon"><i class="fa-solid fa-person-digging"></i></span></div>
+        <h3 data-t="svc1h"></h3><p data-t="svc1p"></p>
+        <ul class="service-ref-tags"><li data-t="svc1a"></li><li data-t="svc1b"></li><li data-t="svc1c"></li><li data-t="svc1d"></li></ul>
+        <a class="service-ref-cta" href="#quote" data-service-pick="contracting"><span data-t="orderService">اطلب الخدمة</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
+      </article>      <article class="service-ref-card inview" data-service="electromechanical">
+        <div class="service-ref-top"><span class="service-ref-num">02</span><span class="service-ref-icon"><i class="fa-solid fa-bolt"></i></span></div>
+        <h3 data-t="svc2h"></h3><p data-t="svc2p"></p>
+        <ul class="service-ref-tags"><li data-t="svc2a"></li><li data-t="svc2b"></li><li data-t="svc2c"></li><li data-t="svc2d"></li></ul>
+        <a class="service-ref-cta" href="#quote" data-service-pick="electromechanical"><span data-t="orderService">اطلب الخدمة</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
+      </article>      <article class="service-ref-card inview" data-service="booths">
+        <div class="service-ref-top"><span class="service-ref-num">03</span><span class="service-ref-icon"><i class="fa-solid fa-store"></i></span></div>
+        <h3 data-t="svc3h"></h3><p data-t="svc3p"></p>
+        <ul class="service-ref-tags"><li data-t="svc3a"></li><li data-t="svc3b"></li><li data-t="svc3c"></li><li data-t="svc3d"></li></ul>
+        <a class="service-ref-cta" href="#quote" data-service-pick="booths"><span data-t="orderService">اطلب الخدمة</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
+      </article>      <article class="service-ref-card inview" data-service="painting">
+        <div class="service-ref-top"><span class="service-ref-num">04</span><span class="service-ref-icon"><i class="fa-solid fa-paint-roller"></i></span></div>
+        <h3 data-t="svc4h"></h3><p data-t="svc4p"></p>
+        <ul class="service-ref-tags"><li data-t="svc4a"></li><li data-t="svc4b"></li><li data-t="svc4c"></li><li data-t="svc4d"></li></ul>
+        <a class="service-ref-cta" href="#quote" data-service-pick="painting"><span data-t="orderService">اطلب الخدمة</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
+      </article>      <article class="service-ref-card inview" data-service="decor">
+        <div class="service-ref-top"><span class="service-ref-num">05</span><span class="service-ref-icon"><i class="fa-solid fa-couch"></i></span></div>
+        <h3 data-t="svc5h"></h3><p data-t="svc5p"></p>
+        <ul class="service-ref-tags"><li data-t="svc5a"></li><li data-t="svc5b"></li><li data-t="svc5c"></li><li data-t="svc5d"></li></ul>
+        <a class="service-ref-cta" href="#quote" data-service-pick="decor"><span data-t="orderService">اطلب الخدمة</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
+      </article>      <article class="service-ref-card inview" data-service="supervision">
+        <div class="service-ref-top"><span class="service-ref-num">06</span><span class="service-ref-icon"><i class="fa-regular fa-clipboard"></i></span></div>
+        <h3 data-t="svc6h"></h3><p data-t="svc6p"></p>
+        <ul class="service-ref-tags"><li data-t="svc6a"></li><li data-t="svc6b"></li><li data-t="svc6c"></li><li data-t="svc6d"></li></ul>
+        <a class="service-ref-cta" href="#quote" data-service-pick="supervision"><span data-t="orderService">اطلب الخدمة</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
+      </article></div>
+      </div>
+    </section>
+
+    <section class="marquee-section" aria-label="هوية Tigress"><div class="marquee-frame"><div class="marquee-track" aria-hidden="true"><span>BOLD BY NATURE</span><svg class="ico"><use href="#icon-star"/></svg><span>UNMISTAKABLY TIGRESS</span><svg class="ico"><use href="#icon-star"/></svg><span>ART IN EVERY DETAIL</span><svg class="ico"><use href="#icon-star"/></svg><span>BOLD BY NATURE</span><svg class="ico"><use href="#icon-star"/></svg><span>UNMISTAKABLY TIGRESS</span><svg class="ico"><use href="#icon-star"/></svg><span>ART IN EVERY DETAIL</span><svg class="ico"><use href="#icon-star"/></svg></div></div></section>
+
+    <section id="signature" class="section signature"><div class="wrap signature-grid"><div class="signature-visual inview"><img src="assets/tigress-illustration-small.webp" alt="تكوين من رسومات Tigress الذهبية" loading="eager" width="700" height="700"><span class="signature-mark">T</span></div><div class="signature-copy inview"><p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="signatureKicker">04 — توقيعنا الخاص</span></p><h2 class="display-title" data-t="signatureTitle">كل تفصيلة<br><em>تترك أثرًا.</em></h2><p data-t="signatureP">القيمة ليست في كثرة العناصر، بل في اختيار ما يستحق أن يبقى. هذا هو عالم Tigress: حضور واثق، وحسّ فني لا يشبه سواه.</p><a class="button button-gold" href="#contact"><span data-t="signatureCTA">ابدأ حكايتك</span><i class="fa-solid fa-arrow-left button-fa dir-arrow" aria-hidden="true"></i></a></div></div></section>
+
+    <section class="partner-section" id="partners" aria-label="العلامات التجارية">
+      <div class="wrap partner-heading inview" data-reveal="up">
+        <p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="partnersKicker">شركاء الحكاية</span></p>
+        <h2 class="display-title"><span data-t="partnersTitle">علامات تجارية</span> <em data-t="partnersAccent">وثقت بنا</em></h2>
+      </div>
+      <div class="partner-viewport inview" data-reveal="up" aria-label="شريط العلامات التجارية المتحرك">
+        <div class="partner-track">
+          <div class="partner-set"><a class="client-logo-link" href="#quote" aria-label="غرتاف — رابط مؤقت"><span class="client-logo-card"><img src="assets/clients/ghartaf.png" alt="غرتاف" decoding="async"></span></a><a class="client-logo-link" href="#quote" aria-label="زيتي — رابط مؤقت"><span class="client-logo-card"><img src="assets/clients/zaity.png" alt="زيتي" decoding="async"></span></a><a class="client-logo-link" href="#quote" aria-label="شمندر — رابط مؤقت"><span class="client-logo-card"><img src="assets/clients/shamandar.png" alt="شمندر" decoding="async"></span></a><a class="client-logo-link" href="#quote" aria-label="عبية — رابط مؤقت"><span class="client-logo-card"><img src="assets/clients/ubayyah.png" alt="عبية" decoding="async"></span></a><a class="client-logo-link" href="#quote" aria-label="بارما — رابط مؤقت"><span class="client-logo-card"><img src="assets/clients/parma.png" alt="بارما" decoding="async"></span></a><a class="client-logo-link" href="#quote" aria-label="أچايا — رابط مؤقت"><span class="client-logo-card"><img src="assets/clients/ajaya.png" alt="أچايا" decoding="async"></span></a><a class="client-logo-link" href="#quote" aria-label="مشقر — رابط مؤقت"><span class="client-logo-card"><img src="assets/clients/mshaqqar.png" alt="مشقر" decoding="async"></span></a><a class="client-logo-link" href="#quote" aria-label="سمبري — رابط مؤقت"><span class="client-logo-card"><img src="assets/clients/sempre.png" alt="سمبري" decoding="async"></span></a><a class="client-logo-link" href="#quote" aria-label="جدير — رابط مؤقت"><span class="client-logo-card"><img src="assets/clients/jadeer.png" alt="جدير" decoding="async"></span></a><a class="client-logo-link" href="#quote" aria-label="مرشة — رابط مؤقت"><span class="client-logo-card"><img src="assets/clients/marsha.png" alt="مرشة" decoding="async"></span></a><a class="client-logo-link" href="#quote" aria-label="أومامي — رابط مؤقت"><span class="client-logo-card"><img src="assets/clients/umami.png" alt="أومامي" decoding="async"></span></a><a class="client-logo-link" href="#quote" aria-label="سبأ — رابط مؤقت"><span class="client-logo-card"><img src="assets/clients/saba.png" alt="سبأ" decoding="async"></span></a><a class="client-logo-link" href="#quote" aria-label="وجبات القرية — رابط مؤقت"><span class="client-logo-card"><img src="assets/clients/wajbat-alqarya.png" alt="وجبات القرية" decoding="async"></span></a><a class="client-logo-link" href="#quote" aria-label="تينة — رابط مؤقت"><span class="client-logo-card"><img src="assets/clients/tinh.png" alt="تينة" decoding="async"></span></a></div>
+          <div class="partner-set" aria-hidden="true"><a class="client-logo-link" href="#quote" tabindex="-1"><span class="client-logo-card"><img src="assets/clients/ghartaf.png" alt="" decoding="async"></span></a><a class="client-logo-link" href="#quote" tabindex="-1"><span class="client-logo-card"><img src="assets/clients/zaity.png" alt="" decoding="async"></span></a><a class="client-logo-link" href="#quote" tabindex="-1"><span class="client-logo-card"><img src="assets/clients/shamandar.png" alt="" decoding="async"></span></a><a class="client-logo-link" href="#quote" tabindex="-1"><span class="client-logo-card"><img src="assets/clients/ubayyah.png" alt="" decoding="async"></span></a><a class="client-logo-link" href="#quote" tabindex="-1"><span class="client-logo-card"><img src="assets/clients/parma.png" alt="" decoding="async"></span></a><a class="client-logo-link" href="#quote" tabindex="-1"><span class="client-logo-card"><img src="assets/clients/ajaya.png" alt="" decoding="async"></span></a><a class="client-logo-link" href="#quote" tabindex="-1"><span class="client-logo-card"><img src="assets/clients/mshaqqar.png" alt="" decoding="async"></span></a><a class="client-logo-link" href="#quote" tabindex="-1"><span class="client-logo-card"><img src="assets/clients/sempre.png" alt="" decoding="async"></span></a><a class="client-logo-link" href="#quote" tabindex="-1"><span class="client-logo-card"><img src="assets/clients/jadeer.png" alt="" decoding="async"></span></a><a class="client-logo-link" href="#quote" tabindex="-1"><span class="client-logo-card"><img src="assets/clients/marsha.png" alt="" decoding="async"></span></a><a class="client-logo-link" href="#quote" tabindex="-1"><span class="client-logo-card"><img src="assets/clients/umami.png" alt="" decoding="async"></span></a><a class="client-logo-link" href="#quote" tabindex="-1"><span class="client-logo-card"><img src="assets/clients/saba.png" alt="" decoding="async"></span></a><a class="client-logo-link" href="#quote" tabindex="-1"><span class="client-logo-card"><img src="assets/clients/wajbat-alqarya.png" alt="" decoding="async"></span></a><a class="client-logo-link" href="#quote" tabindex="-1"><span class="client-logo-card"><img src="assets/clients/tinh.png" alt="" decoding="async"></span></a></div>
+        </div>
+      </div>
+    </section>
+    <section id="quote" class="section quote-ref" aria-labelledby="quoteTitle">
+      <div class="wrap quote-ref-grid">
+        <div class="quote-ref-copy inview" data-reveal="right">
+          <p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="quoteKicker">04 — طلب عرض سعر</span></p>
+          <h2 id="quoteTitle" data-t="quoteTitle">حدّثنا عن مشروعك</h2>
+          <p data-t="quoteP">املأ البيانات وسيتواصل معك فريقنا. عند الإرسال سيُفتح واتساب برسالة جاهزة لتسريع التواصل.</p>
+          <div class="quote-mini">
+            <a id="quoteWa" href="#"><span class="quote-mini-icon wa"><i class="fa-brands fa-whatsapp"></i></span><span><small data-t="whatsappLabel">واتساب</small><b dir="ltr">054 275 5566</b></span></a>
+            <a id="quoteCall" href="#"><span class="quote-mini-icon"><i class="fa-solid fa-phone"></i></span><span><small data-t="callLabel">اتصال</small><b dir="ltr">054 275 5566</b></span></a>
+            <a id="quoteEmail" href="mailto:ramztashyeed@gmail.com"><span class="quote-mini-icon"><i class="fa-regular fa-envelope"></i></span><span><small data-t="emailLabelShort">البريد الإلكتروني</small><b>ramztashyeed@gmail.com</b></span></a>
+          </div>
+        </div>
+        <form id="contactForm" class="quote-form-ref inview" data-reveal="left" novalidate>
+          <div class="quote-form-grid">
+            <div class="field-group"><label for="fullName"><span data-t="nameLabel">الاسم</span> <em>*</em></label><input id="fullName" name="name" type="text" autocomplete="name" required maxlength="80" data-placeholder="nameHolder" placeholder="الاسم الكامل"></div>
+            <div class="field-group"><label for="phone"><span data-t="phoneLabel">رقم الجوال</span> <em>*</em></label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" required maxlength="20" placeholder="05xxxxxxxx"></div>
+            <div class="field-group"><label for="projectType" data-t="typeLabel">نوع الخدمة</label><select id="projectType" name="type">
+              <option value="" data-t="typeChoose">اختر الخدمة (اختياري)</option>
+              <option value="contracting" data-t="typeContracting">المقاولات العامة</option>
+              <option value="electromechanical" data-t="typeElectromechanical">الكهروميكانيك</option>
+              <option value="booths" data-t="typeBooths">تصميم وتنفيذ البوثات</option>
+              <option value="painting" data-t="typePainting">الدهانات</option>
+              <option value="decor" data-t="typeDecor">التصميم والديكور</option>
+              <option value="supervision" data-t="typeSupervision">إدارة المواقع والإشراف</option>
+              <option value="other" data-t="typeOther">أخرى</option>
+            </select></div>
+            <div class="field-group"><label for="city" data-t="cityLabel">المدينة</label><input id="city" name="city" type="text" autocomplete="address-level2" maxlength="60" data-placeholder="cityHolder" placeholder="مثال: بريدة"></div>
+            <div class="field-group full"><label for="message" data-t="messageLabel">تفاصيل المشروع</label><textarea id="message" name="message" maxlength="1500" rows="4" data-placeholder="messageHolder" placeholder="نوع المبنى، المساحة التقريبية، الموعد المتوقع..."></textarea></div>
+            <div class="field-group full consent-field"><label class="consent-label"><input id="consent" type="checkbox" name="consent" value="1"><span data-t="consentText">أوافق على استخدام بياناتي للتواصل معي بخصوص طلبي وفق سياسة الخصوصية.</span></label></div>
+            <div class="full"><button type="submit" class="whatsapp-submit"><i class="fa-brands fa-whatsapp"></i><span data-t="sendWhatsApp">أرسل الطلب عبر واتساب</span></button></div>
+          </div>
+          <p id="formResult" class="form-result" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-ref" aria-labelledby="contactTitle">
+      <div class="wrap">
+        <div class="section-ref-head inview" data-reveal="up"><p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="contactKicker">تواصل معنا</span></p><h2 id="contactTitle" data-t="contactTitle">يسعدنا تواصلك</h2><p data-t="contactP">تواصل معنا بأحد الوسائل المتاحة.</p></div>
+        <div class="contact-ref-grid">
+          <a class="contact-ref-card inview" data-reveal="right" id="contactWa" href="#"><span class="contact-ref-icon wa"><i class="fa-brands fa-whatsapp"></i></span><span><small data-t="whatsappLabel">واتساب</small><b dir="ltr">054 275 5566</b></span></a>
+          <a class="contact-ref-card inview" data-reveal="up" id="contactCall" href="#"><span class="contact-ref-icon"><i class="fa-solid fa-phone"></i></span><span><small data-t="callLabel">اتصال</small><b dir="ltr">054 275 5566</b></span></a>
+          <a class="contact-ref-card inview" data-reveal="up" href="mailto:ramztashyeed@gmail.com"><span class="contact-ref-icon"><i class="fa-regular fa-envelope"></i></span><span><small data-t="emailLabelShort">البريد الإلكتروني</small><b>ramztashyeed@gmail.com</b></span></a>
+          <div class="contact-ref-card inview" data-reveal="left"><span class="contact-ref-icon"><i class="fa-solid fa-location-dot"></i></span><span><small data-t="addressLabel">العنوان</small><b data-t="addressText">بريدة – الدائري الشرقي الداخلي – طريق أم المؤمنين عائشة، المملكة العربية السعودية</b></span></div>
+        </div>
+        <div class="social-ref-row inview" data-reveal="up">
+          <a href="https://www.instagram.com/ramztashyeed/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i><span>إنستقرام<small>@ramztashyeed</small></span></a>
+          <a href="https://www.tiktok.com/@ramztashyeed" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i><span>تيك توك<small>@ramztashyeed</small></span></a>
+          <a href="https://www.snapchat.com/add/waleed.1333" target="_blank" rel="noopener"><i class="fa-brands fa-snapchat"></i><span>سناب شات<small>waleed.1333</small></span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer footer-v3">
+    <div class="footer-pattern" aria-hidden="true"></div>
+    <div class="wrap footer-main">
+      <div class="footer-about inview" data-reveal="right">
+        <a href="#hero" class="footer-brand"><img src="assets/tigress-white.png" alt="Tigress" width="210" height="83"></a>
+        <p data-t="footerCopy">فنّ التفاصيل. جرأة التعبير. حضور يظل في الذاكرة.</p>
+        <div class="footer-socials" aria-label="روابط التواصل">
+          <a class="footer-social" href="https://www.instagram.com/" target="_blank" rel="noopener" title="Instagram — temporary link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a class="footer-social" href="https://www.tiktok.com/" target="_blank" rel="noopener" title="TikTok — temporary link" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a class="footer-social" href="https://wa.me/966542755566" target="_blank" rel="noopener" title="WhatsApp — temporary link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a class="footer-social" href="mailto:ramztashyeed@gmail.com" title="Email — temporary link" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-links-col inview" data-reveal="up">
+        <h4 data-t="quickLinks">روابط سريعة</h4>
+        <a href="#hero" data-t="navHome">الرئيسية</a>
+        <a href="#chapters" data-t="navStory">الحكاية</a>
+        <a href="#about" data-t="navAbout">من نحن</a>
+        <a href="#creative" data-t="navCreative">مساحات الإبداع</a>
+        <a href="#quote" data-t="navContact">لنتحدث</a>
+      </div>
+      <div class="footer-contact-col inview" data-reveal="left">
+        <h4 data-t="footerContact">تواصل معنا</h4>
+        <a href="#contact"><i class="fa-regular fa-paper-plane"></i><span data-t="footerContactLine">أرسل تفاصيل فكرتك من النموذج</span></a>
+        <a href="#contact"><i class="fa-regular fa-envelope"></i><span data-t="footerEmailLine">أضف بريد الاستقبال من ملف الإعدادات</span></a>
+        <a href="#partners"><i class="fa-regular fa-star"></i><span data-t="footerPartnersLine">استعرض العلامات في شريط الشركاء</span></a>
+      </div>
+    </div>
+    <div class="footer-bottom"><div class="wrap">
+      <span>© <span id="year">2026</span> TIGRESS — ASMA ALMOHIMEED</span>
+      <span data-t="rights">جميع الحقوق محفوظة.</span>
+      <a href="#hero"><span data-t="backToTop">العودة إلى البداية</span><i class="fa-solid fa-arrow-up"></i></a>
+    </div></div>
+  </footer>
+  <div class="floating-actions" id="floatingActions" aria-label="Quick contact">
+    <a class="float-action float-wa" id="floatingWhatsApp" href="#" target="_blank" rel="noopener"><span class="float-ripple"></span><i class="fa-brands fa-whatsapp"></i><span class="float-label" data-t="floatingWa">راسلنا على واتساب</span></a>
+    <a class="float-action float-call" id="floatingCall" href="#"><span class="float-ripple"></span><i class="fa-solid fa-phone"></i><span class="float-label" data-t="floatingCall">اتصل بنا</span></a>
+  </div>
+</body>
+</html>

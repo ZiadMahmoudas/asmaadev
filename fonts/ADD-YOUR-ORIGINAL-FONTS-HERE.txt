@@ -1,0 +1,5 @@
+The original font files are part of your ASMAWork.zip upload, not redistributed here.
+From ASMAWork/#U0627#U0644#U062e#U0637/ copy these to THIS fonts folder:
+- Bumerang-Regular.otf
+- Galano Grotesque DEMO Bold.otf
+CSS includes @font-face for both. Until copied, system and Google-hosted fallback fonts display the site.

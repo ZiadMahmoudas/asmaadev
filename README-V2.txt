@@ -1,0 +1,1 @@
+TIGRESS V2: full-bleed leopard sticky observer hero, Ramz-inspired dark sections, services cards, and continuous partners marquee.\nIMPORTANT: Partner names are taken from the supplied Ramz HTML as layout references, NOT verified TIGRESS clients. Replace these editable text placeholders with authorized logo images and confirmed client names before publishing.\nOpen index.html.\n
