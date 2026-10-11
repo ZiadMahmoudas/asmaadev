@@ -548,3 +548,333 @@ html[dir="ltr"] .service-cta:hover .service-cta-arrow{transform:rotate(180deg) t
 @media(prefers-reduced-motion:reduce){
   .hero-stage,.hero-art-panel .hero-tiger,.hero-content-inner{transform:none!important;filter:none!important}
 }
+
+/* =========================================================
+   V7 — calmer pulse, language-aware marquee, clean slider reset
+   ========================================================= */
+
+/* Floating buttons: two rings, then a long quiet pause. */
+.float-action::after{display:none!important}
+.float-action::before,.float-ripple{
+  animation:fabPulseRest 6.4s cubic-bezier(.2,.7,.25,1) infinite!important;
+  opacity:0;
+}
+.float-action::before{animation-delay:0s!important}
+.float-ripple{animation-delay:.78s!important}
+.float-action:hover::before,.float-action:hover .float-ripple,
+.float-action:focus-visible::before,.float-action:focus-visible .float-ripple{
+  animation-play-state:paused!important;
+  opacity:0!important;
+}
+@keyframes fabPulseRest{
+  0%,4%{transform:scale(.93);opacity:.42}
+  18%{transform:scale(1.52);opacity:0}
+  19%,100%{transform:scale(1.52);opacity:0}
+}
+
+/* Remove native-tooltip feel; these are normal clickable links. */
+.footer-social,.social-ref-row a{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.footer-social:focus-visible,.social-ref-row a:focus-visible{outline:2px solid #d9a25f;outline-offset:4px}
+
+/* Language-aware editorial marquee. */
+.marquee-section .marquee-track span{white-space:nowrap}
+html[dir="rtl"] .marquee-section .marquee-track span{font-family:var(--font-ar);letter-spacing:0;font-weight:800}
+html[dir="ltr"] .marquee-section .marquee-track span{font-family:'Galano',Arial,sans-serif;letter-spacing:.07em;font-weight:800}
+
+/* Story dots now show a true per-slide timer and reset after slide 03. */
+.story-dot{position:relative;overflow:hidden;background:rgba(255,255,255,.20)!important}
+.story-dot.current{width:66px;background:rgba(255,255,255,.20)!important}
+.story-dot::after{content:"";position:absolute;inset:0 auto 0 0;width:0;background:var(--gold)}
+.story-dot.current.progressing::after{animation:storyDotProgress var(--story-delay,6600ms) linear forwards}
+@keyframes storyDotProgress{from{width:0}to{width:100%}}
+.stories-carousel:hover .story-dot.current::after,
+.stories-carousel:focus-within .story-dot.current::after{animation-play-state:paused}
+
+/* Hero: quieter depth motion and more balanced image framing. */
+.hero-stage{transform:translate3d(0,calc(var(--scroll-progress)*3.3vh),0) scale(calc(1 - var(--scroll-progress)*.012))}
+.hero-art-panel .hero-tiger{transform:translate3d(calc((var(--scroll-progress) - .5)*-.45vw),calc(var(--scroll-progress)*.8vh),0) scale(calc(1.018 + var(--scroll-progress)*.018))}
+.hero-content-inner{transform:translate3d(0,calc(var(--scroll-progress)*1.2vh),0);opacity:calc(1 - var(--scroll-progress)*.12)}
+.art-image-shade{background:linear-gradient(90deg,rgba(3,8,10,.10) 0%,rgba(3,8,10,.17) 40%,rgba(3,8,10,.72) 100%),linear-gradient(0deg,rgba(3,8,10,.48),transparent 34%)!important}
+
+/* About artwork: keep leopard readable instead of a vague cropped texture. */
+.about-brand-art{inset:95px -20px -35px 8%!important;opacity:.31!important}
+.about-brand-art img{object-position:60% 66%;filter:grayscale(.1) contrast(1.04)!important}
+
+@media(max-width:700px){
+  .hero-picture .hero-tiger{object-position:center 48%!important;transform:translate3d(0,calc(var(--scroll-progress)*.45vh),0) scale(calc(1.005 + var(--scroll-progress)*.012))!important}
+  .hero-content-inner{padding:54px 0 4px!important;background:linear-gradient(180deg,transparent 0%,rgba(3,8,10,.08) 8%,rgba(3,8,10,.72) 64%,rgba(3,8,10,.91) 100%)!important}
+  .hero-observer h1{max-width:8.7ch!important}
+  .about-brand-art{inset:82px -12px -30px 4%!important;opacity:.34!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .float-action::before,.float-ripple,.story-dot.current.progressing::after{animation:none!important}
+  .story-dot.current::after{width:100%}
+}
+
+/* =========================================================
+   V8 — restore original framed slider; only the SECTION covers Hero.
+   About artwork is clean, sharp and contains NO overlay text.
+   ========================================================= */
+
+/* Keep the preferred original carousel/board proportions. */
+#chapters{
+  position:relative;
+  z-index:12;
+  margin-top:-34svh;
+  border-radius:30px 30px 0 0;
+  box-shadow:0 -28px 72px rgba(0,0,0,.34);
+  overflow:hidden;
+  background:#081113;
+}
+#chapters .wrap{
+  position:relative;
+}
+#chapters .heading-row{
+  display:flex;
+}
+#chapters .stories-carousel{
+  height:auto;
+  min-height:0;
+}
+#chapters .stories-screen{
+  position:relative;
+  inset:auto;
+  width:auto;
+  height:auto;
+  min-height:clamp(510px,55vw,690px);
+  border:1px solid rgba(201,165,107,.21)!important;
+  border-radius:0!important;
+  overflow:hidden;
+  background:#151c1d;
+}
+#chapters .story-controls{
+  position:static;
+  padding-top:21px;
+  left:auto;
+  right:auto;
+  bottom:auto;
+}
+#chapters .story-watermark{
+  bottom:38px;
+  left:50px;
+}
+#chapters .story-nav-buttons button{
+  width:49px;
+  height:49px;
+  background:#172024;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
+
+/* The section still slides OVER the Hero, but only as one clean foreground block. */
+.hero-observer{
+  height:136svh;
+}
+.hero-stage{
+  position:sticky;
+  top:0;
+  z-index:1;
+  transform:translate3d(0,calc(var(--scroll-progress)*2.2vh),0)
+            scale(calc(1 - var(--scroll-progress)*.01));
+  filter:brightness(calc(1 - var(--scroll-progress)*.12));
+}
+#chapters{
+  transform:translateZ(0);
+}
+
+/* Clear About artwork: no logo, no 20+, no text on image. */
+.about-brand-card-clean{
+  min-height:0!important;
+  height:clamp(430px,46vw,590px);
+  padding:0!important;
+  overflow:hidden;
+  border-radius:22px;
+  border:1px solid #243957;
+  background:#07101a;
+  box-shadow:0 25px 70px rgba(0,0,0,.2);
+  margin:0;
+}
+.about-clean-image{
+  width:100%!important;
+  height:100%!important;
+  display:block;
+  object-fit:cover;
+  object-position:center 62%;
+  filter:none!important;
+  opacity:1!important;
+  transform:scale(1.01);
+  transition:transform 1.1s var(--curve);
+}
+.about-brand-card-clean:hover .about-clean-image{
+  transform:scale(1.045);
+}
+
+/* Neutralize the old decorative image rules in this card. */
+.about-brand-card-clean::before,
+.about-brand-card-clean::after{
+  display:none!important;
+}
+
+/* Mobile: image stays clean and framed, slider stays like the previous version. */
+@media(max-width:700px){
+  #chapters{
+    margin-top:-28svh;
+    border-radius:24px 24px 0 0;
+  }
+  #chapters .stories-screen{
+    min-height:clamp(485px,115vw,570px);
+  }
+  #chapters .story-content{
+    right:27px;
+    left:27px;
+    top:auto;
+    bottom:35px;
+    max-width:none;
+    justify-content:end;
+  }
+  #chapters .story-watermark{
+    bottom:24px;
+    left:29px;
+  }
+  #chapters .story-controls{
+    position:static;
+    padding-top:18px;
+  }
+  .about-brand-card-clean{
+    height:min(125vw,560px);
+  }
+  .about-clean-image{
+    object-position:center 60%;
+  }
+}
+
+/* =========================================================
+   V9 — final Hero cleanup + exact full cover transition
+   ========================================================= */
+
+/* Remove the decorative/meta items marked for deletion.
+   Keep only the leopard artwork, main headline, description and CTA. */
+.hero-type,
+.hero-micro,
+.hero-credit,
+.hero-bottom-label,
+.hero-art-overlay,
+.hero-art-bottom,
+.hero-scroll-trigger{
+  display:none!important;
+}
+
+/* With one CTA left, keep the spacing intentional. */
+.hero-actions{
+  margin-top:28px!important;
+  gap:0!important;
+}
+
+/* Exact stacking math:
+   Hero = 134svh
+   Following section overlap = -34svh
+   => following section starts at exactly 100svh.
+   Once it reaches the viewport top it fully covers the Hero. */
+.hero-observer{
+  height:134svh!important;
+  min-height:980px;
+}
+#chapters{
+  margin-top:-34svh!important;
+  position:relative;
+  z-index:20!important;
+  min-height:100svh;
+  background:#081113!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  isolation:isolate;
+}
+
+/* Keep the old preferred carousel board INSIDE the full-width foreground section. */
+#chapters .stories-screen{
+  border:1px solid rgba(201,165,107,.21)!important;
+  background:#151c1d!important;
+}
+
+/* Hero remains underneath with only a very subtle retreat. */
+.hero-stage{
+  transform:
+    translate3d(0,calc(var(--scroll-progress)*1.4vh),0)
+    scale(calc(1 - var(--scroll-progress)*.006))!important;
+  filter:brightness(calc(1 - var(--scroll-progress)*.08))!important;
+}
+.hero-art-panel .hero-tiger{
+  transform:
+    translate3d(0,calc(var(--scroll-progress)*.35vh),0)
+    scale(calc(1.014 + var(--scroll-progress)*.006))!important;
+}
+
+/* Clearer desktop artwork. */
+.art-image-shade{
+  background:
+    linear-gradient(90deg,rgba(3,8,10,.04) 0%,rgba(3,8,10,.09) 42%,rgba(3,8,10,.62) 100%),
+    linear-gradient(0deg,rgba(3,8,10,.36),transparent 31%)!important;
+}
+
+/* Mobile: use the dedicated 900x1600 crop and keep the leopard crisp/visible. */
+@media(max-width:700px){
+  .hero-observer{
+    height:130svh!important;
+    min-height:860px;
+  }
+  #chapters{
+    margin-top:-30svh!important;
+    border-radius:0!important;
+  }
+
+  .hero-picture .hero-tiger{
+    object-fit:cover!important;
+    object-position:55% 50%!important;
+    transform:
+      translate3d(0,calc(var(--scroll-progress)*.2vh),0)
+      scale(calc(1.004 + var(--scroll-progress)*.004))!important;
+    filter:none!important;
+  }
+
+  .art-image-shade{
+    background:
+      linear-gradient(
+        0deg,
+        rgba(3,8,10,.84) 0%,
+        rgba(3,8,10,.48) 27%,
+        rgba(3,8,10,.10) 56%,
+        rgba(3,8,10,.02) 100%
+      )!important;
+  }
+
+  .hero-content{
+    padding-top:calc(var(--header) + 12px)!important;
+    padding-bottom:58px!important;
+  }
+  .hero-content-inner{
+    padding-top:0!important;
+    background:none!important;
+  }
+  .hero-observer h1{
+    max-width:9ch!important;
+  }
+  .hero-paragraph{
+    max-width:32ch!important;
+  }
+}
+
+/* Extra-small phones: protect the tiger's face from edge cropping. */
+@media(max-width:420px){
+  .hero-picture .hero-tiger{
+    object-position:58% 50%!important;
+  }
+}
+
+/* No motion should ever reduce image clarity. */
+@media(prefers-reduced-motion:reduce){
+  .hero-stage,
+  .hero-art-panel .hero-tiger{
+    transform:none!important;
+    filter:none!important;
+  }
+}
