@@ -268,7 +268,11 @@
       const formCard=$('#contactForm');
       if(target){
         event.preventDefault();
-        target.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
+        if(window.tigressLenis && !reduced){
+          window.tigressLenis.scrollTo(target,{offset:-78,duration:1.05,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+        }else{
+          target.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
+        }
         if(formCard){
           formCard.classList.remove('service-picked');
           void formCard.offsetWidth;
