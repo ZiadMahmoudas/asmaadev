@@ -94,52 +94,56 @@
   menuButton.addEventListener('click', toggleMenu);
   $$('#mobileNav a').forEach(a => a.addEventListener('click',closeMenu));
   document.addEventListener('keydown',event => {if(event.key === 'Escape' && menuOpen){closeMenu();menuButton.focus();}});
-  window.addEventListener('resize',() => {if (window.innerWidth > 960 && menuOpen) closeMenu();},{passive:true});
+  window.addEventListener('resize',() => {
+    if (window.innerWidth > 960 && menuOpen) closeMenu();
+    updateHeroProgress();
+  },{passive:true});
 
   function clamp01(n){return Math.min(1,Math.max(0,n));}
-  let heroTarget=0,heroCurrent=0,heroRaf=0;
-  function calculateHeroTarget(){
+
+  // Lightweight Hero progress:
+  // no lerp, no recursive RAF, no JS translation of the following section.
+  // The actual section-cover effect is handled entirely by CSS sticky + normal document flow.
+  function updateHeroProgress(){
+    if(!hero)return;
+    if(reduced){
+      hero.style.setProperty('--scroll-progress','0');
+      hero.style.setProperty('--enter','1');
+      return;
+    }
     const distance=Math.max(1,hero.offsetHeight-window.innerHeight);
-    heroTarget=clamp01((window.scrollY-hero.offsetTop)/distance);
-  }
-  function paintHero(){
-    const diff=heroTarget-heroCurrent;
-    heroCurrent += diff * .085;
-    if(Math.abs(diff)<.0007) heroCurrent=heroTarget;
-    hero.style.setProperty('--scroll-progress',heroCurrent.toFixed(4));
+    const progress=clamp01((window.scrollY-hero.offsetTop)/distance);
+    hero.style.setProperty('--scroll-progress',progress.toFixed(4));
     hero.style.setProperty('--enter','1');
-    $('#heroProgressFill').style.width=Math.round(heroCurrent*100)+'%';
-    $('#heroProgressText').textContent=String(Math.round(heroCurrent*100)).padStart(2,'0')+'%';
-    if(heroVisible && Math.abs(heroTarget-heroCurrent)>.0008) heroRaf=requestAnimationFrame(paintHero);
-    else heroRaf=0;
+
+    const heroFill=$('#heroProgressFill');
+    const heroText=$('#heroProgressText');
+    if(heroFill)heroFill.style.width=Math.round(progress*100)+'%';
+    if(heroText)heroText.textContent=String(Math.round(progress*100)).padStart(2,'0')+'%';
   }
-  function updateHero(){
-    if(reduced){hero.style.setProperty('--scroll-progress','0');return;}
-    calculateHeroTarget();
-    if(heroVisible && !heroRaf) heroRaf=requestAnimationFrame(paintHero);
-  }
-  function handleScroll() {
+
+  function handleScroll(){
     scrollFrame=false;
     const y=Math.max(window.scrollY,0);
     const delta=y-previousY;
+
     header.classList.toggle('is-scrolled',y>35);
-    if(menuOpen||y<115) header.classList.remove('is-hidden');
-    else if(delta>5&&y>160) header.classList.add('is-hidden');
-    else if(delta<-5) header.classList.remove('is-hidden');
-    if(Math.abs(delta)>=1) previousY=y;
-    updateHero();
+    if(menuOpen||y<115)header.classList.remove('is-hidden');
+    else if(delta>5&&y>160)header.classList.add('is-hidden');
+    else if(delta<-5)header.classList.remove('is-hidden');
+
+    if(Math.abs(delta)>=1)previousY=y;
+    updateHeroProgress();
   }
-  window.addEventListener('scroll',()=>{if(!scrollFrame){scrollFrame=true;requestAnimationFrame(handleScroll);}},{passive:true});
-  if('IntersectionObserver' in window){
-    const heroObserver=new IntersectionObserver(entries=>{
-      heroVisible=entries[0].isIntersecting;
-      if(heroVisible){calculateHeroTarget();if(!heroRaf)heroRaf=requestAnimationFrame(paintHero);}
-      else if(heroRaf){cancelAnimationFrame(heroRaf);heroRaf=0;}
-    },{threshold:0,rootMargin:'100px 0px 100px 0px'});
-    heroObserver.observe(hero);
-  }
-  hero.style.setProperty('--enter','1');
-  handleScroll();
+
+  window.addEventListener('scroll',()=>{
+    if(!scrollFrame){
+      scrollFrame=true;
+      requestAnimationFrame(handleScroll);
+    }
+  },{passive:true});
+
+  updateHeroProgress();
 
   const revealItems=$$('.inview');
   const directions=['up','right','left','up','down'];

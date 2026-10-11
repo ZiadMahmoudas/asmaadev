@@ -878,3 +878,474 @@ html[dir="ltr"] .marquee-section .marquee-track span{font-family:'Galano',Arial,
     filter:none!important;
   }
 }
+
+/* =========================================================
+   V10 — FINAL OVERLAY FIX
+   The next section rises directly over the Hero with NO dark gap.
+   ========================================================= */
+
+/* Keep the Hero visual itself full-screen all the way through the overlap. */
+.hero-observer{
+  height:160svh!important;
+  min-height:1120px!important;
+  position:relative;
+  background:#050d10!important;
+}
+
+.hero-stage{
+  position:sticky!important;
+  top:0!important;
+  height:100svh!important;
+  min-height:100svh!important;
+  z-index:1!important;
+  overflow:hidden!important;
+  background:#050d10!important;
+}
+
+/* Ensure the actual artwork fills the sticky viewport right to the bottom. */
+.hero-art-panel,
+.hero-picture,
+.hero-picture .hero-tiger{
+  height:100%!important;
+  min-height:100%!important;
+}
+
+.hero-picture{
+  position:absolute!important;
+  inset:0!important;
+}
+
+.hero-picture .hero-tiger{
+  width:100%!important;
+  object-fit:cover!important;
+}
+
+/* IMPORTANT:
+   Hero is 160svh, section overlap is -60svh.
+   So #chapters reaches the viewport at exactly the right moment
+   and physically slides over the artwork, never over an empty base. */
+#chapters{
+  margin-top:-60svh!important;
+  position:relative!important;
+  z-index:30!important;
+  background:#081113!important;
+  isolation:isolate!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+
+/* Solid top layer so no hero/dark strip leaks between sections. */
+#chapters::before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  background:#081113!important;
+  z-index:-1!important;
+  pointer-events:none!important;
+}
+
+/* Keep the preferred inner carousel board styling. */
+#chapters .stories-screen{
+  position:relative!important;
+  z-index:2!important;
+}
+
+/* Prevent any accidental spacer from the section heading/observer transition. */
+#chapters > .wrap{
+  position:relative!important;
+  z-index:2!important;
+}
+
+/* Mobile follows the same exact stacked-cover behavior. */
+@media(max-width:700px){
+  .hero-observer{
+    height:150svh!important;
+    min-height:920px!important;
+  }
+
+  .hero-stage{
+    height:100svh!important;
+    min-height:100svh!important;
+  }
+
+  #chapters{
+    margin-top:-50svh!important;
+  }
+
+  .hero-picture .hero-tiger{
+    object-position:58% 50%!important;
+  }
+}
+
+@media(max-width:420px){
+  .hero-observer{
+    height:148svh!important;
+  }
+
+  #chapters{
+    margin-top:-48svh!important;
+  }
+}
+
+/* =========================================================
+   V11 — EXACT STICKY COVER
+   Structural fix, not another visual workaround.
+   ---------------------------------------------------------
+   Hero parent: 200svh
+   Sticky hero: 100svh
+   Next section overlap: -100svh
+
+   Result:
+   - Chapters starts exactly one viewport below page start.
+   - Hero stays sticky for the ENTIRE time Chapters rises over it.
+   - When Chapters reaches viewport top, Hero is 100% covered.
+   - No exposed dark tail / unclosed strip.
+   ========================================================= */
+
+.hero-observer{
+  height:200svh!important;
+  min-height:0!important;
+  position:relative!important;
+  background:#050d10!important;
+}
+
+.hero-stage{
+  position:sticky!important;
+  top:0!important;
+  width:100%!important;
+  height:100svh!important;
+  min-height:100svh!important;
+  z-index:1!important;
+  overflow:hidden!important;
+  background:#050d10!important;
+}
+
+/* Keep the artwork glued to the full sticky viewport. */
+.hero-art-panel,
+.art-image-mask,
+.hero-picture{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+}
+
+.hero-picture .hero-tiger{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  object-fit:cover!important;
+}
+
+/* The foreground section begins at y = 100svh and covers Hero while scrolling. */
+#chapters{
+  margin-top:-100svh!important;
+  position:relative!important;
+  z-index:50!important;
+  background:#081113!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  isolation:isolate!important;
+
+  /* Kill the large generic .section top spacer that looked like an unclosed gap. */
+  padding-top:48px!important;
+  padding-bottom:clamp(82px,9vw,128px)!important;
+}
+
+/* No fake background layer or negative z-index needed. */
+#chapters::before{
+  display:none!important;
+}
+
+/* Put real content close to the leading edge of the covering section. */
+#chapters .heading-row{
+  margin-top:0!important;
+  margin-bottom:38px!important;
+}
+
+#chapters > .wrap{
+  position:relative!important;
+  z-index:2!important;
+}
+
+/* Keep the carousel board exactly as requested. */
+#chapters .stories-screen{
+  position:relative!important;
+  z-index:2!important;
+}
+
+/* Hero gently recedes, but never moves away before it is covered. */
+.hero-stage{
+  transform:
+    translate3d(0,calc(var(--scroll-progress)*.65vh),0)
+    scale(calc(1 - var(--scroll-progress)*.004))!important;
+  filter:brightness(calc(1 - var(--scroll-progress)*.06))!important;
+}
+
+.hero-art-panel .hero-tiger{
+  transform:
+    translate3d(0,calc(var(--scroll-progress)*.15vh),0)
+    scale(calc(1.012 + var(--scroll-progress)*.004))!important;
+}
+
+/* Mobile uses the exact same 2:1 sticky math. */
+@media(max-width:700px){
+  .hero-observer{
+    height:200svh!important;
+    min-height:0!important;
+  }
+
+  .hero-stage{
+    height:100svh!important;
+    min-height:100svh!important;
+  }
+
+  #chapters{
+    margin-top:-100svh!important;
+    padding-top:32px!important;
+    padding-bottom:72px!important;
+  }
+
+  #chapters .heading-row{
+    margin-bottom:27px!important;
+  }
+
+  .hero-picture .hero-tiger{
+    object-position:58% 50%!important;
+  }
+}
+
+@media(max-width:420px){
+  #chapters{
+    padding-top:26px!important;
+  }
+}
+
+/* =========================================================
+   V12 — OBSERVER-DRIVEN REAL SECTION COVER
+   The actual Chapters section is pulled upward with scroll.
+   No pseudo curtain, no extra blank cover panel.
+   ========================================================= */
+
+#chapters{
+  --cover-shift:0px;
+  transform:translate3d(0,var(--cover-shift),0)!important;
+  will-change:transform;
+  backface-visibility:hidden;
+  z-index:80!important;
+  background:#081113!important;
+}
+
+/* Keep the exact 2:1 document geometry from V11:
+   natural Chapters top travels from 100vh -> 0.
+   JS adds a reversible shift so:
+   - at 50% Hero progress Chapters is already at y=0
+   - from 50–100% it remains exactly at y=0
+   - at 100% the shift is back to zero, so normal page flow resumes seamlessly */
+.hero-observer{
+  height:200svh!important;
+  min-height:0!important;
+}
+.hero-stage{
+  height:100svh!important;
+  min-height:100svh!important;
+  position:sticky!important;
+  top:0!important;
+}
+
+/* Do not create any fake extension above Chapters. */
+#chapters::before{
+  display:none!important;
+}
+
+/* Content comes with the covering section instead of leaving a dark empty panel. */
+#chapters{
+  padding-top:clamp(28px,3.2vw,48px)!important;
+}
+#chapters .heading-row{
+  margin-top:0!important;
+  margin-bottom:32px!important;
+}
+
+/* Keep the old board design exactly as requested. */
+#chapters .stories-screen{
+  position:relative!important;
+  z-index:2!important;
+}
+
+/* The Hero itself stays calm underneath the moving foreground section. */
+.hero-stage{
+  transform:
+    translate3d(0,calc(var(--scroll-progress)*.35vh),0)
+    scale(calc(1 - var(--scroll-progress)*.003))!important;
+  filter:brightness(calc(1 - var(--scroll-progress)*.08))!important;
+}
+.hero-art-panel .hero-tiger{
+  transform:
+    translate3d(0,calc(var(--scroll-progress)*.08vh),0)
+    scale(calc(1.01 + var(--scroll-progress)*.003))!important;
+}
+
+/* Keep the foreground section fully opaque during the cover. */
+#chapters,
+#chapters > .wrap{
+  opacity:1!important;
+}
+
+/* Mobile uses exactly the same observer choreography. */
+@media(max-width:700px){
+  .hero-observer{
+    height:200svh!important;
+    min-height:0!important;
+  }
+  .hero-stage{
+    height:100svh!important;
+    min-height:100svh!important;
+  }
+  #chapters{
+    margin-top:-100svh!important;
+    padding-top:24px!important;
+  }
+  #chapters .heading-row{
+    margin-bottom:25px!important;
+  }
+}
+
+/* On reduced motion, fall back to normal flow without JS pulling. */
+@media(prefers-reduced-motion:reduce){
+  #chapters{
+    transform:none!important;
+  }
+}
+
+/* =========================================================
+   V13 — SMOOTH NORMAL SCROLL
+   ---------------------------------------------------------
+   No JS pinning / no JS translate on #chapters.
+   Pure document geometry:
+     Hero parent       = 200svh
+     Sticky Hero       = 100svh
+     Chapters overlap  = -100svh
+   This creates the cover naturally at 1:1 scroll speed.
+   ========================================================= */
+
+/* Completely neutralize the V12 JS-driven section transform. */
+#chapters{
+  --cover-shift:0px!important;
+  transform:none!important;
+  will-change:auto!important;
+  backface-visibility:visible!important;
+}
+
+/* Exact natural cover geometry. */
+.hero-observer{
+  height:200svh!important;
+  min-height:0!important;
+  position:relative!important;
+  background:#050d10!important;
+}
+
+.hero-stage{
+  position:sticky!important;
+  top:0!important;
+  width:100%!important;
+  height:100svh!important;
+  min-height:100svh!important;
+  overflow:hidden!important;
+  z-index:1!important;
+
+  /* Do not move/filter the giant sticky layer itself — this was costly. */
+  transform:none!important;
+  filter:none!important;
+  will-change:auto!important;
+}
+
+#chapters{
+  margin-top:-100svh!important;
+  position:relative!important;
+  z-index:80!important;
+  background:#081113!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  isolation:isolate!important;
+  padding-top:clamp(28px,3.2vw,48px)!important;
+}
+
+/* No artificial cover extension. */
+#chapters::before{
+  display:none!important;
+}
+
+/* The artwork can have only a tiny GPU-friendly parallax.
+   It follows wheel/touch exactly — no delayed interpolation. */
+.hero-art-panel .hero-tiger{
+  transform:
+    translate3d(0,calc(var(--scroll-progress)*.7vh),0)
+    scale(calc(1.012 + var(--scroll-progress)*.006))!important;
+  filter:none!important;
+  will-change:transform!important;
+}
+
+/* Text recedes subtly without moving the whole scene. */
+.hero-content-inner{
+  transform:translate3d(0,calc(var(--scroll-progress)*-.7vh),0)!important;
+  opacity:calc(1 - var(--scroll-progress)*.16)!important;
+  will-change:transform,opacity!important;
+}
+
+/* Prevent generic reveal transforms from fighting the covering section. */
+#chapters.inview,
+#chapters.is-visible{
+  transform:none!important;
+}
+
+/* Keep the existing board exactly as designed. */
+#chapters .stories-screen{
+  position:relative!important;
+  z-index:2!important;
+}
+
+/* Mobile uses the same natural geometry. */
+@media(max-width:700px){
+  .hero-observer{
+    height:200svh!important;
+    min-height:0!important;
+  }
+
+  .hero-stage{
+    height:100svh!important;
+    min-height:100svh!important;
+    transform:none!important;
+    filter:none!important;
+  }
+
+  #chapters{
+    margin-top:-100svh!important;
+    transform:none!important;
+    padding-top:24px!important;
+  }
+
+  .hero-picture .hero-tiger{
+    object-position:58% 50%!important;
+    transform:
+      translate3d(0,calc(var(--scroll-progress)*.35vh),0)
+      scale(calc(1.006 + var(--scroll-progress)*.003))!important;
+  }
+
+  .hero-content-inner{
+    transform:none!important;
+    opacity:calc(1 - var(--scroll-progress)*.10)!important;
+  }
+}
+
+/* Reduced motion is fully static while keeping the same stacking geometry. */
+@media(prefers-reduced-motion:reduce){
+  .hero-art-panel .hero-tiger,
+  .hero-content-inner{
+    transform:none!important;
+    opacity:1!important;
+    will-change:auto!important;
+  }
+}
