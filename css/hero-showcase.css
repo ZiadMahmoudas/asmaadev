@@ -80,6 +80,15 @@ html[dir="ltr"] .hero-showcase-shade{
   transform:translateY(0);
   opacity:1;
 }
+html[dir="rtl"] .hero-showcase-copy{
+  /* Arabic hero belongs on the right side of the composition. */
+  margin-inline-start:0;
+  margin-inline-end:auto;
+  text-align:right;
+}
+html[dir="rtl"] .hero-showcase-actions{
+  justify-content:flex-start;
+}
 html[dir="ltr"] .hero-showcase-copy{
   margin-inline-start:0;
   margin-inline-end:auto;

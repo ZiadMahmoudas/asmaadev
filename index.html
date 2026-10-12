@@ -56,7 +56,6 @@ html,body,#main{background:#081113}
       </a>
       <nav class="main-nav" aria-label="القائمة الرئيسية">
         <a href="#hero" class="nav-item current" data-t="navHome">الرئيسية</a>
-        <a href="#chapters" class="nav-item" data-t="navStory">الحكاية</a>
         <a href="#about" class="nav-item" data-t="navAbout">من نحن</a>
         <a href="#world" class="nav-item" data-t="navExplore">عالمنا</a>
         <a href="#creative" class="nav-item" data-t="navCreative">مساحات الإبداع</a>
@@ -70,7 +69,6 @@ html,body,#main{background:#081113}
     </div>
     <nav class="mobile-nav" id="mobileNav" aria-label="قائمة الهاتف" inert>
       <a href="#hero" data-t="navHome">الرئيسية</a>
-      <a href="#chapters" data-t="navStory">الحكاية</a>
       <a href="#about" data-t="navAbout">من نحن</a>
       <a href="#world" data-t="navExplore">عالمنا</a>
       <a href="#creative" data-t="navCreative">مساحات الإبداع</a>
@@ -157,25 +155,6 @@ html,body,#main{background:#081113}
       </svg>
     </section>
 
-
-    <!-- Reference-style partner strip: editable logo placeholders pending original brand artwork. -->
-    <!-- Carousel sits directly after the observer Hero, as requested. -->
-    <section id="chapters" class="section section-ink chapters" aria-labelledby="chaptersTitle">
-      <div class="wrap">
-        <div class="heading-row inview">
-          <div><p class="micro-label micro-gold"><span class="label-dash"></span> <span data-t="storyKicker">الفصل الثاني / عالم TIGRESS</span></p><h2 id="chaptersTitle" class="display-title" data-t="storyTitle">حكايةٌ تبدأ <em>بالجرأة.</em></h2></div>
-          <p class="heading-aside" data-t="storyDesc">ثلاثة مشاهد، عالم واحد. حيث تستحيل التفاصيل الصغيرة إلى لغة تحمل بصمتنا.</p>
-        </div>
-        <div class="stories-carousel inview" id="storiesCarousel" role="region" aria-roledescription="carousel" aria-label="فصول الحكاية">
-          <div class="stories-screen">
-            <article class="story-slide is-active" aria-roledescription="slide" role="group" aria-label="1 من 3" aria-hidden="false"><div class="story-visual visual-one"></div><div class="story-vignette"></div><div class="story-content"><span class="story-number" data-t="storyNum1">01 — الغريزة</span><h3 data-t="story1H">الجمال له<br><em>جانب جريء.</em></h3><p data-t="story1P">ليس كل حضور بحاجة إلى كلمات؛ أحيانًا تكفي نظرة لتبدأ الحكاية.</p></div><span class="story-watermark">01 / 03</span></article>
-            <article class="story-slide" aria-roledescription="slide" role="group" aria-label="2 من 3" aria-hidden="true"><div class="story-visual visual-two"></div><div class="story-vignette"></div><div class="story-content"><span class="story-number" data-t="storyNum2">02 — التفاصيل</span><h3 data-t="story2H">قوتنا في<br><em>التفاصيل.</em></h3><p data-t="story2P">الخطّ واللون والتوازن؛ كل عنصر يحمل فكرة ويترك إحساسًا.</p></div><span class="story-watermark">02 / 03</span></article>
-            <article class="story-slide" aria-roledescription="slide" role="group" aria-label="3 من 3" aria-hidden="true"><div class="story-visual visual-three"></div><div class="story-vignette"></div><div class="story-content"><span class="story-number" data-t="storyNum3">03 — البصمة</span><h3 data-t="story3H">والأثر يبقى<br><em>بعد الحكاية.</em></h3><p data-t="story3P">هوية حقيقية لا تحتاج أن تكرر اسمها حتى تُعرَف.</p></div><span class="story-watermark">03 / 03</span></article>
-          </div>
-          <div class="story-controls"><div class="story-indicators"><button type="button" class="story-dot current" data-goto="0" aria-label="الشريحة الأولى" aria-current="true"></button><button type="button" class="story-dot" data-goto="1" aria-label="الشريحة الثانية"></button><button type="button" class="story-dot" data-goto="2" aria-label="الشريحة الثالثة"></button></div><div class="story-nav-buttons"><button id="prevSlide" type="button" aria-label="السابق"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button><button id="nextSlide" type="button" aria-label="التالي"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button></div></div>
-        </div>
-      </div>
-    </section>
 
     <section id="about" class="section about-ref" aria-labelledby="aboutTitle">
       <div class="wrap">
@@ -283,36 +262,27 @@ html,body,#main{background:#081113}
           <button class="luxury-volume inview" data-reveal="up" type="button" data-album="rugs">
             <span class="volume-number">02</span>
             <span class="volume-art"><img src="assets/luxury/rugs/01.webp" alt="" loading="lazy"></span>
-            <span class="volume-meta"><small>CUSTOM MADE</small><strong data-t="luxRugs">تصميم وتفصيل أفخر أنواع السجاد</strong><em data-t="luxAlbumHint">ألبوم صور تفاعلي</em></span>
             <span class="volume-action"><span data-t="luxBrowse">تصفّح الألبوم</span><i class="fa-solid fa-book-open"></i></span>
           </button>
 
           <button class="luxury-volume inview" data-reveal="left" type="button" data-album="furniture">
             <span class="volume-number">03</span>
             <span class="volume-art"><img src="assets/luxury/furniture/01.webp" alt="" loading="lazy"></span>
-            <span class="volume-meta"><small>BESPOKE</small><strong data-t="luxFurniture">تصميم وتنفيذ أجمل قطع الأثاث</strong><em data-t="luxAlbumHint">ألبوم صور تفاعلي</em></span>
-            <span class="volume-action"><span data-t="luxBrowse">تصفّح الألبوم</span><i class="fa-solid fa-book-open"></i></span>
           </button>
 
           <button class="luxury-volume inview" data-reveal="right" type="button" data-album="chandeliers">
             <span class="volume-number">04</span>
             <span class="volume-art"><img src="assets/luxury/chandeliers/01.webp" alt="" loading="lazy"></span>
-            <span class="volume-meta"><small>CLASSIC LIGHT</small><strong data-t="luxChandeliers">تصميم وتنفيذ الثريات الكلاسيك بجميع المقاسات</strong><em data-t="luxAlbumHint">ألبوم صور تفاعلي</em></span>
-            <span class="volume-action"><span data-t="luxBrowse">تصفّح الألبوم</span><i class="fa-solid fa-book-open"></i></span>
           </button>
 
           <button class="luxury-volume inview" data-reveal="up" type="button" data-album="lighting">
             <span class="volume-number">05</span>
             <span class="volume-art"><img src="assets/luxury/lighting/01.webp" alt="" loading="lazy"></span>
-            <span class="volume-meta"><small>LIGHTING</small><strong data-t="luxLighting">تصميم وتنفيذ جميع أنواع الإنارات</strong><em data-t="luxAlbumHint">ألبوم صور تفاعلي</em></span>
-            <span class="volume-action"><span data-t="luxBrowse">تصفّح الألبوم</span><i class="fa-solid fa-book-open"></i></span>
           </button>
 
           <button class="luxury-volume inview" data-reveal="left" type="button" data-album="accessories">
             <span class="volume-number">06</span>
             <span class="volume-art"><img src="assets/luxury/accessories/01.webp" alt="" loading="lazy"></span>
-            <span class="volume-meta"><small>CURATED OBJECTS</small><strong data-t="luxAccessories">نقتني لك أجمل قطع الإكسسوارات لتزيّن مساحتك</strong><em data-t="luxAlbumHint">ألبوم صور تفاعلي</em></span>
-            <span class="volume-action"><span data-t="luxBrowse">تصفّح الألبوم</span><i class="fa-solid fa-book-open"></i></span>
           </button>
         </div>
       </div>
@@ -320,13 +290,8 @@ html,body,#main{background:#081113}
 
     <div class="lux-modal" id="luxBookModal" hidden aria-hidden="true">
       <div class="lux-modal-backdrop" data-lux-close></div>
-      <div class="lux-modal-panel lux-book-panel" role="dialog" aria-modal="true" aria-labelledby="luxBookTitle">
+      <div class="lux-modal-panel lux-book-panel" role="dialog" aria-modal="true" aria-label="Tigress gallery">
         <button class="lux-modal-close" type="button" data-lux-close aria-label="إغلاق"><i class="fa-solid fa-xmark"></i></button>
-        <div class="lux-modal-heading">
-          <p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="luxGalleryLabel">TIGRESS COLLECTION</span></p>
-          <h3 id="luxBookTitle">Album</h3>
-          <p data-t="luxBookHelp">اضغط يمين الكتاب للصفحة التالية، ويساره للرجوع.</p>
-        </div>
         <div class="lux-book-stage" id="luxBookStage">
           <button class="lux-book-zone lux-book-zone-prev" type="button" data-book-prev aria-label="السابق"></button>
           <div class="lux-book" id="luxBook" aria-live="polite"></div>
@@ -459,8 +424,7 @@ html,body,#main{background:#081113}
       <div class="footer-links-col inview" data-reveal="up">
         <h4 data-t="quickLinks">روابط سريعة</h4>
         <a href="#hero" data-t="navHome">الرئيسية</a>
-        <a href="#chapters" data-t="navStory">الحكاية</a>
-        <a href="#about" data-t="navAbout">من نحن</a>
+          <a href="#about" data-t="navAbout">من نحن</a>
         <a href="#creative" data-t="navCreative">مساحات الإبداع</a>
       <a href="#atelier" data-t="navAtelier">التأثيث الفاخر</a>
         <a href="#quote" data-t="navContact">لنتحدث</a>

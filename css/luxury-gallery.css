@@ -82,7 +82,7 @@
 /* 3D book */
 .lux-book-panel{display:grid;grid-template-rows:1fr auto}
 .lux-book-stage{
-  position:relative;display:grid;place-items:center;min-height:0;padding:115px 42px 20px;
+  position:relative;display:grid;place-items:center;min-height:0;padding:48px 42px 20px;
   perspective:1800px;overflow:hidden;
   background:
     radial-gradient(circle at 50% 50%,rgba(194,139,80,.12),transparent 37%),
@@ -117,6 +117,22 @@
   background:#e8dfd1;border:1px solid #a88257;overflow:hidden
 }
 .lux-page-face img{width:100%;height:100%;object-fit:cover;display:block}
+/* Localized cover label: masks the English text baked into the first cover image. */
+.lux-cover-caption{
+  position:absolute;z-index:3;inset-inline:0;bottom:0;min-height:21%;
+  display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:6px;
+  padding:22px 24px 18px;text-align:start;
+  background:linear-gradient(180deg,rgba(5,13,18,.90),rgba(5,13,18,.985));
+  border-top:1px solid rgba(201,157,96,.75);color:#f5f0e8;
+}
+.lux-cover-title{
+  display:block;max-width:95%;font-family:'IBM Plex Sans Arabic',Arial,sans-serif;
+  font-size:clamp(18px,2vw,27px);font-weight:700;line-height:1.35;letter-spacing:0
+}
+.lux-cover-volume{font:700 10px/1.2 Galano,Arial,sans-serif;letter-spacing:.08em;color:#d7a768}
+html[dir="rtl"] .lux-cover-caption{align-items:flex-end;text-align:right}
+html[dir="ltr"] .lux-cover-caption{display:none}
+html[dir="ltr"] .lux-cover-title{font-family:Galano,Arial,sans-serif;letter-spacing:.01em}
 .lux-page-back{transform:rotateY(180deg)}
 .lux-page-face::after{
   content:"";position:absolute;inset:0;pointer-events:none;
@@ -166,7 +182,7 @@ body.lux-modal-open .floating-actions{opacity:0;pointer-events:none}
   .lux-modal-panel{width:100vw;height:100svh;border-radius:0;border:0}
   .lux-modal-heading{top:22px;inset-inline-start:20px;max-width:72vw}
   .lux-modal-close{top:17px;inset-inline-end:16px}
-  .lux-book-stage{padding:110px 18px 12px}
+  .lux-book-stage{padding:70px 18px 12px}
   .lux-book{--book-w:min(69vw,310px);--book-h:min(94vw,430px)}
   [dir="rtl"] .lux-book.book-open{transform:translateX(-42%)}
   [dir="ltr"] .lux-book.book-open{transform:translateX(42%)}
@@ -177,3 +193,176 @@ body.lux-modal-open .floating-actions{opacity:0;pointer-events:none}
 @media(prefers-reduced-motion:reduce){
   .luxury-volume,.lux-book,.lux-book-page{transition:none!important}
 }
+
+/* =========================================================
+   TIGRESS LUXURY GALLERY — CONSISTENCY FIX
+   Paste this at the END of css/luxury-gallery.css
+   ========================================================= */
+
+/* Every album card gets the same vertical structure. */
+.luxury-volume-grid{
+  align-items:stretch;
+}
+
+.luxury-volume{
+  height:100%;
+  min-height:0;
+  grid-template-rows:auto 1fr auto;
+}
+
+/*
+ * The source covers are 4:5.
+ * Keep that ratio outside instead of cropping them into a short landscape strip.
+ */
+.volume-art,
+.luxury-volume-portfolio .volume-art{
+  width:100%;
+  height:auto !important;
+  aspect-ratio:4 / 5;
+  background:#050c13;
+}
+
+/* Show the FULL cover. */
+.volume-art img{
+  width:100%;
+  height:100%;
+  object-fit:contain !important;
+  object-position:center;
+  background:#050c13;
+}
+
+/* Same text block height on all album cards. */
+.volume-meta{
+  min-height:108px;
+  justify-content:flex-start;
+}
+
+.volume-meta strong{
+  min-height:3em;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+}
+
+.volume-meta em{
+  min-height:1.4em;
+}
+
+/* Keep the bottom action aligned across the whole row. */
+.volume-action{
+  margin-top:auto;
+  min-height:48px;
+}
+
+/* Generated card metadata/action uses the same established styles. */
+.lux-card-count{
+  direction:ltr;
+  unicode-bidi:isolate;
+}
+
+/* =========================================================
+   BOOK
+   Keep the same 4:5 image geometry outside AND inside.
+   ========================================================= */
+
+.lux-book{
+  --book-w:min(34vw,400px);
+  width:var(--book-w);
+  height:auto !important;
+  aspect-ratio:4 / 5;
+}
+
+/* Do not crop photos/pages inside the book. */
+.lux-page-face{
+  background:#050c13;
+}
+
+.lux-page-face img{
+  width:100%;
+  height:100%;
+  object-fit:contain !important;
+  object-position:center;
+  background:#050c13;
+}
+
+/* Neutral reverse side for odd image counts instead of repeating last image. */
+.lux-page-empty{
+  background:
+    radial-gradient(circle at 50% 35%,rgba(207,165,102,.08),transparent 38%),
+    linear-gradient(145deg,#0a1219,#050b10);
+}
+
+.lux-page-empty::before{
+  content:"TIGRESS";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  color:rgba(217,164,95,.26);
+  font:700 clamp(16px,2vw,26px)/1 Galano,Arial,sans-serif;
+  letter-spacing:.22em;
+}
+
+/*
+ * Critical Arabic fix:
+ * without LTR isolation "01 / 22" can visually appear as "22 / 01".
+ */
+#luxBookCounter{
+  direction:ltr !important;
+  unicode-bidi:isolate !important;
+  text-align:center;
+}
+
+/* Make the Arabic cover caption fit long titles cleanly. */
+html[dir="rtl"] .lux-cover-caption{
+  align-items:flex-start;
+  text-align:right;
+  direction:rtl;
+}
+
+html[dir="rtl"] .lux-cover-title{
+  width:100%;
+  max-width:100%;
+  font-size:clamp(17px,1.75vw,24px);
+  line-height:1.5;
+}
+
+/* English keeps the original baked-in cover artwork without Arabic mask. */
+html[dir="ltr"] .lux-cover-caption{
+  display:none;
+}
+
+@media(max-width:980px){
+  .volume-meta{
+    min-height:96px;
+  }
+}
+
+@media(max-width:700px){
+  .luxury-volume{
+    min-height:0;
+  }
+
+  .volume-art,
+  .luxury-volume-portfolio .volume-art{
+    height:auto !important;
+    aspect-ratio:4 / 5;
+  }
+
+  .lux-book{
+    --book-w:min(69vw,310px);
+    width:var(--book-w);
+    height:auto !important;
+    aspect-ratio:4 / 5;
+  }
+
+  .volume-meta{
+    min-height:0;
+  }
+
+  .volume-meta strong{
+    min-height:0;
+  }
+}
+
