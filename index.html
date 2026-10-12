@@ -29,6 +29,8 @@ html,body,#main{background:#050d10}
 html,body,#main{background:#081113}
 #hero{margin-bottom:-1px}
 </style>
+  <link rel="stylesheet" href="css/luxury-gallery.css">
+  <link rel="stylesheet" href="css/hero-showcase.css">
 </head>
 <body>
   <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -58,6 +60,7 @@ html,body,#main{background:#081113}
         <a href="#about" class="nav-item" data-t="navAbout">من نحن</a>
         <a href="#world" class="nav-item" data-t="navExplore">عالمنا</a>
         <a href="#creative" class="nav-item" data-t="navCreative">مساحات الإبداع</a>
+        <a href="#atelier" class="nav-item" data-t="navAtelier">التأثيث الفاخر</a>
       </nav>
       <div class="header-actions">
         <button class="lang-control" id="langSwitch" type="button" aria-label="Switch to English"><svg class="ico"><use href="#icon-globe"/></svg><span id="langDisplay">EN</span></button>
@@ -71,6 +74,7 @@ html,body,#main{background:#081113}
       <a href="#about" data-t="navAbout">من نحن</a>
       <a href="#world" data-t="navExplore">عالمنا</a>
       <a href="#creative" data-t="navCreative">مساحات الإبداع</a>
+      <a href="#atelier" data-t="navAtelier">التأثيث الفاخر</a>
       <a href="#quote" data-t="navContact">لنتحدث</a>
       <p class="mobile-signature"><span data-t="mobileWorld">عالم TIGRESS</span> <span>✳</span></p>
     </nav>
@@ -78,32 +82,81 @@ html,body,#main{background:#081113}
 
   <main id="main">
     <!-- Sticky scroll narrative: IntersectionObserver gates updates; progress runs only while visible. -->
-    <section class="hero-observer" id="hero" aria-labelledby="heroTitle" data-hero-scene>
-      <div class="hero-stage">
-        <div class="hero-type" aria-hidden="true">TIGRESS</div>
-        <div class="hero-content">
-          <div class="hero-content-inner">
-            <p class="micro-label hero-micro"><span class="micro-sun">✳</span><span data-t="heroKicker">حين تتحوّل الجرأة إلى فن</span><span class="micro-line"></span> 01 / 05</p>
-            <h1 id="heroTitle"><span class="hero-title-a" data-t="heroA">حضورٌ</span><span class="hero-title-b" data-t="heroB">يصنع الفرق.</span></h1>
-            <p class="hero-paragraph" data-t="heroDesc">بعض الحكايات لا تُروى بالكلمات وحدها. نمنح التفاصيل صوتًا، وللجرأة مكانًا، ونصنع حضورًا لا يمرّ دون أن يترك أثرًا.</p>
-            <div class="hero-actions"><a class="button button-black" href="#chapters"><span data-t="discover">اكتشف الحكاية</span><i class="fa-solid fa-arrow-left button-fa dir-arrow" aria-hidden="true"></i></a><span class="hero-credit">TIGRESS <b>×</b> ASMA ALMOHIMEED</span></div>
+    <section class="hero-observer hero-showcase" id="hero" aria-label="Tigress hero" data-hero-scene>
+      <div class="hero-showcase-slides" id="heroShowcaseSlides">
+        <article class="hero-showcase-slide is-active" data-hero-slide="0">
+          <img src="assets/hero/quality.webp" alt="" width="1920" height="1280" fetchpriority="high">
+          <div class="hero-showcase-shade"></div>
+          <div class="hero-showcase-content wrap">
+            <div class="hero-showcase-copy">
+              <h1 data-ar="الجودة والاحترافية في التنفيذ" data-en="Quality and professionalism in execution">الجودة والاحترافية في التنفيذ</h1>
+              <div class="hero-showcase-actions">
+                <a href="#quote" class="hero-showcase-cta hero-showcase-cta-primary"><span data-ar="اطلب عرض سعر" data-en="Request a quote">اطلب عرض سعر</span><i class="fa-solid fa-arrow-left"></i></a>
+                <a href="#creative" class="hero-showcase-cta hero-showcase-cta-ghost"><span data-ar="تعرّف على خدماتنا" data-en="Explore our services">تعرّف على خدماتنا</span></a>
+              </div>
+            </div>
           </div>
-          <div class="hero-bottom-label"><span data-t="heroEstablished">وُلدت من فكرة</span><span class="progress-rail"><span id="heroProgressFill"></span></span><span id="heroProgressText">00%</span></div>
-        </div>
-        <div class="hero-art-panel">
-          <div class="art-image-mask">
-            <picture class="hero-picture">
-              <source media="(max-width: 700px)" srcset="assets/tigress-mobile-v9.webp" type="image/webp">
-              <img src="assets/tigress-illustration.webp" alt="لوحة أصلية للنمر الذهبي بين الجبال والعمارة في أجواء ليلية" width="1800" height="1775" fetchpriority="high" class="hero-tiger">
-            </picture>
-            <div class="art-image-shade"></div>
+        </article>
+
+        <article class="hero-showcase-slide" data-hero-slide="1">
+          <img src="assets/hero/vision.webp" alt="" width="1920" height="1080" loading="eager" decoding="async">
+          <div class="hero-showcase-shade"></div>
+          <div class="hero-showcase-content wrap">
+            <div class="hero-showcase-copy">
+              <h2 data-ar="نبني برؤية... وننفّذ بإتقان" data-en="Built with vision. Executed with precision.">نبني برؤية... وننفّذ بإتقان</h2>
+              <div class="hero-showcase-actions">
+                <a href="#quote" class="hero-showcase-cta hero-showcase-cta-primary"><span data-ar="اطلب عرض سعر" data-en="Request a quote">اطلب عرض سعر</span><i class="fa-solid fa-arrow-left"></i></a>
+                <a href="#creative" class="hero-showcase-cta hero-showcase-cta-ghost"><span data-ar="تعرّف على خدماتنا" data-en="Explore our services">تعرّف على خدماتنا</span></a>
+              </div>
+            </div>
           </div>
-          <div class="hero-art-overlay"><span data-t="heroWorldLabel">عالم TIGRESS</span><svg class="ico"><use href="#icon-star"/></svg></div>
-          <div class="hero-art-bottom"><span data-t="heroWildLabel">جريئة بروحها.<br>خالدة بتفاصيلها.</span><strong>01 <i>/</i> TIGRESS</strong></div>
-        </div>
-        <a class="hero-scroll-trigger" href="#chapters" aria-label="انتقل إلى السلايدر"><span data-t="scrollLabel">اسحب لتكتشف</span><svg class="ico"><use href="#icon-down"/></svg></a>
+        </article>
+
+        <article class="hero-showcase-slide" data-hero-slide="2">
+          <img src="assets/hero/solutions.webp" alt="" width="1920" height="1280" loading="eager" decoding="async">
+          <div class="hero-showcase-shade"></div>
+          <div class="hero-showcase-content wrap">
+            <div class="hero-showcase-copy">
+              <h2 data-ar="حلول متكاملة تحت سقف واحد" data-en="Integrated solutions under one roof">حلول متكاملة تحت سقف واحد</h2>
+              <div class="hero-showcase-actions">
+                <a href="#quote" class="hero-showcase-cta hero-showcase-cta-primary"><span data-ar="اطلب عرض سعر" data-en="Request a quote">اطلب عرض سعر</span><i class="fa-solid fa-arrow-left"></i></a>
+                <a href="#creative" class="hero-showcase-cta hero-showcase-cta-ghost"><span data-ar="تعرّف على خدماتنا" data-en="Explore our services">تعرّف على خدماتنا</span></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="hero-showcase-slide" data-hero-slide="3">
+          <img src="assets/hero/partner.webp" alt="" width="1920" height="1280" loading="eager" decoding="async">
+          <div class="hero-showcase-shade"></div>
+          <div class="hero-showcase-content wrap">
+            <div class="hero-showcase-copy">
+              <h2 data-ar="شريكك في المشاريع التجارية والحكومية" data-en="Your partner in commercial and government projects">شريكك في المشاريع التجارية والحكومية</h2>
+              <div class="hero-showcase-actions">
+                <a href="#quote" class="hero-showcase-cta hero-showcase-cta-primary"><span data-ar="اطلب عرض سعر" data-en="Request a quote">اطلب عرض سعر</span><i class="fa-solid fa-arrow-left"></i></a>
+                <a href="#creative" class="hero-showcase-cta hero-showcase-cta-ghost"><span data-ar="تعرّف على خدماتنا" data-en="Explore our services">تعرّف على خدماتنا</span></a>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
+
+      <div class="hero-showcase-bottom wrap">
+        <div class="hero-showcase-nav" aria-label="Hero slider controls">
+          <button type="button" class="hero-showcase-arrow" id="heroShowcasePrev" aria-label="السابق"><i class="fa-solid fa-chevron-left"></i></button>
+          <button type="button" class="hero-showcase-arrow" id="heroShowcaseNext" aria-label="التالي"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="hero-showcase-progress" aria-live="polite">
+          <span class="hero-showcase-progress-line"><i id="heroShowcaseProgressFill"></i></span>
+          <b id="heroShowcaseCounter">01 / 04</b>
+        </div>
+      </div>
+
+      <svg class="hero-showcase-skyline" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M0 120 V57 H63 V91 H91 V73 H99 V91 H127 V112 H140 V41 H191 V49 H239 V92 H257.5 V74 H265.5 V92 H284 V112 H292 V29 H353 V112 H370 V84 H391.5 V66 H399.5 V84 H421 V58 H469 V112 H481 V90 H504.5 V72 H512.5 V90 H536 V63 H623 V50 H703 V93 H742 V112 H763 V65 H816 V112 H829 V78 L859 68 H889 V42 H910 V24 H918 V42 H939 V112 H960 V44 H1046 V71 H1099 V112 H1117 V29 H1167 V112 H1180 V27 L1199.5 17 H1219 V112 H1233 V40 H1250 V22 H1258 V40 H1275 V85 H1310 V112 H1330 V38 H1378 V58 H1391.5 V40 H1399.5 V58 H1413 V112 H1421 V92 H1440 V120" fill="none" stroke="currentColor" stroke-width="1.3"></path>
+      </svg>
     </section>
+
 
     <!-- Reference-style partner strip: editable logo placeholders pending original brand artwork. -->
     <!-- Carousel sits directly after the observer Hero, as requested. -->
@@ -129,14 +182,14 @@ html,body,#main{background:#081113}
         <div class="about-ref-grid">
           <div class="about-ref-copy inview" data-reveal="right">
             <p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="aboutKicker">01 — من نحن</span></p>
-            <h2 id="aboutTitle" class="display-title about-ref-title" data-t="aboutTitle">خبرة تتجاوز عشرين عاماً<br><em>في البناء والتشييد.</em></h2>
-            <p class="about-lead" data-t="aboutP1">رمز تشييد للمقاولات شركة سعودية مقرها بريدة، تمتد خبرتها لأكثر من عشرين عاماً في تنفيذ مشاريع المقاولات والتشطيبات والديكور الداخلي للمباني السكنية والتجارية والإدارية، إضافة إلى المشاريع الحكومية.</p>
-            <p class="about-body" data-t="aboutP2">بنينا خلال هذه السنوات سمعة قائمة على الجودة والكفاءة، وهدفنا الثابت رضا عملائنا وكسب ثقتهم على المدى الطويل. نعتمد على تخطيط دقيق مبني على أسس هندسية مدروسة، ويقف خلف كل مشروع فريق متكامل من المهندسين والفنيين المؤهلين.</p>
+            <h2 id="aboutTitle" class="display-title about-ref-title" data-t="aboutTitle">خبرة تمتد لعشر سنوات<br><em>في التصميم والتنفيذ.</em></h2>
+            <p class="about-lead" data-t="aboutP1">في Tigress تمتد خبرتنا لعشر سنوات في تحويل الأفكار إلى مساحات وتفاصيل متكاملة، من التصميم والتنفيذ إلى التأثيث والقطع المصممة خصيصاً لكل مشروع.</p>
+            <p class="about-body" data-t="aboutP2">نؤمن أن الفخامة تبدأ من الاختيار الدقيق: خامة مناسبة، تناسب مدروس، وتنفيذ يحترم هوية المساحة. لذلك نتابع كل تفصيلة حتى تصبح جزءاً طبيعياً من الحكاية الكاملة للمكان.</p>
             <ul class="about-checks">
-              <li><i class="fa-solid fa-check"></i><span data-t="check1">الجودة والاحترافية في التنفيذ</span></li>
-              <li><i class="fa-solid fa-check"></i><span data-t="check2">فريق متكامل من المهندسين والفنيين</span></li>
-              <li><i class="fa-solid fa-check"></i><span data-t="check3">تخطيط دقيق على أسس هندسية مدروسة</span></li>
-              <li><i class="fa-solid fa-check"></i><span data-t="check4">أعمال متوائمة مع رؤية المملكة 2030</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-t="check1">جودة دقيقة من الفكرة حتى التنفيذ</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-t="check2">فريق متخصص في التصميم والتنفيذ</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-t="check3">اختيارات مدروسة للخامات والتفاصيل</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-t="check4">حلول مصممة خصيصاً لكل مساحة</span></li>
             </ul>
           </div>
           <div class="about-ref-visual inview" data-reveal="left">
@@ -160,7 +213,7 @@ html,body,#main{background:#081113}
       </div>
       <div class="stats-ref inview" data-reveal="up">
         <div class="wrap stats-ref-grid">
-          <div class="stat-ref"><strong><span data-count="20">0</span>+</strong><span data-t="stat1">عاماً من الخبرة</span></div>
+          <div class="stat-ref"><strong><span data-count="10">0</span></strong><span data-t="stat1">عاماً من الخبرة</span></div>
           <div class="stat-ref"><strong><span data-count="14">0</span>+</strong><span data-t="stat2">عميلاً يثق بنا</span></div>
           <div class="stat-ref"><strong><span data-count="6">0</span></strong><span data-t="stat3">أقسام متخصصة</span></div>
         </div>
@@ -173,40 +226,135 @@ html,body,#main{background:#081113}
 
     <section id="creative" class="section services-ref" aria-labelledby="creativeTitle">
       <div class="wrap">
-        <div class="section-ref-head inview" data-reveal="up"><p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="creativeKicker">02 — خدماتنا</span></p><h2 id="creativeTitle" data-t="creativeTitle">حلول متكاملة لكل مراحل مشروعك</h2><p data-t="creativeDesc">نمتلك خبرة طويلة في مجال البناء والإنشاءات لنقدّم مجموعة شاملة من الخدمات تلبي احتياجات عملائنا بكفاءة واحترافية عالية.</p></div>
+        <div class="section-ref-head inview" data-reveal="up"><p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="creativeKicker">02 — خدماتنا</span></p><h2 id="creativeTitle" data-t="creativeTitle">حلول متكاملة لكل مراحل مشروعك</h2><p data-t="creativeDesc">نقدّم مجموعة متكاملة من خدمات التصميم والتنفيذ، ونعتني بكل مرحلة من الفكرة الأولى حتى أدق تفاصيل التسليم.</p></div>
         <div class="services-ref-grid">      <article class="service-ref-card inview" data-service="contracting">
         <div class="service-ref-top"><span class="service-ref-num">01</span><span class="service-ref-icon"><i class="fa-solid fa-person-digging"></i></span></div>
         <h3 data-t="svc1h"></h3><p data-t="svc1p"></p>
         <ul class="service-ref-tags"><li data-t="svc1a"></li><li data-t="svc1b"></li><li data-t="svc1c"></li><li data-t="svc1d"></li></ul>
-        <a class="service-ref-cta" href="#quote" data-service-pick="contracting"><span data-t="orderService">اطلب الخدمة</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
+        <a class="service-ref-cta service-wa-cta" href="https://wa.me/966532891910" target="_blank" rel="noopener" data-wa-service="contracting"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
       </article>      <article class="service-ref-card inview" data-service="electromechanical">
         <div class="service-ref-top"><span class="service-ref-num">02</span><span class="service-ref-icon"><i class="fa-solid fa-bolt"></i></span></div>
         <h3 data-t="svc2h"></h3><p data-t="svc2p"></p>
         <ul class="service-ref-tags"><li data-t="svc2a"></li><li data-t="svc2b"></li><li data-t="svc2c"></li><li data-t="svc2d"></li></ul>
-        <a class="service-ref-cta" href="#quote" data-service-pick="electromechanical"><span data-t="orderService">اطلب الخدمة</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
+        <a class="service-ref-cta service-wa-cta" href="https://wa.me/966532891910" target="_blank" rel="noopener" data-wa-service="electromechanical"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
       </article>      <article class="service-ref-card inview" data-service="booths">
         <div class="service-ref-top"><span class="service-ref-num">03</span><span class="service-ref-icon"><i class="fa-solid fa-store"></i></span></div>
         <h3 data-t="svc3h"></h3><p data-t="svc3p"></p>
         <ul class="service-ref-tags"><li data-t="svc3a"></li><li data-t="svc3b"></li><li data-t="svc3c"></li><li data-t="svc3d"></li></ul>
-        <a class="service-ref-cta" href="#quote" data-service-pick="booths"><span data-t="orderService">اطلب الخدمة</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
+        <a class="service-ref-cta service-wa-cta" href="https://wa.me/966532891910" target="_blank" rel="noopener" data-wa-service="booths"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
       </article>      <article class="service-ref-card inview" data-service="painting">
         <div class="service-ref-top"><span class="service-ref-num">04</span><span class="service-ref-icon"><i class="fa-solid fa-paint-roller"></i></span></div>
         <h3 data-t="svc4h"></h3><p data-t="svc4p"></p>
         <ul class="service-ref-tags"><li data-t="svc4a"></li><li data-t="svc4b"></li><li data-t="svc4c"></li><li data-t="svc4d"></li></ul>
-        <a class="service-ref-cta" href="#quote" data-service-pick="painting"><span data-t="orderService">اطلب الخدمة</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
+        <a class="service-ref-cta service-wa-cta" href="https://wa.me/966532891910" target="_blank" rel="noopener" data-wa-service="painting"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
       </article>      <article class="service-ref-card inview" data-service="decor">
         <div class="service-ref-top"><span class="service-ref-num">05</span><span class="service-ref-icon"><i class="fa-solid fa-couch"></i></span></div>
         <h3 data-t="svc5h"></h3><p data-t="svc5p"></p>
         <ul class="service-ref-tags"><li data-t="svc5a"></li><li data-t="svc5b"></li><li data-t="svc5c"></li><li data-t="svc5d"></li></ul>
-        <a class="service-ref-cta" href="#quote" data-service-pick="decor"><span data-t="orderService">اطلب الخدمة</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
+        <a class="service-ref-cta service-wa-cta" href="https://wa.me/966532891910" target="_blank" rel="noopener" data-wa-service="decor"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
       </article>      <article class="service-ref-card inview" data-service="supervision">
         <div class="service-ref-top"><span class="service-ref-num">06</span><span class="service-ref-icon"><i class="fa-regular fa-clipboard"></i></span></div>
         <h3 data-t="svc6h"></h3><p data-t="svc6p"></p>
         <ul class="service-ref-tags"><li data-t="svc6a"></li><li data-t="svc6b"></li><li data-t="svc6c"></li><li data-t="svc6d"></li></ul>
-        <a class="service-ref-cta" href="#quote" data-service-pick="supervision"><span data-t="orderService">اطلب الخدمة</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
+        <a class="service-ref-cta service-wa-cta" href="https://wa.me/966532891910" target="_blank" rel="noopener" data-wa-service="supervision"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a>
       </article></div>
       </div>
     </section>
+
+
+    <section id="atelier" class="luxury-library-section" aria-labelledby="atelierTitle">
+      <div class="wrap">
+        <div class="luxury-library-head inview" data-reveal="up">
+          <div>
+            <p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="atelierKicker">03 — التأثيث الفاخر</span></p>
+            <h2 id="atelierTitle" class="display-title" data-t="atelierTitle">قطعٌ تُصنع لتصبح<br><em>جزءاً من هوية المكان.</em></h2>
+          </div>
+          <p data-t="atelierDesc">نصمّم وننفّذ التفاصيل التي تمنح المساحة شخصيتها: من السجاد والأثاث إلى الثريات والإنارة والإكسسوارات المختارة بعناية.</p>
+        </div>
+
+        <div class="luxury-volume-grid">
+          <button class="luxury-volume luxury-volume-portfolio inview" data-reveal="right" type="button" data-pdf-open>
+            <span class="volume-number">01</span>
+            <span class="volume-art"><img src="assets/portfolio/portfolio-cover.webp" alt="" loading="lazy"></span>
+            <span class="volume-meta"><small>PDF / PORTFOLIO</small><strong data-t="luxPortfolio">البورتفوليو</strong><em data-t="luxPortfolioHint">تصفّح الملف داخل الموقع</em></span>
+            <span class="volume-action"><span data-t="luxOpen">افتح</span><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+          </button>
+
+          <button class="luxury-volume inview" data-reveal="up" type="button" data-album="rugs">
+            <span class="volume-number">02</span>
+            <span class="volume-art"><img src="assets/luxury/rugs/01.webp" alt="" loading="lazy"></span>
+            <span class="volume-meta"><small>CUSTOM MADE</small><strong data-t="luxRugs">تصميم وتفصيل أفخر أنواع السجاد</strong><em data-t="luxAlbumHint">ألبوم صور تفاعلي</em></span>
+            <span class="volume-action"><span data-t="luxBrowse">تصفّح الألبوم</span><i class="fa-solid fa-book-open"></i></span>
+          </button>
+
+          <button class="luxury-volume inview" data-reveal="left" type="button" data-album="furniture">
+            <span class="volume-number">03</span>
+            <span class="volume-art"><img src="assets/luxury/furniture/01.webp" alt="" loading="lazy"></span>
+            <span class="volume-meta"><small>BESPOKE</small><strong data-t="luxFurniture">تصميم وتنفيذ أجمل قطع الأثاث</strong><em data-t="luxAlbumHint">ألبوم صور تفاعلي</em></span>
+            <span class="volume-action"><span data-t="luxBrowse">تصفّح الألبوم</span><i class="fa-solid fa-book-open"></i></span>
+          </button>
+
+          <button class="luxury-volume inview" data-reveal="right" type="button" data-album="chandeliers">
+            <span class="volume-number">04</span>
+            <span class="volume-art"><img src="assets/luxury/chandeliers/01.webp" alt="" loading="lazy"></span>
+            <span class="volume-meta"><small>CLASSIC LIGHT</small><strong data-t="luxChandeliers">تصميم وتنفيذ الثريات الكلاسيك بجميع المقاسات</strong><em data-t="luxAlbumHint">ألبوم صور تفاعلي</em></span>
+            <span class="volume-action"><span data-t="luxBrowse">تصفّح الألبوم</span><i class="fa-solid fa-book-open"></i></span>
+          </button>
+
+          <button class="luxury-volume inview" data-reveal="up" type="button" data-album="lighting">
+            <span class="volume-number">05</span>
+            <span class="volume-art"><img src="assets/luxury/lighting/01.webp" alt="" loading="lazy"></span>
+            <span class="volume-meta"><small>LIGHTING</small><strong data-t="luxLighting">تصميم وتنفيذ جميع أنواع الإنارات</strong><em data-t="luxAlbumHint">ألبوم صور تفاعلي</em></span>
+            <span class="volume-action"><span data-t="luxBrowse">تصفّح الألبوم</span><i class="fa-solid fa-book-open"></i></span>
+          </button>
+
+          <button class="luxury-volume inview" data-reveal="left" type="button" data-album="accessories">
+            <span class="volume-number">06</span>
+            <span class="volume-art"><img src="assets/luxury/accessories/01.webp" alt="" loading="lazy"></span>
+            <span class="volume-meta"><small>CURATED OBJECTS</small><strong data-t="luxAccessories">نقتني لك أجمل قطع الإكسسوارات لتزيّن مساحتك</strong><em data-t="luxAlbumHint">ألبوم صور تفاعلي</em></span>
+            <span class="volume-action"><span data-t="luxBrowse">تصفّح الألبوم</span><i class="fa-solid fa-book-open"></i></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="lux-modal" id="luxBookModal" hidden aria-hidden="true">
+      <div class="lux-modal-backdrop" data-lux-close></div>
+      <div class="lux-modal-panel lux-book-panel" role="dialog" aria-modal="true" aria-labelledby="luxBookTitle">
+        <button class="lux-modal-close" type="button" data-lux-close aria-label="إغلاق"><i class="fa-solid fa-xmark"></i></button>
+        <div class="lux-modal-heading">
+          <p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="luxGalleryLabel">TIGRESS COLLECTION</span></p>
+          <h3 id="luxBookTitle">Album</h3>
+          <p data-t="luxBookHelp">اضغط يمين الكتاب للصفحة التالية، ويساره للرجوع.</p>
+        </div>
+        <div class="lux-book-stage" id="luxBookStage">
+          <button class="lux-book-zone lux-book-zone-prev" type="button" data-book-prev aria-label="السابق"></button>
+          <div class="lux-book" id="luxBook" aria-live="polite"></div>
+          <button class="lux-book-zone lux-book-zone-next" type="button" data-book-next aria-label="التالي"></button>
+        </div>
+        <div class="lux-book-footer">
+          <button type="button" class="lux-book-nav" data-book-prev><i class="fa-solid fa-arrow-right"></i><span data-t="prevPage">السابق</span></button>
+          <span id="luxBookCounter">01 / 06</span>
+          <button type="button" class="lux-book-nav" data-book-next><span data-t="nextPage">التالي</span><i class="fa-solid fa-arrow-left"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="lux-modal" id="portfolioModal" hidden aria-hidden="true">
+      <div class="lux-modal-backdrop" data-pdf-close></div>
+      <div class="lux-modal-panel pdf-panel" role="dialog" aria-modal="true" aria-labelledby="portfolioModalTitle">
+        <div class="pdf-modal-bar">
+          <div><small>PDF / TIGRESS</small><h3 id="portfolioModalTitle" data-t="luxPortfolio">البورتفوليو</h3></div>
+          <div class="pdf-modal-actions">
+            <a href="assets/portfolio/tigress-portfolio.pdf" target="_blank" rel="noopener" data-t="pdfNewTab">فتح في نافذة جديدة</a>
+            <button type="button" data-pdf-close aria-label="إغلاق"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+        <object class="portfolio-object" data="assets/portfolio/tigress-portfolio.pdf#view=FitH&toolbar=1&navpanes=0" type="application/pdf">
+          <p><span data-t="pdfFallback">تعذّر عرض PDF داخل المتصفح.</span> <a href="assets/portfolio/tigress-portfolio.pdf" target="_blank" rel="noopener" data-t="pdfNewTab">فتح في نافذة جديدة</a></p>
+        </object>
+      </div>
+    </div>
 
     <section class="marquee-section" aria-label="هوية Tigress">
       <div class="marquee-frame">
@@ -242,9 +390,9 @@ html,body,#main{background:#081113}
           <h2 id="quoteTitle" data-t="quoteTitle">حدّثنا عن مشروعك</h2>
           <p data-t="quoteP">املأ البيانات وسيتواصل معك فريقنا. عند الإرسال سيُفتح واتساب برسالة جاهزة لتسريع التواصل.</p>
           <div class="quote-mini">
-            <a id="quoteWa" href="#"><span class="quote-mini-icon wa"><i class="fa-brands fa-whatsapp"></i></span><span><small data-t="whatsappLabel">واتساب</small><b dir="ltr">054 275 5566</b></span></a>
-            <a id="quoteCall" href="#"><span class="quote-mini-icon"><i class="fa-solid fa-phone"></i></span><span><small data-t="callLabel">اتصال</small><b dir="ltr">054 275 5566</b></span></a>
-            <a id="quoteEmail" href="mailto:ramztashyeed@gmail.com"><span class="quote-mini-icon"><i class="fa-regular fa-envelope"></i></span><span><small data-t="emailLabelShort">البريد الإلكتروني</small><b>ramztashyeed@gmail.com</b></span></a>
+            <a id="quoteWa" href="https://wa.me/966532891910" target="_blank" rel="noopener"><span class="quote-mini-icon wa"><i class="fa-brands fa-whatsapp"></i></span><span><small data-t="whatsappLabel">واتساب</small><b dir="ltr">053 289 1910</b></span></a>
+            <a id="quoteCall" href="tel:+966532891910"><span class="quote-mini-icon"><i class="fa-solid fa-phone"></i></span><span><small data-t="callLabel">اتصال</small><b dir="ltr">053 289 1910</b></span></a>
+            <a id="quoteEmail" href="mailto:tigress-designs@hotmail.com"><span class="quote-mini-icon"><i class="fa-regular fa-envelope"></i></span><span><small data-t="emailLabelShort">البريد الإلكتروني</small><b>tigress-designs@hotmail.com</b></span></a>
           </div>
         </div>
         <form id="contactForm" class="quote-form-ref inview" data-reveal="left" novalidate>
@@ -259,6 +407,12 @@ html,body,#main{background:#081113}
               <option value="painting" data-t="typePainting">الدهانات</option>
               <option value="decor" data-t="typeDecor">التصميم والديكور</option>
               <option value="supervision" data-t="typeSupervision">إدارة المواقع والإشراف</option>
+              <option value="luxury-furnishing" data-t="typeLuxuryFurnishing">التأثيث الفاخر</option>
+              <option value="custom-rugs" data-t="typeRugs">تصميم وتفصيل السجاد</option>
+              <option value="bespoke-furniture" data-t="typeFurniture">تصميم وتنفيذ الأثاث</option>
+              <option value="classic-chandeliers" data-t="typeChandeliers">الثريات الكلاسيك</option>
+              <option value="lighting" data-t="typeLighting">الإنارات</option>
+              <option value="accessories" data-t="typeAccessories">الإكسسوارات</option>
               <option value="other" data-t="typeOther">أخرى</option>
             </select></div>
             <div class="field-group"><label for="city" data-t="cityLabel">المدينة</label><input id="city" name="city" type="text" autocomplete="address-level2" maxlength="60" data-placeholder="cityHolder" placeholder="مثال: بريدة"></div>
@@ -275,15 +429,15 @@ html,body,#main{background:#081113}
       <div class="wrap">
         <div class="section-ref-head inview" data-reveal="up"><p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="contactKicker">تواصل معنا</span></p><h2 id="contactTitle" data-t="contactTitle">يسعدنا تواصلك</h2><p data-t="contactP">تواصل معنا بأحد الوسائل المتاحة.</p></div>
         <div class="contact-ref-grid">
-          <a class="contact-ref-card inview" data-reveal="right" id="contactWa" href="#"><span class="contact-ref-icon wa"><i class="fa-brands fa-whatsapp"></i></span><span><small data-t="whatsappLabel">واتساب</small><b dir="ltr">054 275 5566</b></span></a>
-          <a class="contact-ref-card inview" data-reveal="up" id="contactCall" href="#"><span class="contact-ref-icon"><i class="fa-solid fa-phone"></i></span><span><small data-t="callLabel">اتصال</small><b dir="ltr">054 275 5566</b></span></a>
-          <a class="contact-ref-card inview" data-reveal="up" href="mailto:ramztashyeed@gmail.com"><span class="contact-ref-icon"><i class="fa-regular fa-envelope"></i></span><span><small data-t="emailLabelShort">البريد الإلكتروني</small><b>ramztashyeed@gmail.com</b></span></a>
-          <div class="contact-ref-card inview" data-reveal="left"><span class="contact-ref-icon"><i class="fa-solid fa-location-dot"></i></span><span><small data-t="addressLabel">العنوان</small><b data-t="addressText">بريدة – الدائري الشرقي الداخلي – طريق أم المؤمنين عائشة، المملكة العربية السعودية</b></span></div>
+          <a class="contact-ref-card inview" data-reveal="right" id="contactWa" href="https://wa.me/966532891910" target="_blank" rel="noopener"><span class="contact-ref-icon wa"><i class="fa-brands fa-whatsapp"></i></span><span><small data-t="whatsappLabel">واتساب</small><b dir="ltr">053 289 1910</b></span></a>
+          <a class="contact-ref-card inview" data-reveal="up" id="contactCall" href="tel:+966532891910"><span class="contact-ref-icon"><i class="fa-solid fa-phone"></i></span><span><small data-t="callLabel">اتصال</small><b dir="ltr">053 289 1910</b></span></a>
+          <a class="contact-ref-card inview" data-reveal="up" href="mailto:tigress-designs@hotmail.com"><span class="contact-ref-icon"><i class="fa-regular fa-envelope"></i></span><span><small data-t="emailLabelShort">البريد الإلكتروني</small><b>tigress-designs@hotmail.com</b></span></a>
+          <a class="contact-ref-card inview" data-reveal="left" href="https://www.instagram.com/tigress_designs1?dlrf=cGh0anlicnN6b2Js" target="_blank" rel="noopener"><span class="contact-ref-icon instagram"><i class="fa-brands fa-instagram"></i></span><span><small data-t="socialInstagram">إنستقرام</small><b>@tigress_designs1</b></span></a>
         </div>
         <div class="social-ref-row inview" data-reveal="up">
-          <a href="https://www.instagram.com/ramztashyeed/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i><span><b data-t="socialInstagram">إنستقرام</b><small>@ramztashyeed</small></span></a>
-          <a href="https://www.tiktok.com/@ramztashyeed" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i><span><b data-t="socialTikTok">تيك توك</b><small>@ramztashyeed</small></span></a>
-          <a href="https://www.snapchat.com/add/waleed.1333" target="_blank" rel="noopener"><i class="fa-brands fa-snapchat"></i><span><b data-t="socialSnapchat">سناب شات</b><small>waleed.1333</small></span></a>
+          <a href="https://www.instagram.com/tigress_designs1?dlrf=cGh0anlicnN6b2Js" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i><span><b data-t="socialInstagram">إنستقرام</b><small>@tigress_designs1</small></span></a>
+          <a href="https://www.tiktok.com/@tigress_designs?_r=1&_t=ZS-9AV0Xi3Shsn" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i><span><b data-t="socialTikTok">تيك توك</b><small>@tigress_designs</small></span></a>
+          <a href="https://snapchat.com/t/a6NlrbQC" target="_blank" rel="noopener"><i class="fa-brands fa-snapchat"></i><span><b data-t="socialSnapchat">سناب شات</b><small>Tigress</small></span></a>
         </div>
       </div>
     </section>
@@ -295,10 +449,11 @@ html,body,#main{background:#081113}
         <a href="#hero" class="footer-brand"><img src="assets/tigress-white.png" alt="Tigress" width="210" height="83"></a>
         <p data-t="footerCopy">فنّ التفاصيل. جرأة التعبير. حضور يظل في الذاكرة.</p>
         <div class="footer-socials" aria-label="روابط التواصل">
-          <a class="footer-social" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a class="footer-social" href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-          <a class="footer-social" href="https://wa.me/966542755566" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-          <a class="footer-social" href="mailto:ramztashyeed@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+          <a class="footer-social" href="https://www.instagram.com/tigress_designs1?dlrf=cGh0anlicnN6b2Js" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a class="footer-social" href="https://www.tiktok.com/@tigress_designs?_r=1&_t=ZS-9AV0Xi3Shsn" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a class="footer-social" href="https://snapchat.com/t/a6NlrbQC" target="_blank" rel="noopener" aria-label="Snapchat"><i class="fa-brands fa-snapchat"></i></a>
+          <a class="footer-social" href="https://wa.me/966532891910" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a class="footer-social" href="mailto:tigress-designs@hotmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
         </div>
       </div>
       <div class="footer-links-col inview" data-reveal="up">
@@ -307,13 +462,14 @@ html,body,#main{background:#081113}
         <a href="#chapters" data-t="navStory">الحكاية</a>
         <a href="#about" data-t="navAbout">من نحن</a>
         <a href="#creative" data-t="navCreative">مساحات الإبداع</a>
+      <a href="#atelier" data-t="navAtelier">التأثيث الفاخر</a>
         <a href="#quote" data-t="navContact">لنتحدث</a>
       </div>
       <div class="footer-contact-col inview" data-reveal="left">
         <h4 data-t="footerContact">تواصل معنا</h4>
-        <a href="#contact"><i class="fa-regular fa-paper-plane"></i><span data-t="footerContactLine">أرسل تفاصيل فكرتك من النموذج</span></a>
-        <a href="#contact"><i class="fa-regular fa-envelope"></i><span data-t="footerEmailLine">أضف بريد الاستقبال من ملف الإعدادات</span></a>
-        <a href="#partners"><i class="fa-regular fa-star"></i><span data-t="footerPartnersLine">استعرض العلامات في شريط الشركاء</span></a>
+        <a href="#quote"><i class="fa-regular fa-paper-plane"></i><span data-t="footerContactLine">أرسل تفاصيل فكرتك من النموذج</span></a>
+        <a href="mailto:tigress-designs@hotmail.com"><i class="fa-regular fa-envelope"></i><span>tigress-designs@hotmail.com</span></a>
+        <a href="tel:+966532891910"><i class="fa-solid fa-phone"></i><span dir="ltr">053 289 1910</span></a>
       </div>
     </div>
     <div class="footer-bottom"><div class="wrap">
@@ -323,8 +479,10 @@ html,body,#main{background:#081113}
     </div></div>
   </footer>
   <div class="floating-actions" id="floatingActions" aria-label="Quick contact">
-    <a class="float-action float-wa" id="floatingWhatsApp" href="#" target="_blank" rel="noopener"><span class="float-ripple"></span><i class="fa-brands fa-whatsapp"></i><span class="float-label" data-t="floatingWa">راسلنا على واتساب</span></a>
-    <a class="float-action float-call" id="floatingCall" href="#"><span class="float-ripple"></span><i class="fa-solid fa-phone"></i><span class="float-label" data-t="floatingCall">اتصل بنا</span></a>
+    <a class="float-action float-wa" id="floatingWhatsApp" href="https://wa.me/966532891910" target="_blank" rel="noopener"><span class="float-ripple"></span><i class="fa-brands fa-whatsapp"></i><span class="float-label" data-t="floatingWa">راسلنا على واتساب</span></a>
+    <a class="float-action float-call" id="floatingCall" href="tel:+966532891910"><span class="float-ripple"></span><i class="fa-solid fa-phone"></i><span class="float-label" data-t="floatingCall">اتصل بنا</span></a>
   </div>
+  <script defer src="js/luxury-gallery.js"></script>
+  <script defer src="js/hero-showcase.js"></script>
 </body>
 </html>

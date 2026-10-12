@@ -1581,3 +1581,155 @@ html[dir="rtl"] .story-dot::after{
     transform:none!important;
   }
 }
+
+/* =========================================================
+   V16 — NORMAL READING FLOW
+   Hero is complete, then Chapters begins naturally below.
+   No overlap. No cover. No sticky release jump.
+   ========================================================= */
+
+.hero-observer{
+  height:100svh!important;
+  min-height:720px!important;
+  position:relative!important;
+  z-index:1!important;
+  background:#050d10!important;
+  overflow:hidden!important;
+}
+
+.hero-stage{
+  position:relative!important;
+  top:auto!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:100%!important;
+  z-index:1!important;
+  overflow:hidden!important;
+  transform:none!important;
+  filter:none!important;
+  will-change:auto!important;
+}
+
+.hero-art-panel,
+.art-image-mask,
+.hero-picture{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+}
+
+.hero-picture .hero-tiger{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  transform:
+    translate3d(0,calc(var(--scroll-progress)*1.0vh),0)
+    scale(calc(1.012 + var(--scroll-progress)*.008))!important;
+  will-change:transform!important;
+}
+
+.hero-content-inner{
+  transform:translate3d(0,calc(var(--scroll-progress)*-1vh),0)!important;
+  opacity:calc(1 - var(--scroll-progress)*.12)!important;
+}
+
+/* The story section follows the Hero like a normal page. */
+#chapters{
+  margin-top:0!important;
+  transform:none!important;
+  position:relative!important;
+  z-index:2!important;
+  background:#081113!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  padding-top:clamp(70px,8vw,110px)!important;
+  padding-bottom:clamp(82px,9vw,128px)!important;
+  will-change:auto!important;
+}
+
+#chapters::before{
+  display:none!important;
+}
+
+#chapters .heading-row{
+  display:flex!important;
+  margin-top:0!important;
+  margin-bottom:40px!important;
+}
+
+/* Keep the existing framed story board and slider mechanics. */
+#chapters .stories-carousel{
+  height:auto!important;
+  min-height:0!important;
+}
+#chapters .stories-screen{
+  position:relative!important;
+  inset:auto!important;
+  width:auto!important;
+  height:auto!important;
+  min-height:clamp(510px,55vw,690px)!important;
+}
+
+/* Contact Instagram icon gets its own subtle brand tint. */
+.contact-ref-icon.instagram{
+  color:#e45b88;
+}
+
+/* Long email should never break the mobile card. */
+.contact-ref-card b,
+.quote-mini b{
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+
+/* Lenis stays smooth, but the page itself is now ordinary document flow. */
+html.has-lenis body{
+  overflow-x:hidden;
+}
+
+@media(max-width:700px){
+  .hero-observer{
+    height:100svh!important;
+    min-height:650px!important;
+  }
+
+  .hero-stage{
+    height:100%!important;
+    min-height:100%!important;
+  }
+
+  .hero-picture .hero-tiger{
+    object-position:58% 50%!important;
+    transform:
+      translate3d(0,calc(var(--scroll-progress)*.35vh),0)
+      scale(calc(1.006 + var(--scroll-progress)*.003))!important;
+  }
+
+  .hero-content-inner{
+    transform:none!important;
+    opacity:calc(1 - var(--scroll-progress)*.06)!important;
+  }
+
+  #chapters{
+    margin-top:0!important;
+    padding-top:58px!important;
+    padding-bottom:76px!important;
+  }
+
+  #chapters .heading-row{
+    margin-bottom:28px!important;
+  }
+
+  .contact-ref-grid{
+    grid-template-columns:1fr!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-picture .hero-tiger,
+  .hero-content-inner{
+    transform:none!important;
+    opacity:1!important;
+  }
+}
