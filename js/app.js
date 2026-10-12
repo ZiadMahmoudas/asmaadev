@@ -164,81 +164,210 @@
   }
   if(reduced)document.documentElement.classList.add('reduce-motion');
 
-  function restartDotProgress(){
+  function clearDotProgress(){
     dots.forEach(dot=>dot.classList.remove('progressing'));
+  }
+
+  function restartDotProgress(){
+    clearDotProgress();
+    if(!sliderVisible || document.hidden || reduced)return;
     const active=dots[currentSlide];
     if(active){
+      // Force a real animation restart from 0 every time.
       void active.offsetWidth;
       active.classList.add('progressing');
     }
   }
+
   function goTo(index,{restart=true}={}) {
-    // Explicit wrap so slide 03 always resets cleanly to slide 01.
+    // Hard wrap: 03 -> 01 and 01 <- 03.
     if(index >= slides.length) currentSlide=0;
     else if(index < 0) currentSlide=slides.length-1;
     else currentSlide=index;
-    slides.forEach((slide,i) => {
-      const active = i === currentSlide;
+
+    slides.forEach((slide,i)=>{
+      const active=i===currentSlide;
       slide.classList.toggle('is-active',active);
       slide.setAttribute('aria-hidden',String(!active));
-      slide.setAttribute('aria-label',`${i+1} ${language === 'ar' ? 'من' : 'of'} ${slides.length}`);
-      if ('inert' in slide) slide.inert = !active;
+      slide.setAttribute('aria-label',`${i+1} ${language==='ar'?'من':'of'} ${slides.length}`);
+      if('inert' in slide)slide.inert=!active;
     });
-    dots.forEach((dot,i) => {
+
+    dots.forEach((dot,i)=>{
       const active=i===currentSlide;
       dot.classList.toggle('current',active);
-      if(active)dot.setAttribute('aria-current','true');else dot.removeAttribute('aria-current');
+      if(active)dot.setAttribute('aria-current','true');
+      else dot.removeAttribute('aria-current');
     });
+
     if(restart)restartDotProgress();
   }
+
+  // The CSS progress animation is now the ONLY autoplay clock.
+  // When it reaches 100%, animationend advances exactly one slide.
   function stopAutoplay(){
+    clearDotProgress();
     if(sliderTimer)window.clearTimeout(sliderTimer);
     sliderTimer=0;
   }
-  function scheduleAutoplay(){
-    stopAutoplay();
-    if(!sliderVisible || document.hidden || reduced)return;
-    const delay=Math.max(3800,Number(options.sliderDelayMs)||6600);
-    carousel.style.setProperty('--story-delay',delay+'ms');
-    sliderTimer=window.setTimeout(()=>{
-      goTo(currentSlide===slides.length-1?0:currentSlide+1);
-      scheduleAutoplay();
-    },delay);
-  }
+
   function startAutoplay(){
-    // Hover/focus can pause; leaving resumes a fresh, full-duration cycle.
-    if(carousel.matches(':hover') || carousel.contains(document.activeElement))return;
-    scheduleAutoplay();
+    restartDotProgress();
   }
-  dots.forEach(dot=>dot.addEventListener('click',()=>{goTo(Number(dot.dataset.goto));scheduleAutoplay();}));
-  $('#prevSlide').addEventListener('click',()=>{goTo(currentSlide-1);scheduleAutoplay();});
-  $('#nextSlide').addEventListener('click',()=>{goTo(currentSlide===slides.length-1?0:currentSlide+1);scheduleAutoplay();});
-  carousel.addEventListener('mouseenter',stopAutoplay);
-  carousel.addEventListener('mouseleave',()=>{restartDotProgress();scheduleAutoplay();});
-  carousel.addEventListener('focusin',stopAutoplay);
-  carousel.addEventListener('focusout',()=>window.setTimeout(()=>{if(!carousel.contains(document.activeElement)){restartDotProgress();scheduleAutoplay();}},20));
-  carousel.addEventListener('keydown',event => {
-    if(event.key==='ArrowRight'){goTo(currentSlide+(language==='ar'?-1:1));scheduleAutoplay();event.preventDefault();}
-    if(event.key==='ArrowLeft'){goTo(currentSlide+(language==='ar'?1:-1));scheduleAutoplay();event.preventDefault();}
+
+  dots.forEach(dot=>{
+    dot.addEventListener('animationend',event=>{
+      if(event.animationName!=='storyDotProgress')return;
+      if(!dot.classList.contains('current') || !sliderVisible || document.hidden || reduced)return;
+      goTo(currentSlide+1);
+    });
+
+    dot.addEventListener('click',()=>{
+      goTo(Number(dot.dataset.goto));
+    });
   });
-  let tx=0,ty=0;
-  carousel.addEventListener('touchstart',event=>{tx=event.changedTouches[0].screenX;ty=event.changedTouches[0].screenY;},{passive:true});
-  carousel.addEventListener('touchend',event=>{
-    const dx=event.changedTouches[0].screenX-tx,dy=event.changedTouches[0].screenY-ty;
-    if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.2){
-      goTo(currentSlide+((dx<0?1:-1)*(language==='ar'?-1:1)));
-      scheduleAutoplay();
+
+  $('#prevSlide').addEventListener('click',()=>goTo(currentSlide-1));
+  $('#nextSlide').addEventListener('click',()=>goTo(currentSlide+1));
+
+  // Do NOT pause autoplay on hover/focus.
+  // This keeps the loader and slide change perfectly synchronized.
+  carousel.addEventListener('keydown',event=>{
+    if(event.key==='ArrowRight'){
+      goTo(currentSlide+(language==='ar'?-1:1));
+      event.preventDefault();
     }
-  },{passive:true});
-  if ('IntersectionObserver' in window) {
-    const slideObserver = new IntersectionObserver(entries=>{
+    if(event.key==='ArrowLeft'){
+      goTo(currentSlide+(language==='ar'?1:-1));
+      event.preventDefault();
+    }
+  });
+
+  // -------------------------------------------------------
+  // Pointer drag / swipe with snap.
+  // Works with mouse, pen and touch.
+  // Vertical touch remains normal page scrolling.
+  // -------------------------------------------------------
+  const storyScreen=$('.stories-screen',carousel);
+  let dragActive=false;
+  let dragHorizontal=false;
+  let dragStartX=0;
+  let dragStartY=0;
+  let dragX=0;
+  let dragStartTime=0;
+
+  function resetDrag(){
+    dragActive=false;
+    dragHorizontal=false;
+    dragX=0;
+    if(storyScreen){
+      storyScreen.style.setProperty('--drag-x','0px');
+      storyScreen.style.setProperty('--drag-p','0');
+      storyScreen.classList.remove('is-dragging');
+      storyScreen.classList.add('is-snapping');
+      window.setTimeout(()=>storyScreen.classList.remove('is-snapping'),240);
+    }
+  }
+
+  function finishDrag(event,cancelled=false){
+    if(!dragActive || !storyScreen)return;
+
+    const elapsed=Math.max(16,performance.now()-dragStartTime);
+    const velocity=Math.abs(dragX)/elapsed;
+    const threshold=Math.min(95,storyScreen.clientWidth*.12);
+    const shouldChange=!cancelled && dragHorizontal &&
+      (Math.abs(dragX)>=threshold || (Math.abs(dragX)>28 && velocity>.42));
+
+    const finalX=dragX;
+    resetDrag();
+
+    if(shouldChange){
+      const physicalStep=finalX<0?1:-1;
+      const logicalStep=physicalStep*(language==='ar'?-1:1);
+      goTo(currentSlide+logicalStep);
+    }else{
+      restartDotProgress();
+    }
+
+    try{
+      if(event && storyScreen.hasPointerCapture(event.pointerId)){
+        storyScreen.releasePointerCapture(event.pointerId);
+      }
+    }catch(_){}
+  }
+
+  if(storyScreen){
+    storyScreen.addEventListener('pointerdown',event=>{
+      if(event.pointerType==='mouse' && event.button!==0)return;
+      if(event.target.closest('button,a,input,select,textarea'))return;
+
+      dragActive=true;
+      dragHorizontal=false;
+      dragStartX=event.clientX;
+      dragStartY=event.clientY;
+      dragX=0;
+      dragStartTime=performance.now();
+
+      storyScreen.classList.remove('is-snapping');
+      storyScreen.classList.add('is-dragging');
+      clearDotProgress();
+
+      try{storyScreen.setPointerCapture(event.pointerId);}catch(_){}
+    });
+
+    storyScreen.addEventListener('pointermove',event=>{
+      if(!dragActive)return;
+
+      const dx=event.clientX-dragStartX;
+      const dy=event.clientY-dragStartY;
+
+      if(!dragHorizontal){
+        if(Math.abs(dx)<7 && Math.abs(dy)<7)return;
+        if(Math.abs(dy)>Math.abs(dx)*1.12){
+          finishDrag(event,true);
+          return;
+        }
+        dragHorizontal=true;
+      }
+
+      if(!dragHorizontal)return;
+      event.preventDefault();
+
+      // Gentle rubber-band near the edge instead of unrestricted movement.
+      const max=storyScreen.clientWidth*.28;
+      dragX=Math.max(-max,Math.min(max,dx*.88));
+      const progress=Math.min(1,Math.abs(dragX)/Math.max(1,storyScreen.clientWidth*.25));
+
+      storyScreen.style.setProperty('--drag-x',dragX.toFixed(1)+'px');
+      storyScreen.style.setProperty('--drag-p',progress.toFixed(3));
+    });
+
+    storyScreen.addEventListener('pointerup',event=>finishDrag(event,false));
+    storyScreen.addEventListener('pointercancel',event=>finishDrag(event,true));
+    storyScreen.addEventListener('lostpointercapture',()=>{
+      if(dragActive)finishDrag(null,true);
+    });
+  }
+
+  if('IntersectionObserver' in window){
+    const slideObserver=new IntersectionObserver(entries=>{
       sliderVisible=entries[0].isIntersecting;
-      if(sliderVisible){restartDotProgress();startAutoplay();}else stopAutoplay();
+      if(sliderVisible)restartDotProgress();
+      else stopAutoplay();
     },{threshold:.16});
     slideObserver.observe(carousel);
-  } else {sliderVisible=true;startAutoplay();}
-  document.addEventListener('visibilitychange',()=>document.hidden?stopAutoplay():startAutoplay());
-  goTo(0);
+  }else{
+    sliderVisible=true;
+    restartDotProgress();
+  }
+
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden)stopAutoplay();
+    else if(sliderVisible)restartDotProgress();
+  });
+
+  // Initialize slide state but let IntersectionObserver start the clock.
+  goTo(0,{restart:false});
 
   // Update active nav link using real section intersection.
   if ('IntersectionObserver' in window) {

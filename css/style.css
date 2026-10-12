@@ -1485,3 +1485,99 @@ html.has-lenis.lenis body{
     opacity:1!important;
   }
 }
+
+/* =========================================================
+   V15 — SYNCHRONIZED SLIDER TIMER + POINTER DRAG SNAP
+   ========================================================= */
+
+/* The loader never pauses merely because the mouse is over the carousel. */
+.stories-carousel:hover .story-dot.current::after,
+.stories-carousel:focus-within .story-dot.current::after{
+  animation-play-state:running!important;
+}
+
+/* Progress is the autoplay clock itself. */
+.story-dot{
+  position:relative;
+  overflow:hidden;
+  background:rgba(255,255,255,.20)!important;
+}
+.story-dot.current{
+  background:rgba(255,255,255,.20)!important;
+}
+.story-dot::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  width:0;
+  background:var(--gold);
+  will-change:width;
+}
+html[dir="rtl"] .story-dot::after{
+  left:auto;
+  right:0;
+}
+.story-dot.current.progressing::after{
+  animation:storyDotProgress var(--story-delay,6600ms) linear forwards!important;
+}
+@keyframes storyDotProgress{
+  from{width:0}
+  to{width:100%}
+}
+
+/* Mouse/touch drag feels attached to the user's hand. */
+.stories-screen{
+  --drag-x:0px;
+  --drag-p:0;
+  cursor:grab;
+  touch-action:pan-y pinch-zoom;
+  user-select:none;
+  -webkit-user-select:none;
+}
+.stories-screen.is-dragging{
+  cursor:grabbing;
+}
+.stories-screen.is-dragging .story-slide.is-active{
+  transition:none!important;
+  transform:
+    translate3d(var(--drag-x),0,0)
+    scale(calc(1 - var(--drag-p)*.012))!important;
+}
+.stories-screen.is-dragging .story-slide.is-active .story-visual{
+  transition:none!important;
+  transform:
+    translate3d(calc(var(--drag-x)*-.055),0,0)
+    scale(calc(1.01 + var(--drag-p)*.018))!important;
+}
+.stories-screen.is-dragging .story-vignette{
+  transition:none!important;
+  opacity:calc(1 - var(--drag-p)*.12);
+}
+
+/* If the threshold was not passed it visibly snaps back to zero. */
+.stories-screen.is-snapping .story-slide.is-active{
+  transition:transform .24s cubic-bezier(.22,.8,.25,1)!important;
+  transform:translate3d(0,0,0) scale(1)!important;
+}
+
+/* Slight tactile response on desktop, no performance-heavy effect. */
+@media(hover:hover) and (pointer:fine){
+  .stories-screen:not(.is-dragging):active{
+    cursor:grabbing;
+  }
+}
+
+@media(max-width:700px){
+  .stories-screen{
+    cursor:auto;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .stories-screen.is-dragging .story-slide.is-active,
+  .stories-screen.is-dragging .story-slide.is-active .story-visual{
+    transform:none!important;
+  }
+}
