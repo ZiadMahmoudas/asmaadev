@@ -1,0 +1,3 @@
+TIGRESS 20261013-v4
+Services: 01 General contracting, 02 Interior design, 03 Luxury furnishing, 04 Decor/Gypsum/Paint/Electrical, 05 Site management & supervision, 06 Booth design & execution.
++110 forced same white as other stats.

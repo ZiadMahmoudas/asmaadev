@@ -1,0 +1,5 @@
+TIGRESS V6
+- Furniture album CTA moved beside WhatsApp in Luxury Furnishing.
+- Lighting album CTA stays beside WhatsApp in Decor/Gypsum/Paint/Electrical.
+- Added 12 unique user-supplied project/interior images to Hero (16 slides total).
+- Added bilingual slide copy and cache bust v6.

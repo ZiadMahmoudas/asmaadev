@@ -44,7 +44,7 @@
   const bookModal = qs('#luxBookModal');
   const book = qs('#luxBook');
   const counter = qs('#luxBookCounter');
-  const pdfModal = qs('#portfolioModal');
+  const popupWa = qs('#luxBookWhatsapp');
 
   let leaves = [];
   let current = 0;
@@ -88,7 +88,7 @@
    * No need to duplicate markup manually in index.html.
    */
   function syncLibraryCards() {
-    qsa('[data-album]').forEach(btn => {
+    qsa('.luxury-volume[data-album]').forEach(btn => {
       const key = btn.dataset.album;
       const album = albums[key];
       if (!album) return;
@@ -166,6 +166,13 @@
     return img;
   }
 
+  function addPageNumber(face, number) {
+    const badge = document.createElement('span');
+    badge.className = 'lux-page-number';
+    badge.textContent = String(number).padStart(2, '0');
+    face.appendChild(badge);
+  }
+
   function makeBook(album) {
     if (!book || !album) return;
 
@@ -195,6 +202,7 @@
         const fi = createPageImage(frontSrc, '');
         if (i > 0) fi.loading = 'lazy';
         front.appendChild(fi);
+        addPageNumber(front, i * 2 + 1);
       } else {
         front.classList.add('lux-page-empty');
       }
@@ -225,6 +233,7 @@
         const bi = createPageImage(backSrc, '');
         bi.loading = 'lazy';
         back.appendChild(bi);
+        addPageNumber(back, i * 2 + 2);
       } else {
         // Important for odd image counts:
         // do NOT repeat the last image on the back.
@@ -344,6 +353,15 @@
     if (!album || !bookModal) return;
 
     makeBook(album);
+
+    if (popupWa && wa) {
+      const title = getAlbumTitle(album);
+      const text = lang() === 'ar'
+        ? `السلام عليكم، أرغب في الاستفسار عن: ${title}`
+        : `Hello, I would like to ask about: ${title}`;
+      popupWa.href = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
+    }
+
     bookModal.hidden = false;
     bookModal.setAttribute('aria-hidden', 'false');
     stopScroll();
@@ -356,19 +374,6 @@
     startScroll();
   }
 
-  function openPdf() {
-    if (!pdfModal) return;
-    pdfModal.hidden = false;
-    pdfModal.setAttribute('aria-hidden', 'false');
-    stopScroll();
-  }
-
-  function closePdf() {
-    if (!pdfModal) return;
-    pdfModal.hidden = true;
-    pdfModal.setAttribute('aria-hidden', 'true');
-    startScroll();
-  }
 
   // Make cards consistent immediately.
   syncLibraryCards();
@@ -377,9 +382,7 @@
     btn.addEventListener('click', () => openBook(btn.dataset.album));
   });
 
-  qs('[data-pdf-open]')?.addEventListener('click', openPdf);
   qsa('[data-lux-close]').forEach(el => el.addEventListener('click', closeBook));
-  qsa('[data-pdf-close]').forEach(el => el.addEventListener('click', closePdf));
   qsa('[data-book-next]').forEach(el => el.addEventListener('click', nextPage));
   qsa('[data-book-prev]').forEach(el => el.addEventListener('click', prevPage));
 
@@ -410,7 +413,9 @@
       if (!wa) return;
 
       event.preventDefault();
-      const title = btn.dataset.luxWa || '';
+      const title = btn.closest('.lux-service-item')?.querySelector('.lux-service-name')?.textContent?.trim()
+        || btn.dataset.luxWa
+        || '';
 
       const text = lang() === 'ar'
         ? `السلام عليكم، أرغب في الاستفسار عن خدمة: ${title}`
@@ -427,7 +432,6 @@
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       if (bookModal && !bookModal.hidden) closeBook();
-      if (pdfModal && !pdfModal.hidden) closePdf();
     }
 
     if (bookModal && !bookModal.hidden) {
@@ -448,6 +452,14 @@
     if (title) title.textContent = getAlbumTitle(currentAlbum);
     if (volume) {
       volume.textContent = lang() === 'ar' ? 'المجلد 01' : 'VOLUME 01';
+    }
+
+    if (popupWa && wa) {
+      const albumTitle = getAlbumTitle(currentAlbum);
+      const text = lang() === 'ar'
+        ? `السلام عليكم، أرغب في الاستفسار عن: ${albumTitle}`
+        : `Hello, I would like to ask about: ${albumTitle}`;
+      popupWa.href = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
     }
   });
 

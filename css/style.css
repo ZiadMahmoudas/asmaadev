@@ -1733,3 +1733,343 @@ html.has-lenis body{
     opacity:1!important;
   }
 }
+
+/* =========================================================
+   TIGRESS — requested cleanup / portfolio / CTA refinements
+   ========================================================= */
+
+/* Client-count stat removed: keep the remaining two balanced. */
+.stats-ref-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  max-width:900px;
+  margin-inline:auto;
+}
+
+/* Service footer: WhatsApp + album side by side. */
+.service-ref-actions{
+  margin-top:auto;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px 18px;
+  padding-top:10px;
+}
+.service-ref-actions .service-ref-cta{margin-top:0}
+.service-album-cta{
+  padding:8px 13px;
+  border:1px solid #334864;
+  border-radius:999px;
+  color:#e8edf4;
+  background:#0b192b;
+}
+.service-album-cta:hover{
+  border-color:#d9a25f;
+  background:#162943;
+  color:#d9a25f;
+}
+.service-album-cta i{font-size:12px}
+html[dir="ltr"] .service-album-cta i{transform:none}
+html[dir="ltr"] .service-album-cta:hover i{transform:none}
+
+/* Inline portfolio replaces the removed decorative sections. */
+.portfolio-inline-section{
+  padding:100px 0 110px;
+  background:#07111d;
+  color:#eef3f7;
+  border-top:1px solid #162942;
+  border-bottom:1px solid #162942;
+}
+.portfolio-inline-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:28px;
+}
+.portfolio-inline-head .display-title{
+  margin:13px 0 10px;
+  font-size:clamp(34px,5vw,68px);
+}
+.portfolio-inline-head .display-title em{
+  color:#d6a15f;
+  font-style:normal;
+}
+.portfolio-inline-head p:not(.micro-label){
+  max-width:650px;
+  margin:0;
+  color:#9ca9ba;
+  line-height:1.9;
+}
+.portfolio-inline-open{
+  flex:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:46px;
+  padding:11px 17px;
+  border:1px solid #344a67;
+  border-radius:999px;
+  color:#eef3f7;
+  background:#0d1c2e;
+  text-decoration:none;
+  font-weight:700;
+  font-size:12px;
+  transition:.25s;
+}
+.portfolio-inline-open:hover{
+  transform:translateY(-2px);
+  border-color:#d3a064;
+  color:#d3a064;
+}
+.portfolio-inline-viewer{
+  position:relative;
+  height:min(82vh,920px);
+  min-height:640px;
+  overflow:hidden;
+  border:1px solid #2b405d;
+  border-radius:22px;
+  background:#111923;
+  box-shadow:0 28px 80px rgba(0,0,0,.28);
+}
+.portfolio-inline-frame{
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+  background:#fff;
+}
+.portfolio-inline-fallback{
+  position:absolute;
+  inset:auto 18px 18px 18px;
+  z-index:-1;
+  margin:0;
+  color:#b6c0cb;
+  font-size:12px;
+}
+.portfolio-inline-fallback a{color:#d7a361}
+
+/* Explicit logical order: Snapchat is item 1 on desktop RTL and mobile. */
+.social-ref-row{direction:rtl}
+html[dir="ltr"] .social-ref-row{direction:ltr}
+
+@media(max-width:680px){
+  .stats-ref-grid{grid-template-columns:repeat(2,minmax(0,1fr));min-height:170px}
+  .service-ref-actions{gap:10px 14px}
+  .service-ref-actions .service-ref-cta{font-size:12px}
+  .portfolio-inline-section{padding:72px 0 82px}
+  .portfolio-inline-head{align-items:flex-start;flex-direction:column;margin-bottom:20px}
+  .portfolio-inline-open{width:100%}
+  .portfolio-inline-viewer{height:72svh;min-height:520px;border-radius:14px}
+}
+
+
+/* =========================================================
+   FINAL REQUEST — stats + luxury albums inside Services
+   ========================================================= */
+.stats-ref-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  max-width:none !important;
+}
+.stat-ref-clients strong{
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:2px;
+}
+.stat-ref-clients .stat-plus{
+  color:#dda660;
+  font-size:.72em;
+  transform:translateY(-.05em);
+}
+
+.service-ref-actions{
+  margin-top:auto;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px 18px;
+  padding-top:10px;
+}
+
+.service-ref-card-luxury{
+  grid-column:1 / -1;
+  min-height:0;
+  border-color:rgba(217,164,95,.42);
+  background:radial-gradient(circle at 8% 0%,rgba(217,164,95,.10),transparent 28%),linear-gradient(135deg,#0f1e33,#0b1728);
+}
+.service-ref-card-luxury:hover{
+  transform:none;
+  background:radial-gradient(circle at 8% 0%,rgba(217,164,95,.13),transparent 30%),linear-gradient(135deg,#11213a,#0c192b);
+}
+.service-ref-card-luxury>p{max-width:760px;margin-bottom:24px}
+.lux-service-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:4px}
+.lux-service-item{
+  min-height:86px;border:1px solid #29405f;border-radius:16px;background:#0b192d;padding:16px 17px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  transition:border-color .25s,transform .25s,background .25s;
+}
+.lux-service-item:last-child{grid-column:1 / -1}
+.lux-service-item:hover{border-color:#9b673c;background:#0e2037;transform:translateY(-2px)}
+.lux-service-name{color:#e8edf4;font-weight:700;font-size:13px;line-height:1.7}
+.lux-service-item-actions{flex:none;display:flex;align-items:center;gap:8px}
+.lux-service-wa,.lux-service-album{
+  min-height:36px;border-radius:999px;padding:8px 12px;display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  font:700 11px/1 inherit;text-decoration:none;cursor:pointer;transition:.22s;
+}
+.lux-service-wa{color:#fff;background:#087f49;border:1px solid #0c9959}
+.lux-service-wa:hover{background:#0a9a58;color:#fff}
+.lux-service-album{color:#e4b06d;background:#121f32;border:1px solid #4d3c2d}
+.lux-service-album:hover{color:#fff;border-color:#b17a47;background:#9a6235}
+
+.hero-showcase-skyline{display:none!important}
+
+@media(max-width:780px){
+  .stats-ref-grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;min-height:160px!important}
+  .stat-ref strong{font-size:38px!important}
+  .stat-ref>span{font-size:9px!important;padding-inline:4px}
+  .lux-service-list{grid-template-columns:1fr}
+  .lux-service-item:last-child{grid-column:auto}
+  .lux-service-item{align-items:flex-start;flex-direction:column}
+  .lux-service-item-actions{width:100%}
+  .lux-service-wa,.lux-service-album{flex:1}
+}
+@media(max-width:430px){
+  .stats-ref-grid{min-height:145px!important}
+  .stat-ref strong{font-size:33px!important}
+  .stat-ref>span{font-size:8.5px!important}
+  .service-ref-card-luxury{padding:24px 18px}
+}
+
+
+/* =========================================================
+   SERVICE STRUCTURE V3 — requested order + furnishing albums
+   ========================================================= */
+/* Keep +110 exactly the same color/weight as the other statistics. */
+.stat-ref-clients strong,
+.stat-ref-clients strong span,
+.stat-ref-clients .stat-plus{
+  color:#eaf0f6 !important;
+}
+
+/* Six equal service cards, with card 03 carrying compact album shortcuts. */
+.service-ref-card-furnishing{
+  border-color:#253a59;
+  background:#0f1e33;
+}
+.service-ref-card-furnishing:hover{
+  border-color:#a76b3b;
+  background:#12223a;
+}
+
+.service-album-chips{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+  margin:2px 0 20px;
+}
+.service-album-chip,
+.service-album-cta{
+  appearance:none;
+  border:1px solid #334864;
+  background:#0b192b;
+  color:#e4b06d;
+  border-radius:12px;
+  min-height:38px;
+  padding:8px 10px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:8px;
+  font:700 10.5px/1.45 inherit;
+  text-align:start;
+  cursor:pointer;
+  transition:background .22s,border-color .22s,color .22s,transform .22s;
+}
+.service-album-chip:last-child{
+  grid-column:1 / -1;
+}
+.service-album-chip:hover,
+.service-album-cta:hover{
+  transform:translateY(-2px);
+  border-color:#b17a47;
+  background:#9a6235;
+  color:#fff;
+}
+.service-album-chip i,
+.service-album-cta i{
+  flex:none;
+  font-size:11px;
+}
+
+/* Card 04 album button sits naturally beside WhatsApp. */
+.service-ref-actions .service-album-cta{
+  border-radius:999px;
+  min-height:34px;
+  padding:7px 12px;
+  font-size:11px;
+}
+
+@media(max-width:1080px){
+  .service-album-chips{grid-template-columns:1fr}
+  .service-album-chip:last-child{grid-column:auto}
+}
+@media(max-width:680px){
+  .service-album-chips{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .service-album-chip:last-child{grid-column:1 / -1}
+}
+@media(max-width:410px){
+  .service-album-chips{grid-template-columns:1fr}
+  .service-album-chip:last-child{grid-column:auto}
+}
+\n\n/* TIGRESS V4 final visible fixes */\n.stats-ref .stat-ref-clients strong,\n.stats-ref .stat-ref-clients strong *,\n.stats-ref .stat-ref-clients .stat-plus{\n  color:#eaf0f6 !important;\n  -webkit-text-fill-color:#eaf0f6 !important;\n}\n.stats-ref .stat-ref-clients strong{font-weight:700 !important;}\n\n/* All six service cards keep the same base visual treatment. */\n.services-ref-grid .service-ref-card,\n.services-ref-grid .service-ref-card-furnishing{\n  background:#0f1e33 !important;\n  border-color:#253a59 !important;\n}\n.services-ref-grid .service-ref-card:hover,\n.services-ref-grid .service-ref-card-furnishing:hover{\n  background:#12223a !important;\n  border-color:#a76b3b !important;\n}\n\n/* Album shortcuts are compact controls inside the related service only. */\n.service-album-chips{margin-top:12px !important;}\n
+
+/* TIGRESS V5 — one relevant album shortcut per service */
+.service-album-chips-single{
+  grid-template-columns:1fr !important;
+}
+.service-album-chips-single .service-album-chip{
+  grid-column:auto !important;
+  width:100%;
+}
+
+/* =========================================================
+   TIGRESS V6 — album CTA beside WhatsApp
+   ========================================================= */
+.service-ref-actions-with-album{
+  width:100%;
+  flex-wrap:nowrap !important;
+  justify-content:space-between;
+  gap:8px !important;
+}
+.service-ref-actions-with-album .service-ref-cta{
+  flex:1 1 auto;
+  min-width:0;
+  white-space:nowrap;
+  font-size:11.5px;
+}
+.service-ref-actions-with-album .service-album-cta{
+  flex:0 0 auto;
+  white-space:nowrap;
+  min-height:34px;
+  padding:7px 10px;
+  font-size:10.5px;
+}
+@media(max-width:680px){
+  .service-ref-actions-with-album{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    align-items:stretch;
+    gap:8px !important;
+  }
+  .service-ref-actions-with-album .service-ref-cta,
+  .service-ref-actions-with-album .service-album-cta{
+    width:100%;
+    min-height:40px;
+    justify-content:center;
+    text-align:center;
+    font-size:10px;
+    white-space:normal;
+    line-height:1.35;
+  }
+}

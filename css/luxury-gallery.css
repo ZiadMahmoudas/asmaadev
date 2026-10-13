@@ -366,3 +366,40 @@ html[dir="ltr"] .lux-cover-caption{
   }
 }
 
+
+
+/* Album numbering after moving Portfolio to its own inline section. */
+.luxury-volume .volume-number{
+  z-index:6;
+  font-variant-numeric:tabular-nums;
+}
+
+/* =========================================================
+   FINAL REQUEST — numbered album pages + WhatsApp in popup
+   ========================================================= */
+.lux-page-number{
+  position:absolute;top:14px;inset-inline-start:14px;z-index:5;min-width:34px;height:28px;padding:0 9px;
+  border:1px solid rgba(218,166,99,.72);border-radius:999px;background:rgba(5,13,18,.80);color:#f2c07e;
+  display:inline-flex;align-items:center;justify-content:center;font:700 10px/1 Galano,Arial,sans-serif;
+  letter-spacing:.08em;direction:ltr;unicode-bidi:isolate;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)
+}
+.lux-book-footer{
+  height:auto;min-height:78px;padding:12px 18px;display:grid;grid-template-columns:1fr auto;gap:14px;justify-content:stretch
+}
+.lux-book-pager{display:flex;align-items:center;justify-content:center;gap:22px}
+.lux-book-pager>#luxBookCounter{
+  min-width:112px;text-align:center;font:700 12px/1 Galano,Arial,sans-serif;letter-spacing:.12em;color:#d6a567
+}
+.lux-book-whatsapp{
+  min-height:44px;padding:10px 16px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  color:#fff;background:#078447;border:1px solid #0ca35b;text-decoration:none;font-weight:700;font-size:12px;white-space:nowrap;transition:.24s
+}
+.lux-book-whatsapp:hover{background:#0a9b55;transform:translateY(-1px)}
+.lux-book-whatsapp i{font-size:17px}
+@media(max-width:700px){
+  .lux-book-footer{padding:10px 12px max(10px,env(safe-area-inset-bottom));grid-template-columns:1fr;gap:8px}
+  .lux-book-pager{gap:8px}
+  .lux-book-pager>#luxBookCounter{min-width:88px;font-size:10px}
+  .lux-book-whatsapp{width:100%;min-height:42px}
+  .lux-page-number{top:10px;inset-inline-start:10px;min-width:30px;height:25px;font-size:9px}
+}

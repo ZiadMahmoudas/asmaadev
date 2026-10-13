@@ -12,6 +12,7 @@
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const cycle=6800;
   let current=0;
+  let timer=0;
   let visible=true;
   let dragging=false;
   let sx=0,sy=0,dx=0;
@@ -30,10 +31,11 @@
   }
 
   function restartClock(){
+    clearTimeout(timer);
     root.classList.remove('is-running');
     if(reduced||!visible)return;
-    void root.offsetWidth;
     root.classList.add('is-running');
+    timer=window.setTimeout(()=>show(current+1),cycle);
   }
 
   function show(index,{restart=true}={}){
@@ -43,11 +45,11 @@
       slide.classList.toggle('is-active',active);
       slide.setAttribute('aria-hidden',String(!active));
     });
-    counter.textContent=String(current+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+    if(counter) counter.textContent=String(current+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
     if(restart)restartClock();
   }
 
-  fill.addEventListener('animationend',event=>{
+  fill?.addEventListener('animationend',event=>{
     if(event.animationName!=='heroShowcaseProgress'||!visible)return;
     show(current+1);
   });
@@ -84,13 +86,13 @@
     const io=new IntersectionObserver(entries=>{
       visible=entries[0].isIntersecting;
       if(visible)restartClock();
-      else root.classList.remove('is-running');
+      else{clearTimeout(timer);root.classList.remove('is-running');}
     },{threshold:.15});
     io.observe(root);
   }
 
   document.addEventListener('visibilitychange',()=>{
-    if(document.hidden)root.classList.remove('is-running');
+    if(document.hidden){clearTimeout(timer);root.classList.remove('is-running');}
     else if(visible)restartClock();
   });
 
