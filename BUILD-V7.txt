@@ -1,0 +1,3 @@
+TIGRESS V7 — Graphite / Black / Gold theme
+Build: 2026-10-13
+Palette: #080808 / #171717 / #262626 / #3B3B3B / #D2A35F
