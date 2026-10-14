@@ -175,7 +175,7 @@
         $$('.nav-item').forEach(item=>item.classList.toggle('current',item.getAttribute('href')==='#'+entry.target.id));
       });
     },{rootMargin:'-30% 0px -60% 0px'});
-    $$('#hero,#about,#creative,#albums').forEach(el=>navObserver.observe(el));
+    $$('#hero,#about,#creative').forEach(el=>navObserver.observe(el));
   }
 
   // Service-card CTAs: open WhatsApp directly with the complete service description.

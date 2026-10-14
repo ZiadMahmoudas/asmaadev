@@ -330,3 +330,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     margin-top:1px!important;
   }
 }
+
+/* V14 — Snapchat promoted to the main contact row */
+.contact-ref-icon.snapchat{color:#d2a35f;border-color:rgba(210,163,95,.24);background:#121212}
+.contact-snapchat-card:hover .contact-ref-icon.snapchat{background:#d2a35f;color:#090909;border-color:#d2a35f}

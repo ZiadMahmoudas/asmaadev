@@ -1,0 +1,6 @@
+TIGRESS V14
+- Removed portfolio card 08 from services
+- Kept portfolio link in navbar/footer only
+- Albums registry contains furniture, lighting, chandeliers
+- Snapchat moved into the main/top contact cards
+- Instagram and TikTok remain in social row
