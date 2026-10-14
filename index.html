@@ -35,6 +35,7 @@ html,body,#main{background:#080808}
 
 </head>
 <body>
+<!-- TIGRESS HERO FLASH FIX: slide 0 is active in HTML before JS initializes. -->
 <svg aria-hidden="true" class="svg-sprite" xmlns="http://www.w3.org/2000/svg">
 <symbol id="icon-arrow" viewbox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"></path></symbol>
 <symbol id="icon-diagonal" viewbox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"></path></symbol>
@@ -82,8 +83,8 @@ html,body,#main{background:#080808}
 <!-- Sticky scroll narrative: IntersectionObserver gates updates; progress runs only while visible. -->
 <section aria-label="Tigress hero" class="hero-observer hero-showcase" data-hero-scene="" id="hero">
 <div class="hero-showcase-slides" id="heroShowcaseSlides">
- <article class="hero-showcase-slide" data-hero-slide="0">
-<img alt="Dark wood luxury living room with custom furniture" decoding="async" loading="lazy" src="assets/hero/new/16-dark-living.webp"/>
+ <article class="hero-showcase-slide is-active" data-hero-slide="0">
+<img fetchpriority="high" alt="Dark wood luxury living room with custom furniture" decoding="async" src="assets/hero/new/16-dark-living.webp"/>
 <div class="hero-showcase-shade"></div>
 <div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
 <h2 data-ar="نبني برؤية وننفذ بإتقان.." data-en="Built with vision. Executed with precision.">نبني برؤية وننفذ بإتقان..</h2>
@@ -116,7 +117,7 @@ html,body,#main{background:#080808}
 </div></div>
 </article>
 
-<article class="hero-showcase-slide is-active" data-hero-slide="4">
+<article class="hero-showcase-slide" data-hero-slide="4">
 <img alt="" fetchpriority="high" height="1280" src="assets/hero/quality.webp" width="1920"/>
 <div class="hero-showcase-shade"></div>
 <div class="hero-showcase-content wrap">

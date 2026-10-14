@@ -11,7 +11,7 @@
   const fill=root.querySelector('#heroShowcaseProgressFill');
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const cycle=6800;
-  let current=0;
+  let current=Math.max(0,slides.findIndex(slide=>slide.classList.contains('is-active')));
   let timer=0;
   let visible=true;
   let dragging=false;
@@ -98,5 +98,5 @@
 
   new MutationObserver(translate).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
   translate();
-  show(0);
+  show(current);
 })();
