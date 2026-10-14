@@ -1,0 +1,5 @@
+TIGRESS BUILD 20261014-v11
+- 7 service cards + portfolio card
+- removed placeholder/tiger albums
+- infinite arrow-only album carousel
+- no grab/drag interception

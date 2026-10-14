@@ -6,40 +6,22 @@
   const config = window.TIGRESS_CONFIG || {};
   const wa = String(config.whatsapp || '').replace(/\D/g, '');
 
-  // Change only the number here when you add/remove images.
-  // Files must be sequential: 01.webp, 02.webp, 03.webp ...
+  // Album names/counts live in js/albums-data.js.
+  // Add a new album there once; both the slider and this popup pick it up automatically.
   const makeFiles = (folder, total) =>
     Array.from({ length: total }, (_, i) =>
       `assets/luxury/${folder}/${String(i + 1).padStart(2, '0')}.webp`
     );
 
-  const albums = {
-    rugs: {
-      ar: 'تصميم وتفصيل أفخر أنواع السجاد',
-      en: 'Design & tailoring of premium rugs',
-      files: makeFiles('rugs', 6)
-    },
-    furniture: {
-      ar: 'تصميم وتنفيذ أجمل قطع الأثاث',
-      en: 'Design & execution of bespoke furniture',
-      files: makeFiles('furniture', 13)
-    },
-    chandeliers: {
-      ar: 'تصميم وتنفيذ الثريات الكلاسيك بجميع المقاسات',
-      en: 'Classic chandeliers in custom sizes',
-      files: makeFiles('chandeliers', 2)
-    },
-    lighting: {
-      ar: 'تصميم وتنفيذ جميع أنواع الإنارات',
-      en: 'Design & execution of all lighting types',
-      files: makeFiles('lighting', 22)
-    },
-    accessories: {
-      ar: 'نقتني لك أجمل قطع الإكسسوارات لتزيّن مساحتك',
-      en: 'Curated accessories to complete your space',
-      files: makeFiles('accessories', 6)
-    }
-  };
+  const albumList = Array.isArray(window.TIGRESS_ALBUMS) ? window.TIGRESS_ALBUMS : [];
+  const albums = Object.fromEntries(
+    albumList.map(item => [item.key, {
+      ...item,
+      files: Array.isArray(item.files) && item.files.length
+        ? item.files
+        : makeFiles(item.folder, item.total)
+    }])
+  );
 
   const bookModal = qs('#luxBookModal');
   const book = qs('#luxBook');

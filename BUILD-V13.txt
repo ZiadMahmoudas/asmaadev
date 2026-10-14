@@ -1,0 +1,4 @@
+TIGRESS V13
+- Removed visible build/debug text above navbar.
+- Removed portfolio new-tab pill from albums section.
+- Portfolio links still open PDF in a new tab, with concise label only.

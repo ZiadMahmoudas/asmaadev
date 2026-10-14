@@ -1,0 +1,7 @@
+TIGRESS BUILD 20261014-v12
+- Album carousel shows exactly 2 complete cards on desktop (1 on mobile).
+- Endless arrow navigation moves exactly 1 album per click.
+- No mouse grab/drag interception; album cards remain directly clickable.
+- Chandeliers album restored (2 images).
+- Clear portfolio button beside album controls opens PDF in a new tab.
+- Album configuration centralized in js/albums-data.js; add future albums there only.

@@ -1,0 +1,6 @@
+TIGRESS V9 — 2026-10-14
+- Removed vision/mission cards.
+- Removed embedded portfolio PDF section.
+- Portfolio links open PDF directly in a new tab.
+- Removed quote quick-contact cards.
+- Services unchanged.

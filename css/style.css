@@ -2073,3 +2073,25 @@ html[dir="ltr"] .social-ref-row{direction:ltr}
     line-height:1.35;
   }
 }
+
+
+/* =========================================================
+   TIGRESS V11 — 7 services + portfolio tab
+   ========================================================= */
+.services-ref-grid .service-ref-card{min-height:430px}
+.service-ref-card-portfolio{
+  border-color:rgba(210,163,95,.48)!important;
+  background:radial-gradient(circle at 12% 0%,rgba(210,163,95,.11),transparent 34%),#171717!important;
+}
+.service-ref-card-portfolio:hover{
+  border-color:#d2a35f!important;
+  background:radial-gradient(circle at 12% 0%,rgba(210,163,95,.16),transparent 36%),#1b1b1b!important;
+}
+.service-portfolio-cta{
+  width:max-content;max-width:100%;padding:11px 15px;border:1px solid rgba(210,163,95,.5);border-radius:999px;
+  background:#101010;color:#e0b870!important;
+}
+.service-portfolio-cta:hover{background:#d2a35f;color:#090909!important}
+.service-portfolio-cta i{transform:none!important}
+@media(min-width:1001px){.service-ref-card-portfolio{grid-column:span 2}}
+@media(max-width:1000px){.service-ref-card-portfolio{grid-column:auto}}

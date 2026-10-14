@@ -1,0 +1,12 @@
+TIGRESS V10 — Dedicated Albums Slider
+2026-10-14
+
+Changes:
+- Removed album buttons from service cards.
+- Added a dedicated one-row horizontal albums slider after Services.
+- Albums: rugs, furniture, chandeliers, lighting, accessories.
+- Each album card opens the existing interactive book popup.
+- Added drag/touch scrolling, arrow controls, snap behavior and progress line.
+- Repointed luxury furnishing navigation/hero links to the new albums section.
+- Updated section numbering: Albums 03, Request a Quote 04.
+- Added Arabic/English copy for the albums section.
