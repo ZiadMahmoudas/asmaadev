@@ -18,10 +18,10 @@
 <!-- Font Awesome optional CDN; interface SVG icons work even completely offline. -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" media="print" onload="this.media='all'" referrerpolicy="no-referrer" rel="stylesheet"/>
 <link href="css/style.css?v=20261014-v9" rel="stylesheet"/>
-<script defer="" src="js/config.js?v=20261014-v11"></script>
+<script defer="" src="js/config.js?v=20261015-v14"></script><script defer="" src="js/supabase-config.js?v=20261016-cms1"></script><script defer="" src="js/cms-boot.js?v=20261016-cms1"></script>
 <script defer="" src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
-<script defer="" src="js/app.js?v=20261014-v11"></script>
-<script defer="" src="js/lenis-init.js?v=20261014-v11"></script>
+<script defer="" src="js/app.js?v=20261015-v14"></script>
+<script defer="" src="js/lenis-init.js?v=20261015-v14"></script>
 <style>
 html,body,#main{background:#080808}
 </style>
@@ -29,13 +29,12 @@ html,body,#main{background:#080808}
 html,body,#main{background:#080808}
 #hero{margin-bottom:-1px}
 </style>
-<link href="css/luxury-gallery.css?v=20261014-v11" rel="stylesheet"/>
-<link href="css/hero-showcase.css?v=20261014-v11" rel="stylesheet"/>
-<link href="css/tigress-graphite-theme.css?v=20261014-v11" rel="stylesheet"/>
-
+<link href="css/luxury-gallery.css?v=20261015-v14" rel="stylesheet"/>
+<link href="css/hero-showcase.css?v=20261015-v14" rel="stylesheet"/>
+<link href="css/tigress-graphite-theme.css?v=20261015-v14" rel="stylesheet"/>
 </head>
 <body>
- TIGRESS BUILD 20261014-v11: service restructure + infinite album arrows + portfolio tab 
+<!-- TIGRESS HERO FLASH FIX: slide 0 is active in HTML before JS initializes. -->
 <svg aria-hidden="true" class="svg-sprite" xmlns="http://www.w3.org/2000/svg">
 <symbol id="icon-arrow" viewbox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"></path></symbol>
 <symbol id="icon-diagonal" viewbox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"></path></symbol>
@@ -61,7 +60,6 @@ html,body,#main{background:#080808}
 <a class="nav-item" data-t="navAbout" href="#about">من نحن</a>
 <a class="nav-item" data-t="navPortfolio" href="assets/portfolio/tigress-portfolio.pdf" rel="noopener" target="_blank">البورتفوليو</a>
 <a class="nav-item" data-t="navCreative" href="#creative">مساحات الإبداع</a>
-
 </nav>
 <div class="header-actions">
 <button aria-label="Switch to English" class="lang-control" id="langSwitch" type="button"><svg class="ico"><use href="#icon-globe"></use></svg><span id="langDisplay">EN</span></button>
@@ -74,7 +72,6 @@ html,body,#main{background:#080808}
 <a data-t="navAbout" href="#about">من نحن</a>
 <a data-t="navPortfolio" href="assets/portfolio/tigress-portfolio.pdf" rel="noopener" target="_blank">البورتفوليو</a>
 <a data-t="navCreative" href="#creative">مساحات الإبداع</a>
-
 <a data-t="navContact" href="#quote">لنتحدث</a>
 <p class="mobile-signature"><span data-t="mobileWorld">عالم TIGRESS</span> <span>✳</span></p>
 </nav>
@@ -84,6 +81,38 @@ html,body,#main{background:#080808}
 <section aria-label="Tigress hero" class="hero-observer hero-showcase" data-hero-scene="" id="hero">
 <div class="hero-showcase-slides" id="heroShowcaseSlides">
 <article class="hero-showcase-slide is-active" data-hero-slide="0">
+<img alt="Dark wood luxury living room with custom furniture" decoding="async" fetchpriority="high" src="assets/hero/new/16-dark-living.webp"/>
+<div class="hero-showcase-shade"></div>
+<div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
+<h2 data-ar="نبني برؤية وننفذ بإتقان.." data-en="Built with vision. Executed with precision.">نبني برؤية وننفذ بإتقان..</h2>
+<div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="تحدث معنا" data-en="Talk to us">تحدث معنا</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="assets/portfolio/tigress-portfolio.pdf" rel="noopener" target="_blank"><span data-ar="استعرض البورتفوليو" data-en="Explore portfolio">استعرض البورتفوليو</span></a></div>
+</div></div>
+</article>
+<article class="hero-showcase-slide" data-hero-slide="1">
+<img alt="Construction site with drawings and safety helmet" decoding="async" loading="lazy" src="assets/hero/new/15-construction.webp"/>
+<div class="hero-showcase-shade"></div>
+<div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
+<h2 data-ar="من المخطط إلى الواقع" data-en="From blueprint to reality">من المخطط إلى الواقع</h2>
+<div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="اطلب عرض سعر" data-en="Request a quote">اطلب عرض سعر</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="#creative"><span data-ar="إدارة وتنفيذ المشاريع" data-en="Project management &amp; execution">إدارة وتنفيذ المشاريع</span></a></div>
+</div></div>
+</article>
+<article class="hero-showcase-slide" data-hero-slide="2">
+<img alt="Classical chandeliers in a luxury mirrored interior" decoding="async" loading="lazy" src="assets/hero/new/13-chandelier-hall.webp"/>
+<div class="hero-showcase-shade"></div>
+<div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
+<h2 data-ar="ثريات تصنع نقطة الضوء" data-en="Chandeliers that define the light">ثريات تصنع نقطة الضوء</h2>
+<div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="اطلب عرض سعر" data-en="Request a quote">اطلب عرض سعر</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="#creative"><span data-ar="حلول الإنارة" data-en="Lighting solutions">حلول الإنارة</span></a></div>
+</div></div>
+</article>
+<article class="hero-showcase-slide" data-hero-slide="3">
+<img alt="Classical architectural facade and exterior detailing" decoding="async" loading="lazy" src="assets/hero/new/14-classic-facade.webp"/>
+<div class="hero-showcase-shade"></div>
+<div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
+<h2 data-ar="تنفيذ معماري يليق بالتفاصيل" data-en="Architectural execution worthy of every detail">تنفيذ معماري يليق بالتفاصيل</h2>
+<div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="ابدأ مشروعك" data-en="Start your project">ابدأ مشروعك</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="#creative"><span data-ar="المقاولات والتنفيذ" data-en="Contracting &amp; execution">المقاولات والتنفيذ</span></a></div>
+</div></div>
+</article>
+<article class="hero-showcase-slide" data-hero-slide="4">
 <img alt="" fetchpriority="high" height="1280" src="assets/hero/quality.webp" width="1920"/>
 <div class="hero-showcase-shade"></div>
 <div class="hero-showcase-content wrap">
@@ -96,7 +125,7 @@ html,body,#main{background:#080808}
 </div>
 </div>
 </article>
-<article class="hero-showcase-slide" data-hero-slide="1">
+<article class="hero-showcase-slide" data-hero-slide="5">
 <img alt="" decoding="async" height="1080" loading="eager" src="assets/hero/vision.webp" width="1920"/>
 <div class="hero-showcase-shade"></div>
 <div class="hero-showcase-content wrap">
@@ -109,7 +138,7 @@ html,body,#main{background:#080808}
 </div>
 </div>
 </article>
-<article class="hero-showcase-slide" data-hero-slide="2">
+<article class="hero-showcase-slide" data-hero-slide="6">
 <img alt="" decoding="async" height="1280" loading="eager" src="assets/hero/solutions.webp" width="1920"/>
 <div class="hero-showcase-shade"></div>
 <div class="hero-showcase-content wrap">
@@ -122,7 +151,7 @@ html,body,#main{background:#080808}
 </div>
 </div>
 </article>
-<article class="hero-showcase-slide" data-hero-slide="3">
+<article class="hero-showcase-slide" data-hero-slide="7">
 <img alt="" decoding="async" height="1280" loading="eager" src="assets/hero/partner.webp" width="1920"/>
 <div class="hero-showcase-shade"></div>
 <div class="hero-showcase-content wrap">
@@ -135,7 +164,7 @@ html,body,#main{background:#080808}
 </div>
 </div>
 </article>
-<article class="hero-showcase-slide" data-hero-slide="4">
+<article class="hero-showcase-slide" data-hero-slide="8">
 <img alt="Luxury interior with sculptural wall panels and bespoke seating" decoding="async" loading="lazy" src="assets/hero/new/05-wall-panels.webp"/>
 <div class="hero-showcase-shade"></div>
 <div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
@@ -143,7 +172,7 @@ html,body,#main{background:#080808}
 <div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="اطلب عرض سعر" data-en="Request a quote">اطلب عرض سعر</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="#creative"><span data-ar="تعرّف على خدماتنا" data-en="Explore our services">تعرّف على خدماتنا</span></a></div>
 </div></div>
 </article>
-<article class="hero-showcase-slide" data-hero-slide="5">
+<article class="hero-showcase-slide" data-hero-slide="9">
 <img alt="Luxury interior with statement pendant lighting" decoding="async" loading="lazy" src="assets/hero/new/06-pendant-interior.webp"/>
 <div class="hero-showcase-shade"></div>
 <div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
@@ -151,7 +180,7 @@ html,body,#main{background:#080808}
 <div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="اطلب عرض سعر" data-en="Request a quote">اطلب عرض سعر</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="#creative"><span data-ar="اكتشف خدماتنا" data-en="Discover our services">اكتشف خدماتنا</span></a></div>
 </div></div>
 </article>
-<article class="hero-showcase-slide" data-hero-slide="6">
+<article class="hero-showcase-slide" data-hero-slide="10">
 <img alt="Warm wood luxury interior with custom furniture" decoding="async" loading="lazy" src="assets/hero/new/07-warm-wood.webp"/>
 <div class="hero-showcase-shade"></div>
 <div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
@@ -159,7 +188,7 @@ html,body,#main{background:#080808}
 <div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="ابدأ مشروعك" data-en="Start your project">ابدأ مشروعك</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="assets/portfolio/tigress-portfolio.pdf" rel="noopener" target="_blank"><span data-ar="شاهد البورتفوليو" data-en="View portfolio">شاهد البورتفوليو</span></a></div>
 </div></div>
 </article>
-<article class="hero-showcase-slide" data-hero-slide="7">
+<article class="hero-showcase-slide" data-hero-slide="11">
 <img alt="Classic luxury dining interior" decoding="async" loading="lazy" src="assets/hero/new/08-classic-dining.webp"/>
 <div class="hero-showcase-shade"></div>
 <div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
@@ -167,7 +196,7 @@ html,body,#main{background:#080808}
 <div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="اطلب عرض سعر" data-en="Request a quote">اطلب عرض سعر</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="#creative"><span data-ar="تعرّف على خدماتنا" data-en="Explore our services">تعرّف على خدماتنا</span></a></div>
 </div></div>
 </article>
-<article class="hero-showcase-slide" data-hero-slide="8">
+<article class="hero-showcase-slide" data-hero-slide="12">
 <img alt="Ornate classic wall moulding and gypsum detailing" decoding="async" loading="lazy" src="assets/hero/new/09-ornate-wall.webp"/>
 <div class="hero-showcase-shade"></div>
 <div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
@@ -175,7 +204,7 @@ html,body,#main{background:#080808}
 <div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="اطلب الخدمة" data-en="Request the service">اطلب الخدمة</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="#creative"><span data-ar="الديكورات والتشطيبات" data-en="Décor &amp; finishing">الديكورات والتشطيبات</span></a></div>
 </div></div>
 </article>
-<article class="hero-showcase-slide" data-hero-slide="9">
+<article class="hero-showcase-slide" data-hero-slide="13">
 <img alt="Bespoke wood wall detailing in a luxury interior" decoding="async" loading="lazy" src="assets/hero/new/10-wood-detail.webp"/>
 <div class="hero-showcase-shade"></div>
 <div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
@@ -183,7 +212,7 @@ html,body,#main{background:#080808}
 <div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="ابدأ مشروعك" data-en="Start your project">ابدأ مشروعك</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="#creative"><span data-ar="استكشف التنفيذ" data-en="Explore execution">استكشف التنفيذ</span></a></div>
 </div></div>
 </article>
-<article class="hero-showcase-slide" data-hero-slide="10">
+<article class="hero-showcase-slide" data-hero-slide="14">
 <img alt="Refined luxury lounge furnishing" decoding="async" loading="lazy" src="assets/hero/new/11-luxury-lounge.webp"/>
 <div class="hero-showcase-shade"></div>
 <div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
@@ -191,44 +220,12 @@ html,body,#main{background:#080808}
 <div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="اطلب عرض سعر" data-en="Request a quote">اطلب عرض سعر</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="#creative"><span data-ar="تعرّف على خدماتنا" data-en="Explore our services">تعرّف على خدماتنا</span></a></div>
 </div></div>
 </article>
-<article class="hero-showcase-slide" data-hero-slide="11">
+<article class="hero-showcase-slide" data-hero-slide="15">
 <img alt="Luxury marble hall with classical architectural details" decoding="async" loading="lazy" src="assets/hero/new/12-marble-hall.webp"/>
 <div class="hero-showcase-shade"></div>
 <div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
 <h2 data-ar="الفخامة تبدأ من اختيار الخامة" data-en="Luxury begins with the right material">الفخامة تبدأ من اختيار الخامة</h2>
 <div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="تواصل معنا" data-en="Contact us">تواصل معنا</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="assets/portfolio/tigress-portfolio.pdf" rel="noopener" target="_blank"><span data-ar="شاهد أعمالنا" data-en="See our work">شاهد أعمالنا</span></a></div>
-</div></div>
-</article>
-<article class="hero-showcase-slide" data-hero-slide="12">
-<img alt="Classical chandeliers in a luxury mirrored interior" decoding="async" loading="lazy" src="assets/hero/new/13-chandelier-hall.webp"/>
-<div class="hero-showcase-shade"></div>
-<div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
-<h2 data-ar="ثريات تصنع نقطة الضوء" data-en="Chandeliers that define the light">ثريات تصنع نقطة الضوء</h2>
-<div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="اطلب عرض سعر" data-en="Request a quote">اطلب عرض سعر</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="#creative"><span data-ar="حلول الإنارة" data-en="Lighting solutions">حلول الإنارة</span></a></div>
-</div></div>
-</article>
-<article class="hero-showcase-slide" data-hero-slide="13">
-<img alt="Classical architectural facade and exterior detailing" decoding="async" loading="lazy" src="assets/hero/new/14-classic-facade.webp"/>
-<div class="hero-showcase-shade"></div>
-<div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
-<h2 data-ar="تنفيذ معماري يليق بالتفاصيل" data-en="Architectural execution worthy of every detail">تنفيذ معماري يليق بالتفاصيل</h2>
-<div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="ابدأ مشروعك" data-en="Start your project">ابدأ مشروعك</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="#creative"><span data-ar="المقاولات والتنفيذ" data-en="Contracting &amp; execution">المقاولات والتنفيذ</span></a></div>
-</div></div>
-</article>
-<article class="hero-showcase-slide" data-hero-slide="14">
-<img alt="Construction site with drawings and safety helmet" decoding="async" loading="lazy" src="assets/hero/new/15-construction.webp"/>
-<div class="hero-showcase-shade"></div>
-<div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
-<h2 data-ar="من المخطط إلى الواقع" data-en="From blueprint to reality">من المخطط إلى الواقع</h2>
-<div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="اطلب عرض سعر" data-en="Request a quote">اطلب عرض سعر</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="#creative"><span data-ar="إدارة وتنفيذ المشاريع" data-en="Project management &amp; execution">إدارة وتنفيذ المشاريع</span></a></div>
-</div></div>
-</article>
-<article class="hero-showcase-slide" data-hero-slide="15">
-<img alt="Dark wood luxury living room with custom furniture" decoding="async" loading="lazy" src="assets/hero/new/16-dark-living.webp"/>
-<div class="hero-showcase-shade"></div>
-<div class="hero-showcase-content wrap"><div class="hero-showcase-copy">
-<h2 data-ar="هوية متكاملة في كل زاوية" data-en="A complete identity in every corner">هوية متكاملة في كل زاوية</h2>
-<div class="hero-showcase-actions"><a class="hero-showcase-cta hero-showcase-cta-primary" href="#quote"><span data-ar="تحدث معنا" data-en="Talk to us">تحدث معنا</span><i class="fa-solid fa-arrow-left"></i></a><a class="hero-showcase-cta hero-showcase-cta-ghost" href="assets/portfolio/tigress-portfolio.pdf" rel="noopener" target="_blank"><span data-ar="استعرض البورتفوليو" data-en="Explore portfolio">استعرض البورتفوليو</span></a></div>
 </div></div>
 </article>
 </div>
@@ -272,11 +269,9 @@ html,body,#main{background:#080808}
 <section aria-labelledby="creativeTitle" class="section services-ref" id="creative">
 <div class="wrap">
 <div class="section-ref-head inview" data-reveal="up"><p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="creativeKicker">02 — خدماتنا</span></p><h2 data-t="creativeTitle" id="creativeTitle">حلول متكاملة لكل مراحل مشروعك</h2><p data-t="creativeDesc">نقدّم مجموعة متكاملة من خدمات التصميم والتنفيذ، ونعتني بكل مرحلة من الفكرة الأولى حتى أدق تفاصيل التسليم.</p></div>
-<div class="services-ref-grid"><article class="service-ref-card inview" data-service="contracting"><div class="service-ref-top"><span class="service-ref-num">01</span><span class="service-ref-icon"><i class="fa-solid fa-person-digging"></i></span></div><h3 data-t="svc1h">المقاولات العامة</h3><p data-t="svc1p">خدمات مقاولات وتنفيذ متكاملة للمشاريع السكنية والتجارية والحكومية، من الأعمال الإنشائية حتى التشطيبات النهائية.</p><ul class="service-ref-tags"><li data-t="svc1a">الأعمال الإنشائية</li><li data-t="svc1b">التشطيبات الداخلية والخارجية</li><li data-t="svc1c">الترميم والتأهيل</li><li data-t="svc1d">المشاريع التجارية والحكومية</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-wa-cta" data-wa-service="contracting" href="https://wa.me/966532891910" rel="noopener" target="_blank"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a></div></article><article class="service-ref-card inview" data-service="interior"><div class="service-ref-top"><span class="service-ref-num">02</span><span class="service-ref-icon"><i class="fa-solid fa-pen-ruler"></i></span></div><h3 data-t="svc2h">التصميم الداخلي</h3><p data-t="svc2p">نحوّل احتياجات كل مساحة إلى تصميم داخلي متوازن وعملي ومميز، مع عناية بالتوزيع والخامات والتفاصيل حتى مرحلة التنفيذ.</p><ul class="service-ref-tags"><li data-t="svc2a">توزيع المساحات</li><li data-t="svc2b">اختيار الخامات والتشطيبات</li><li data-t="svc2c">الألوان والتفاصيل</li><li data-t="svc2d">المخططات التنفيذية</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-wa-cta" data-wa-service="interior" href="https://wa.me/966532891910" rel="noopener" target="_blank"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a></div></article><article class="service-ref-card inview" data-service="commercial"><div class="service-ref-top"><span class="service-ref-num">03</span><span class="service-ref-icon"><i class="fa-solid fa-building"></i></span></div><h3 data-t="svc3h">المشاريع التجارية</h3><p data-t="svc3p">حلول متكاملة لتصميم وتجهيز وتنفيذ المشاريع التجارية بما يخدم هوية النشاط وتجربة العميل، من تخطيط المساحة حتى التسليم النهائي.</p><ul class="service-ref-tags"><li data-t="svc3a">المتاجر والمعارض</li><li data-t="svc3b">المطاعم والمقاهي</li><li data-t="svc3c">المكاتب ومساحات العمل</li><li data-t="svc3d">التجهيز المتكامل</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-wa-cta" data-wa-service="commercial" href="https://wa.me/966532891910" rel="noopener" target="_blank"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a></div></article><article class="service-ref-card inview" data-service="renovation"><div class="service-ref-top"><span class="service-ref-num">04</span><span class="service-ref-icon"><i class="fa-solid fa-screwdriver-wrench"></i></span></div><h3 data-t="svc4h">ترميم المباني السكنية والتجارية</h3><p data-t="svc4p">إعادة تأهيل وترميم المباني السكنية والتجارية مع معالجة العناصر المتضررة وتجديد التشطيبات ورفع كفاءة المساحات بما يحافظ على جودة المبنى وهويته.</p><ul class="service-ref-tags"><li data-t="svc4a">إعادة التأهيل</li><li data-t="svc4b">معالجة التلف والتشققات</li><li data-t="svc4c">تجديد الواجهات والتشطيبات</li><li data-t="svc4d">تحديث الأنظمة والخدمات</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-wa-cta" data-wa-service="renovation" href="https://wa.me/966532891910" rel="noopener" target="_blank"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a></div></article><article class="service-ref-card inview" data-service="furnishing"><div class="service-ref-top"><span class="service-ref-num">05</span><span class="service-ref-icon"><i class="fa-solid fa-couch"></i></span></div><h3 data-t="svc5h">التأثيث الفاخر</h3><p data-t="svc5p">على استعداد تام لتأثيث جميع الفراغات، من الغرف الصغيرة حتى القصور الفاخرة وقاعات الأفراح، بحلول متكاملة وقطع تُصمّم وتُنفّذ بما يناسب هوية المكان.</p><ul class="service-ref-tags"><li data-t="svc5a">الغرف والمساحات الخاصة</li><li data-t="svc5b">الفلل والقصور الفاخرة</li><li data-t="svc5c">قاعات الأفراح</li><li data-t="svc5d">تأثيث حسب الطلب</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-wa-cta" data-wa-service="furnishing" href="https://wa.me/966532891910" rel="noopener" target="_blank"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a></div></article><article class="service-ref-card inview" data-service="supervision"><div class="service-ref-top"><span class="service-ref-num">06</span><span class="service-ref-icon"><i class="fa-solid fa-clipboard"></i></span></div><h3 data-t="svc6h">إدارة المواقع والإشراف</h3><p data-t="svc6p">إدارة مواقع المشاريع والإشراف على التنفيذ لضمان الجودة والالتزام بالمخططات والمواصفات والتنسيق والجدول الزمني.</p><ul class="service-ref-tags"><li data-t="svc6a">إدارة المواقع</li><li data-t="svc6b">الإشراف على التنفيذ</li><li data-t="svc6c">ضبط الجودة</li><li data-t="svc6d">متابعة الجدول الزمني</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-wa-cta" data-wa-service="supervision" href="https://wa.me/966532891910" rel="noopener" target="_blank"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a></div></article><article class="service-ref-card inview" data-service="booths"><div class="service-ref-top"><span class="service-ref-num">07</span><span class="service-ref-icon"><i class="fa-solid fa-store"></i></span></div><h3 data-t="svc7h">تصميم وتنفيذ البوثات</h3><p data-t="svc7p">حلول متكاملة لبوثات المعارض والفعاليات والمهرجانات، من الفكرة والتصميم والتصنيع حتى التركيب والتسليم.</p><ul class="service-ref-tags"><li data-t="svc7a">تصميم البوث</li><li data-t="svc7b">التصنيع</li><li data-t="svc7c">التركيب</li><li data-t="svc7d">المعارض والفعاليات</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-wa-cta" data-wa-service="booths" href="https://wa.me/966532891910" rel="noopener" target="_blank"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a></div></article><article class="service-ref-card service-ref-card-portfolio inview"><div class="service-ref-top"><span class="service-ref-num">08</span><span class="service-ref-icon"><i class="fa-solid fa-file-pdf"></i></span></div><h3 data-t="svc8h">البورتفوليو</h3><p data-t="svc8p">تصفّح ملف أعمال TIGRESS كاملًا في تبويب جديد، واستعرض المشاريع والتصاميم براحتك دون التأثير على سرعة الصفحة.</p><ul class="service-ref-tags"><li data-t="svc8a">أعمال مختارة</li><li data-t="svc8b">مشاريع وتصاميم</li><li data-t="svc8c">تصفح كامل</li><li data-t="svc8d">يفتح في تبويب جديد</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-portfolio-cta" href="assets/portfolio/tigress-portfolio.pdf" rel="noopener" target="_blank"><span data-t="openPortfolioNew">فتح البورتفوليو في تبويب جديد</span><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article></div>
+<div class="services-ref-grid"><article class="service-ref-card inview" data-service="contracting"><div class="service-ref-top"><span class="service-ref-num">01</span><span class="service-ref-icon"><i class="fa-solid fa-person-digging"></i></span></div><h3 data-t="svc1h">المقاولات العامة</h3><p data-t="svc1p">خدمات مقاولات وتنفيذ متكاملة للمشاريع السكنية والتجارية والحكومية، من الأعمال الإنشائية حتى التشطيبات النهائية.</p><ul class="service-ref-tags"><li data-t="svc1a">الأعمال الإنشائية</li><li data-t="svc1b">التشطيبات الداخلية والخارجية</li><li data-t="svc1c">الترميم والتأهيل</li><li data-t="svc1d">المشاريع التجارية والحكومية</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-wa-cta" data-wa-service="contracting" href="https://wa.me/966532891910" rel="noopener" target="_blank"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a></div></article><article class="service-ref-card inview" data-service="interior"><div class="service-ref-top"><span class="service-ref-num">02</span><span class="service-ref-icon"><i class="fa-solid fa-pen-ruler"></i></span></div><h3 data-t="svc2h">التصميم الداخلي</h3><p data-t="svc2p">نحوّل احتياجات كل مساحة إلى تصميم داخلي متوازن وعملي ومميز، مع عناية بالتوزيع والخامات والتفاصيل حتى مرحلة التنفيذ.</p><ul class="service-ref-tags"><li data-t="svc2a">توزيع المساحات</li><li data-t="svc2b">اختيار الخامات والتشطيبات</li><li data-t="svc2c">الألوان والتفاصيل</li><li data-t="svc2d">المخططات التنفيذية</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-wa-cta" data-wa-service="interior" href="https://wa.me/966532891910" rel="noopener" target="_blank"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a></div></article><article class="service-ref-card inview" data-service="commercial"><div class="service-ref-top"><span class="service-ref-num">03</span><span class="service-ref-icon"><i class="fa-solid fa-building"></i></span></div><h3 data-t="svc3h">المشاريع التجارية</h3><p data-t="svc3p">حلول متكاملة لتصميم وتجهيز وتنفيذ المشاريع التجارية بما يخدم هوية النشاط وتجربة العميل، من تخطيط المساحة حتى التسليم النهائي.</p><ul class="service-ref-tags"><li data-t="svc3a">المتاجر والمعارض</li><li data-t="svc3b">المطاعم والمقاهي</li><li data-t="svc3c">المكاتب ومساحات العمل</li><li data-t="svc3d">التجهيز المتكامل</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-wa-cta" data-wa-service="commercial" href="https://wa.me/966532891910" rel="noopener" target="_blank"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a></div></article><article class="service-ref-card inview" data-service="renovation"><div class="service-ref-top"><span class="service-ref-num">04</span><span class="service-ref-icon"><i class="fa-solid fa-screwdriver-wrench"></i></span></div><h3 data-t="svc4h">ترميم المباني السكنية والتجارية</h3><p data-t="svc4p">إعادة تأهيل وترميم المباني السكنية والتجارية مع معالجة العناصر المتضررة وتجديد التشطيبات ورفع كفاءة المساحات بما يحافظ على جودة المبنى وهويته.</p><ul class="service-ref-tags"><li data-t="svc4a">إعادة التأهيل</li><li data-t="svc4b">معالجة التلف والتشققات</li><li data-t="svc4c">تجديد الواجهات والتشطيبات</li><li data-t="svc4d">تحديث الأنظمة والخدمات</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-wa-cta" data-wa-service="renovation" href="https://wa.me/966532891910" rel="noopener" target="_blank"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a></div></article><article class="service-ref-card inview" data-service="furnishing"><div class="service-ref-top"><span class="service-ref-num">05</span><span class="service-ref-icon"><i class="fa-solid fa-couch"></i></span></div><h3 data-t="svc5h">التأثيث الفاخر</h3><p data-t="svc5p">على استعداد تام لتأثيث جميع الفراغات، من الغرف الصغيرة حتى القصور الفاخرة وقاعات الأفراح، بحلول متكاملة وقطع تُصمّم وتُنفّذ بما يناسب هوية المكان.</p><ul class="service-ref-tags"><li data-t="svc5a">الغرف والمساحات الخاصة</li><li data-t="svc5b">الفلل والقصور الفاخرة</li><li data-t="svc5c">قاعات الأفراح</li><li data-t="svc5d">تأثيث حسب الطلب</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-wa-cta" data-wa-service="furnishing" href="https://wa.me/966532891910" rel="noopener" target="_blank"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a></div></article><article class="service-ref-card inview" data-service="supervision"><div class="service-ref-top"><span class="service-ref-num">06</span><span class="service-ref-icon"><i class="fa-solid fa-clipboard"></i></span></div><h3 data-t="svc6h">إدارة المواقع والإشراف</h3><p data-t="svc6p">إدارة مواقع المشاريع والإشراف على التنفيذ لضمان الجودة والالتزام بالمخططات والمواصفات والتنسيق والجدول الزمني.</p><ul class="service-ref-tags"><li data-t="svc6a">إدارة المواقع</li><li data-t="svc6b">الإشراف على التنفيذ</li><li data-t="svc6c">ضبط الجودة</li><li data-t="svc6d">متابعة الجدول الزمني</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-wa-cta" data-wa-service="supervision" href="https://wa.me/966532891910" rel="noopener" target="_blank"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a></div></article><article class="service-ref-card inview" data-service="booths"><div class="service-ref-top"><span class="service-ref-num">07</span><span class="service-ref-icon"><i class="fa-solid fa-store"></i></span></div><h3 data-t="svc7h">تصميم وتنفيذ البوثات</h3><p data-t="svc7p">حلول متكاملة لبوثات المعارض والفعاليات والمهرجانات، من الفكرة والتصميم والتصنيع حتى التركيب والتسليم.</p><ul class="service-ref-tags"><li data-t="svc7a">تصميم البوث</li><li data-t="svc7b">التصنيع</li><li data-t="svc7c">التركيب</li><li data-t="svc7d">المعارض والفعاليات</li></ul><div class="service-ref-actions"><a class="service-ref-cta service-wa-cta" data-wa-service="booths" href="https://wa.me/966532891910" rel="noopener" target="_blank"><span data-t="orderService">اطلب الخدمة عبر واتساب</span><i class="fa-solid fa-arrow-left service-cta-arrow"></i></a></div></article></div>
 </div>
 </section>
-
-
 <section aria-labelledby="quoteTitle" class="section quote-ref" id="quote">
 <div class="wrap quote-ref-grid">
 <div class="quote-ref-copy inview" data-reveal="right">
@@ -302,15 +297,14 @@ html,body,#main{background:#080808}
 <div class="wrap">
 <div class="section-ref-head inview" data-reveal="up"><p class="micro-label micro-gold"><span class="label-dash"></span><span data-t="contactKicker">تواصل معنا</span></p><h2 data-t="contactTitle" id="contactTitle">يسعدنا تواصلك</h2><p data-t="contactP">تواصل معنا بأحد الوسائل المتاحة.</p></div>
 <div class="contact-ref-grid">
-<a class="contact-ref-card inview" data-reveal="right" href="https://wa.me/966532891910" id="contactWa" rel="noopener" target="_blank"><span class="contact-ref-icon wa"><i class="fa-brands fa-whatsapp"></i></span><span><small data-t="whatsappLabel">واتساب</small><b dir="ltr">053 289 1910</b></span></a>
+<a class="contact-ref-card inview contact-snapchat-card" data-reveal="right" href="https://snapchat.com/t/a6NlrbQC" rel="noopener" target="_blank"><span class="contact-ref-icon snapchat"><i class="fa-brands fa-snapchat"></i></span><span><small data-t="socialSnapchat">سناب شات</small><b>Tigress</b></span></a>
+<a class="contact-ref-card inview" data-reveal="up" href="https://wa.me/966532891910" id="contactWa" rel="noopener" target="_blank"><span class="contact-ref-icon wa"><i class="fa-brands fa-whatsapp"></i></span><span><small data-t="whatsappLabel">واتساب</small><b dir="ltr">053 289 1910</b></span></a>
 <a class="contact-ref-card inview" data-reveal="up" href="tel:+966532891910" id="contactCall"><span class="contact-ref-icon"><i class="fa-solid fa-phone"></i></span><span><small data-t="callLabel">اتصال</small><b dir="ltr">053 289 1910</b></span></a>
-<a class="contact-ref-card inview" data-reveal="up" href="mailto:tigress-designs@hotmail.com"><span class="contact-ref-icon"><i class="fa-regular fa-envelope"></i></span><span><small data-t="emailLabelShort">البريد الإلكتروني</small><b>tigress-designs@hotmail.com</b></span></a>
-<a class="contact-ref-card inview" data-reveal="left" href="https://www.instagram.com/tigress_designs1?dlrf=cGh0anlicnN6b2Js" rel="noopener" target="_blank"><span class="contact-ref-icon instagram"><i class="fa-brands fa-instagram"></i></span><span><small data-t="socialInstagram">إنستقرام</small><b>@tigress_designs1</b></span></a>
+<a class="contact-ref-card inview" data-reveal="left" href="mailto:tigress-designs@hotmail.com"><span class="contact-ref-icon"><i class="fa-regular fa-envelope"></i></span><span><small data-t="emailLabelShort">البريد الإلكتروني</small><b>tigress-designs@hotmail.com</b></span></a>
 </div>
 <div class="social-ref-row inview" data-reveal="up">
-<a href="https://snapchat.com/t/a6NlrbQC" rel="noopener" target="_blank"><i class="fa-brands fa-snapchat"></i><span><b data-t="socialSnapchat">سناب شات</b><small>Tigress</small></span></a>
-<a href="https://www.tiktok.com/@tigress_designs?_r=1&amp;_t=ZS-9AV0Xi3Shsn" rel="noopener" target="_blank"><i class="fa-brands fa-tiktok"></i><span><b data-t="socialTikTok">تيك توك</b><small>@tigress_designs</small></span></a>
 <a href="https://www.instagram.com/tigress_designs1?dlrf=cGh0anlicnN6b2Js" rel="noopener" target="_blank"><i class="fa-brands fa-instagram"></i><span><b data-t="socialInstagram">إنستقرام</b><small>@tigress_designs1</small></span></a>
+<a href="https://www.tiktok.com/@tigress_designs?_r=1&amp;_t=ZS-9AV0Xi3Shsn" rel="noopener" target="_blank"><i class="fa-brands fa-tiktok"></i><span><b data-t="socialTikTok">تيك توك</b><small>@tigress_designs</small></span></a>
 </div>
 </div>
 </section>
@@ -334,7 +328,6 @@ html,body,#main{background:#080808}
 <a data-t="navHome" href="#hero">الرئيسية</a>
 <a data-t="navAbout" href="#about">من نحن</a>
 <a data-t="navCreative" href="#creative">مساحات الإبداع</a>
-
 <a data-t="navPortfolio" href="assets/portfolio/tigress-portfolio.pdf" rel="noopener" target="_blank">البورتفوليو</a>
 <a data-t="navContact" href="#quote">لنتحدث</a>
 </div>
@@ -355,7 +348,7 @@ html,body,#main{background:#080808}
 <a class="float-action float-wa" href="https://wa.me/966532891910" id="floatingWhatsApp" rel="noopener" target="_blank"><span class="float-ripple"></span><i class="fa-brands fa-whatsapp"></i><span class="float-label" data-t="floatingWa">راسلنا على واتساب</span></a>
 <a class="float-action float-call" href="tel:+966532891910" id="floatingCall"><span class="float-ripple"></span><i class="fa-solid fa-phone"></i><span class="float-label" data-t="floatingCall">اتصل بنا</span></a>
 </div>
+<script defer="" src="js/hero-showcase.js?v=20261015-v14"></script>
 
-<script defer="" src="js/hero-showcase.js?v=20261014-v11"></script>
-</body>
+<script src="js/cms-runtime.js?v=20261016-cms1" type="module"></script></body>
 </html>

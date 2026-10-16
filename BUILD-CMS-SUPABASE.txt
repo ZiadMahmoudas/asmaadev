@@ -1,0 +1,18 @@
+TIGRESS CMS + SUPABASE
+Build: 2026-10-16-cms1
+
+Added:
+- admin.html
+- Supabase Auth admin login
+- Full AR/EN text editor for current page
+- Hero slide manager + image upload
+- Media manager (logos/about/favicon/OG/portfolio PDF)
+- Contact/social/stats editor
+- SEO editor
+- Supabase Storage uploads with browser-side WebP optimization
+- Cached content boot for fast repeat visits
+- Background sync + Supabase Realtime updates
+- RLS SQL setup + admin authorization
+- Removed intrusive anti-debugger interval from the public page for performance/stability
+
+Setup: read SUPABASE-SETUP.md

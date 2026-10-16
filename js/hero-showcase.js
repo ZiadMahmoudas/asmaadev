@@ -4,14 +4,14 @@
   const root=document.querySelector('#hero.hero-showcase');
   if(!root)return;
 
-  const slides=[...root.querySelectorAll('.hero-showcase-slide')];
   const prev=root.querySelector('#heroShowcasePrev');
   const next=root.querySelector('#heroShowcaseNext');
   const counter=root.querySelector('#heroShowcaseCounter');
   const fill=root.querySelector('#heroShowcaseProgressFill');
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const cycle=6800;
-  let current=Math.max(0,slides.findIndex(slide=>slide.classList.contains('is-active')));
+  let slides=[];
+  let current=0;
   let timer=0;
   let visible=true;
   let dragging=false;
@@ -21,24 +21,32 @@
 
   const lang=()=>document.documentElement.lang==='en'?'en':'ar';
 
+  function refreshSlides(){
+    slides=[...root.querySelectorAll('.hero-showcase-slide')];
+    const activeIndex=slides.findIndex(slide=>slide.classList.contains('is-active'));
+    current=activeIndex>=0?activeIndex:Math.min(current,Math.max(0,slides.length-1));
+  }
+
   function translate(){
     const key=lang()==='en'?'en':'ar';
     root.querySelectorAll('[data-ar][data-en]').forEach(el=>{
-      el.textContent=el.dataset[key]||el.textContent;
+      el.textContent=el.dataset[key]||el.dataset.ar||el.dataset.en||el.textContent;
     });
-    prev.setAttribute('aria-label',key==='ar'?'السابق':'Previous slide');
-    next.setAttribute('aria-label',key==='ar'?'التالي':'Next slide');
+    prev?.setAttribute('aria-label',key==='ar'?'السابق':'Previous slide');
+    next?.setAttribute('aria-label',key==='ar'?'التالي':'Next slide');
   }
 
   function restartClock(){
     clearTimeout(timer);
     root.classList.remove('is-running');
-    if(reduced||!visible)return;
+    if(reduced||!visible||slides.length<2)return;
     root.classList.add('is-running');
     timer=window.setTimeout(()=>show(current+1),cycle);
   }
 
   function show(index,{restart=true}={}){
+    refreshSlides();
+    if(!slides.length)return;
     current=(index+slides.length)%slides.length;
     slides.forEach((slide,i)=>{
       const active=i===current;
@@ -54,16 +62,14 @@
     show(current+1);
   });
 
-  prev.addEventListener('click',()=>show(current-1));
-  next.addEventListener('click',()=>show(current+1));
+  prev?.addEventListener('click',()=>show(current-1));
+  next?.addEventListener('click',()=>show(current+1));
 
-  // Keyboard navigation when focus is inside Hero.
   root.addEventListener('keydown',event=>{
     if(event.key==='ArrowRight'){show(current+1);event.preventDefault();}
     if(event.key==='ArrowLeft'){show(current-1);event.preventDefault();}
   });
 
-  // Horizontal swipe on touch/pen; vertical movement remains page scroll.
   root.addEventListener('pointerdown',event=>{
     if(event.target.closest('a,button'))return;
     dragging=true;sx=event.clientX;sy=event.clientY;dx=0;
@@ -97,6 +103,14 @@
   });
 
   new MutationObserver(translate).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+  document.addEventListener('tigress:hero-rebuild',()=>{
+    refreshSlides();
+    translate();
+    show(0);
+  });
+  window.TIGRESS_HERO_REFRESH=()=>{refreshSlides();translate();show(current);};
+
+  refreshSlides();
   translate();
   show(current);
 })();

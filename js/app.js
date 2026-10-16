@@ -46,10 +46,12 @@
     signatureKicker:'04 — توقيعنا الخاص',signatureTitle:'كل تفصيلة<br><em>تترك أثرًا.</em>',signatureP:'القيمة ليست في كثرة العناصر، بل في اختيار ما يستحق أن يبقى. هذا هو عالم Tigress: حضور واثق، وحسّ فني لا يشبه سواه.',signatureCTA:'ابدأ حكايتك',
     contactKicker:'تواصل معنا',contactTitle:'يسعدنا تواصلك',contactP:'تواصل معنا بأحد الوسائل المتاحة.',nameLabel:'الاسم',nameHolder:'اسمك الكامل',emailLabel:'البريد الإلكتروني',typeLabel:'نوع الخدمة',typeChoose:'اختر الخدمة (اختياري)',typeBrand:'هوية بصرية',typeDesign:'تصميم إبداعي',typeOther:'مشروع آخر',messageLabel:'تفاصيل المشروع',messageHolder:'نوع المبنى، المساحة التقريبية، الموعد المتوقع…',prepareEmail:'جهّز رسالة البريد',copyMessage:'انسخ الرسالة',formHint:'يتم تجهيز الرسالة في تطبيق البريد على جهازك؛ لا يتم إرسال بياناتك إلى خادم من هذه الصفحة.',footerCopy:'فنّ التفاصيل. جرأة التعبير. حضور يظل في الذاكرة.',backToTop:'العودة إلى البداية',rights:'جميع الحقوق محفوظة.',partnersKicker:'شركاء الحكاية',partnersTitle:'علامات تجارية',partnersAccent:'وثقت بنا',quickLinks:'روابط سريعة',footerContact:'تواصل معنا',footerContactLine:'أرسل تفاصيل فكرتك من النموذج',footerEmailLine:'أضف بريد الاستقبال من ملف الإعدادات',footerPartnersLine:'استعرض العلامات في شريط الشركاء',check1:'جودة دقيقة من الفكرة حتى التنفيذ',check2:'فريق متخصص في التصميم والتنفيذ',check3:'اختيارات مدروسة للخامات والتفاصيل',check4:'حلول مصممة خصيصاً لكل مساحة',yearsText:'عاماً من الخبرة',aboutMotto:'الجودة والاحترافية في التنفيذ',stat1:'عاماً من الخبرة',stat2:'عميلاً يثق بنا',stat3:'أقسام متخصصة',svc1h:'المقاولات العامة',svc1p:'خدمات مقاولات وتنفيذ متكاملة للمشاريع السكنية والتجارية والحكومية، من الأعمال الإنشائية حتى التشطيبات النهائية.',svc1a:'الأعمال الإنشائية',svc1b:'التشطيبات الداخلية والخارجية',svc1c:'الترميم والتأهيل',svc1d:'المشاريع التجارية والحكومية',svc2h:'التصميم الداخلي',svc2p:'نحوّل احتياجات كل مساحة إلى تصميم داخلي متوازن وعملي ومميز، مع عناية بالتوزيع والخامات والتفاصيل حتى مرحلة التنفيذ.',svc2a:'توزيع المساحات',svc2b:'اختيار الخامات والتشطيبات',svc2c:'الألوان والتفاصيل',svc2d:'المخططات التنفيذية',svc3h:'المشاريع التجارية',svc3p:'حلول متكاملة لتصميم وتجهيز وتنفيذ المشاريع التجارية بما يخدم هوية النشاط وتجربة العميل، من تخطيط المساحة حتى التسليم النهائي.',svc3a:'المتاجر والمعارض',svc3b:'المطاعم والمقاهي',svc3c:'المكاتب ومساحات العمل',svc3d:'التجهيز المتكامل',svc4h:'ترميم المباني السكنية والتجارية',svc4p:'إعادة تأهيل وترميم المباني السكنية والتجارية مع معالجة العناصر المتضررة وتجديد التشطيبات ورفع كفاءة المساحات بما يحافظ على جودة المبنى وهويته.',svc4a:'إعادة التأهيل',svc4b:'معالجة التلف والتشققات',svc4c:'تجديد الواجهات والتشطيبات',svc4d:'تحديث الأنظمة والخدمات',svc5h:'التأثيث الفاخر',svc5p:'على استعداد تام لتأثيث جميع الفراغات، من الغرف الصغيرة حتى القصور الفاخرة وقاعات الأفراح، بحلول متكاملة وقطع تُصمّم وتُنفّذ بما يناسب هوية المكان.',svc5a:'الغرف والمساحات الخاصة',svc5b:'الفلل والقصور الفاخرة',svc5c:'قاعات الأفراح',svc5d:'تأثيث حسب الطلب',svc6h:'إدارة المواقع والإشراف',svc6p:'إدارة مواقع المشاريع والإشراف على التنفيذ لضمان الجودة والالتزام بالمخططات والمواصفات والتنسيق والجدول الزمني.',svc6a:'إدارة المواقع',svc6b:'الإشراف على التنفيذ',svc6c:'ضبط الجودة',svc6d:'متابعة الجدول الزمني',svc7h:'تصميم وتنفيذ البوثات',svc7p:'حلول متكاملة لبوثات المعارض والفعاليات والمهرجانات، من الفكرة والتصميم والتصنيع حتى التركيب والتسليم.',svc7a:'تصميم البوث',svc7b:'التصنيع',svc7c:'التركيب',svc7d:'المعارض والفعاليات',svc8h:'البورتفوليو',svc8p:'تصفّح ملف أعمال TIGRESS كاملًا واستعرض المشاريع والتصاميم براحتك.',svc8a:'أعمال مختارة',svc8b:'مشاريع وتصاميم',svc8c:'تصفح كامل',svc8d:'ملف PDF كامل',orderService:'اطلب الخدمة عبر واتساب',openPortfolioNew:'عرض البورتفوليو',svc3AlbumRugs:'تصميم وتنفيذ السجاد',svc3AlbumFurniture:'تصميم وتنفيذ الأثاث',svc3AlbumChandeliers:'تصميم وتنفيذ الثريات',svc3AlbumLighting:'تصميم وتنفيذ الإنارات',svc3AlbumAccessories:'الإكسسوارات الفاخرة',lightingAlbum:'تصميم وتنفيذ الإنارات',viewAlbum:'الألبوم',orderShort:'اطلب',luxServiceTitle:'التأثيث الفاخر',luxServiceDesc:'قطع تُصنع خصيصاً لتصبح جزءاً من هوية المكان. اختر النوع، تصفّح ألبومه مباشرة، أو تواصل معنا عبر واتساب.',albumsKicker:'03 — ألبوماتنا',albumsTitle:'تفاصيل تُرى عن قرب.<br><em>اختر الألبوم.</em>',albumsDesc:'استخدم الأسهم للتنقل بين الألبومات، واضغط على الألبوم لفتحه واستعراض الصور صفحةً بصفحة.',albumsHint:'اسحب للتنقل بين الألبومات',albumWhatsApp:'تواصل معنا عبر واتساب',quoteKicker:'04 — طلب عرض سعر',quoteTitle:'حدّثنا عن مشروعك',quoteP:'املأ البيانات وسيتواصل معك فريقنا. عند الإرسال سيُفتح واتساب برسالة جاهزة لتسريع التواصل.',phoneLabel:'رقم الجوال',cityLabel:'المدينة',cityHolder:'مثال: بريدة',consentText:'أوافق على استخدام بياناتي للتواصل معي بخصوص طلبي وفق سياسة الخصوصية.',sendWhatsApp:'أرسل الطلب عبر واتساب',whatsappLabel:'واتساب',callLabel:'اتصال',emailLabelShort:'البريد الإلكتروني',addressLabel:'العنوان',addressText:'بريدة – الدائري الشرقي الداخلي – طريق أم المؤمنين عائشة، المملكة العربية السعودية',floatingWa:'راسلنا على واتساب',floatingCall:'اتصل بنا',typeContracting:'المقاولات العامة',typeInterior:'التصميم الداخلي',typeCommercial:'المشاريع التجارية',typeRenovation:'ترميم المباني السكنية والتجارية',typeLuxuryFurnishing:'التأثيث الفاخر',typeSupervision:'إدارة المواقع والإشراف',typeBooths:'تصميم وتنفيذ البوثات',mobileWorld:'عالم TIGRESS',heroWorldLabel:'عالم TIGRESS',heroWildLabel:'جريئة بروحها.<br>خالدة بتفاصيلها.',heroEstablished:'وُلدت من فكرة',storyNum1:'01 — الغريزة',storyNum2:'02 — التفاصيل',storyNum3:'03 — البصمة',worldLabel1:'01 / الجرأة',worldLabel2:'02 / الأصالة',worldLabel3:'03 / الأثر',marquee1:'جريئة بالفطرة',marquee2:'TIGRESS لا تُخطئها العين',marquee3:'فنّ في كل تفصيلة',typeLuxuryFurnishing:'التأثيث الفاخر',typeRugs:'تصميم وتفصيل السجاد',typeFurniture:'تصميم وتنفيذ الأثاث',typeChandeliers:'الثريات الكلاسيك',typeLighting:'الإنارات',typeAccessories:'الإكسسوارات',navAtelier:'الألبومات',atelierKicker:'03 — التأثيث الفاخر',atelierTitle:'قطعٌ تُصنع لتصبح<br><em>جزءاً من هوية المكان.</em>',atelierDesc:'نصمّم وننفّذ التفاصيل التي تمنح المساحة شخصيتها: من السجاد والأثاث إلى الثريات والإنارة والإكسسوارات المختارة بعناية.',portfolioKicker:'03 — البورتفوليو',portfolioTitle:'البورتفوليو <em>TIGRESS</em>',portfolioDesc:'تصفّح ملف أعمال TIGRESS مباشرة داخل الصفحة.',luxPortfolio:'البورتفوليو',luxPortfolioHint:'تصفّح الملف داخل الموقع',luxOpen:'افتح',luxRugs:'تصميم وتفصيل أفخر أنواع السجاد',luxFurniture:'تصميم وتنفيذ أجمل قطع الأثاث',luxChandeliers:'تصميم وتنفيذ الثريات الكلاسيك بجميع المقاسات',luxLighting:'تصميم وتنفيذ جميع أنواع الإنارات',luxAccessories:'نقتني لك أجمل قطع الإكسسوارات لتزيّن مساحتك',luxAlbumHint:'ألبوم صور تفاعلي',luxBrowse:'تصفّح الألبوم',luxGalleryLabel:'TIGRESS COLLECTION',luxBookHelp:'اضغط يمين الكتاب للصفحة التالية، ويساره للرجوع.',prevPage:'السابق',nextPage:'التالي',pdfNewTab:'فتح في نافذة جديدة',pdfFallback:'تعذّر عرض PDF داخل المتصفح.',socialInstagram:'إنستقرام',socialTikTok:'تيك توك',socialSnapchat:'سناب شات'
   };
+  const cmsDictionary = (lang) => Object.assign({}, lang === 'en' ? en : ar, (window.TIGRESS_CMS_TEXTS && window.TIGRESS_CMS_TEXTS[lang]) || {});
+  const liveConfig = () => Object.assign({}, options, window.TIGRESS_CONFIG || {}, window.TIGRESS_CMS_CONFIG || {});
   const HTML_TRANSLATIONS = new Set(['storyTitle','story1H','story2H','story3H','aboutTitle','worldTitle','creativeTitle','signatureTitle','contactTitle','heroWildLabel','atelierTitle','portfolioTitle','albumsTitle']);
   function setLocale(next) {
     language = next;
-    const content = next === 'en' ? en : ar;
+    const content = cmsDictionary(next);
     document.documentElement.lang = next;
     document.documentElement.dir = next === 'en' ? 'ltr' : 'rtl';
     $$('[data-t]').forEach(el => {
@@ -74,6 +76,8 @@
   }
   $('#langSwitch').addEventListener('click', () => setLocale(language === 'ar' ? 'en' : 'ar'));
   setLocale(language);
+  document.addEventListener('tigress:cms-content',()=>setLocale(language));
+  window.TIGRESS_SET_LOCALE = setLocale;
   $('#year').textContent = String(new Date().getFullYear());
 
   function closeMenu() {
@@ -194,7 +198,7 @@
       event.preventDefault();
       const data=serviceMessageMap[link.dataset.waService];
       if(!data)return;
-      const content=language==='ar'?ar:en;
+      const content=cmsDictionary(language);
       const title=content[data.h]||'';
       const desc=content[data.p]||'';
       const items=data.tags.map(k=>content[k]).filter(Boolean);
@@ -211,7 +215,7 @@
         'Details: '+desc,
         items.length?'Includes: '+items.join(' - '):''
       ];
-      const wa=digits(options.whatsapp||'');
+      const wa=digits(liveConfig().whatsapp||'');
       if(!wa)return;
       window.open('https://wa.me/'+wa+'?text='+encodeURIComponent(lines.filter(Boolean).join('\\n')),'_blank','noopener');
     });
@@ -253,7 +257,7 @@
   form?.addEventListener('submit',event=>{
     event.preventDefault();
     const text=makeInquiry(); if(!text)return;
-    const wa=digits(options.whatsapp||'');
+    const wa=digits(liveConfig().whatsapp||'');
     if(!wa){status.textContent=language==='ar'?'أضف رقم واتساب في js/config.js أولًا.':'Add a WhatsApp number in js/config.js first.';return;}
     status.textContent=language==='ar'?'جاري فتح واتساب برسالة الطلب…':'Opening WhatsApp with your request…';
     window.open('https://wa.me/'+wa+'?text='+encodeURIComponent(text),'_blank','noopener');
@@ -261,8 +265,8 @@
   // Optional floating WhatsApp / phone actions.
 
   const floatWrap=$('#floatingActions'),floatWa=$('#floatingWhatsApp'),floatCall=$('#floatingCall');
-  const rawWa=digits(options.whatsapp||'');
-  const rawPhone=String(options.phone||'').trim();
+  const rawWa=digits(liveConfig().whatsapp||'');
+  const rawPhone=String(liveConfig().phone||'').trim();
   const waHref='https://wa.me/'+rawWa;
   if(floatWa)floatWa.href=waHref;
   if(floatCall)floatCall.href='tel:'+rawPhone;
