@@ -1,2 +1,0 @@
-TIGRESS BUILD 20261013-v8
-Consent checkbox/text alignment polished for desktop and mobile.

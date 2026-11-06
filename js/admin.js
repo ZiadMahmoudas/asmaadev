@@ -1,8 +1,8 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+import { createClient, SupabaseAuthAdapter } from 'https://cdn.jsdelivr.net/npm/@neondatabase/neon-js@0.9.0-beta/+esm';
 
-const cfg = window.TIGRESS_SUPABASE || {};
+const cfg = window.TIGRESS_NEON || {};
 const defaults = structuredClone(window.TIGRESS_CMS_DEFAULTS || {});
-const ready = cfg.url && cfg.anonKey && !cfg.url.includes('YOUR_PROJECT_REF') && !cfg.anonKey.includes('YOUR_SUPABASE');
+const ready = cfg.authUrl && cfg.dataApiUrl && !cfg.authUrl.includes('PASTE_') && !cfg.dataApiUrl.includes('PASTE_');
 const $ = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => [...r.querySelectorAll(s)];
 const clone = value => value === undefined ? undefined : JSON.parse(JSON.stringify(value));
@@ -18,7 +18,7 @@ const deepMerge = (base, patch) => {
 };
 let state = clone(defaults);
 let rowMeta = { version: 0, updated_at: null };
-let supabase = null;
+let neon = null;
 let autosaveTimer = 0;
 let saving = false;
 let dirty = false;
@@ -44,35 +44,38 @@ function configured(){ return ready; }
 if(!configured()) $('#setupNote').classList.remove('hidden');
 
 if (configured()) {
-  supabase = createClient(cfg.url, cfg.anonKey, { auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true} });
+  neon = createClient({
+    auth: { adapter: SupabaseAuthAdapter(), url: cfg.authUrl, allowAnonymous: true },
+    dataApi: { url: cfg.dataApiUrl }
+  });
   bootAuth();
 } else {
-  $('#loginForm').addEventListener('submit',e=>{e.preventDefault();$('#loginError').textContent='وصّل Supabase أولًا من js/supabase-config.js';});
+  $('#loginForm').addEventListener('submit',e=>{e.preventDefault();$('#loginError').textContent='وصّل Neon أولًا من js/neon-config.js';});
 }
 
 async function bootAuth(){
-  const {data:{session}}=await supabase.auth.getSession();
+  const {data:{session}}=await neon.auth.getSession();
   if(session) await enterDashboard(session.user); else showLogin();
-  supabase.auth.onAuthStateChange((_event,session)=>{ if(!session) showLogin(); });
+  neon.auth.onAuthStateChange((_event,session)=>{ if(!session) showLogin(); });
 }
 
 $('#loginForm').addEventListener('submit', async e=>{
   e.preventDefault(); $('#loginError').textContent='';
   const email=$('#loginEmail').value.trim(), password=$('#loginPassword').value;
   status('جاري الدخول','saving');
-  const {data,error}=await supabase.auth.signInWithPassword({email,password});
+  const {data,error}=await neon.auth.signInWithPassword({email,password});
   if(error){$('#loginError').textContent=error.message;status('فشل الدخول');return;}
   await enterDashboard(data.user);
 });
-$('#logoutBtn')?.addEventListener('click',()=>supabase?.auth.signOut());
+$('#logoutBtn')?.addEventListener('click',()=>neon?.auth.signOut());
 
 async function isAdmin(user){
-  const {data,error}=await supabase.from('site_admins').select('user_id').eq('user_id',user.id).maybeSingle();
+  const {data,error}=await neon.from('site_admins').select('user_id').eq('user_id',user.id).maybeSingle();
   return !error && !!data;
 }
 async function enterDashboard(user){
   if(!await isAdmin(user)){
-    await supabase.auth.signOut();
+    await neon.auth.signOut();
     $('#loginError').textContent='الحساب صحيح لكنه غير مضاف كـ Admin في site_admins.';
     return;
   }
@@ -83,7 +86,7 @@ function showLogin(){ $('#dashboard').classList.add('hidden'); $('#loginView').c
 
 async function loadContent(){
   status('جاري تحميل المحتوى','saving');
-  const {data,error}=await supabase.from('site_content').select('content,version,updated_at').eq('site_id',cfg.siteId||'main').maybeSingle();
+  const {data,error}=await neon.from('site_content').select('content,version,updated_at').eq('site_id',cfg.siteId||'main').maybeSingle();
   if(error){toast(error.message,'error'); state=clone(defaults); return;}
   if(data?.content && Object.keys(data.content).length){ state=deepMerge(defaults,data.content); rowMeta={version:data.version||0,updated_at:data.updated_at}; }
   else { state=clone(defaults); }
@@ -91,10 +94,10 @@ async function loadContent(){
 }
 
 async function save(){
-  if(saving||!supabase)return; saving=true; dirty=false; status('جاري النشر','saving');
+  if(saving||!neon)return; saving=true; dirty=false; status('جاري النشر','saving');
   collectAllInputs();
   const payload={site_id:cfg.siteId||'main',content:state,version:(rowMeta.version||0)+1,updated_at:new Date().toISOString()};
-  const {data,error}=await supabase.from('site_content').upsert(payload,{onConflict:'site_id'}).select('version,updated_at').single();
+  const {data,error}=await neon.from('site_content').upsert(payload,{onConflict:'site_id'}).select('version,updated_at').single();
   saving=false;
   if(error){dirty=true;status('تعذر الحفظ');toast(error.message,'error');return;}
   rowMeta=data||payload; status('منشور الآن','ok'); updateLast(); toast('تم الحفظ والنشر فورًا'); syncRaw();
@@ -186,13 +189,31 @@ async function optimizeImage(file){
 async function uploadFile(file,folder,progressKey){
   const progress=$(`[data-progress="${progressKey}"]`);if(progress)progress.textContent='جاري التجهيز والرفع…';
   try{
+    if(!cfg.uploadFunctionUrl || cfg.uploadFunctionUrl.includes('PASTE_')) throw new Error('ضع رابط Neon media-upload Function في js/neon-config.js');
     const optimized=file.type==='application/pdf'?{blob:file,ext:'pdf'}:await optimizeImage(file);
     const safe=(file.name.replace(/\.[^.]+$/,'').replace(/[^a-zA-Z0-9_-]+/g,'-').slice(0,40)||'asset');
     const path=`site/${folder}/${Date.now()}-${safe}.${optimized.ext}`;
-    const {error}=await supabase.storage.from(cfg.bucket||'tigress-media').upload(path,optimized.blob,{cacheControl:'31536000',upsert:false,contentType:optimized.blob.type||file.type});
-    if(error)throw error;
-    const {data}=supabase.storage.from(cfg.bucket||'tigress-media').getPublicUrl(path);
-    if(progress)progress.textContent='تم الرفع ✓'; return data.publicUrl;
+
+    const {data:{session}}=await neon.auth.getSession();
+    const token=session?.access_token;
+    if(!token) throw new Error('انتهت جلسة الدخول. سجل الدخول مرة أخرى.');
+
+    const signRes=await fetch(cfg.uploadFunctionUrl,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
+      body:JSON.stringify({path,contentType:optimized.blob.type||file.type,size:optimized.blob.size})
+    });
+    const signed=await signRes.json().catch(()=>({}));
+    if(!signRes.ok) throw new Error(signed.error||`تعذر تجهيز الرفع (${signRes.status})`);
+
+    const putRes=await fetch(signed.uploadUrl,{
+      method:'PUT',
+      headers:{'Content-Type':optimized.blob.type||file.type},
+      body:optimized.blob
+    });
+    if(!putRes.ok) throw new Error(`فشل رفع الملف إلى Neon Storage (${putRes.status})`);
+    if(progress)progress.textContent='تم الرفع ✓';
+    return signed.publicUrl;
   }catch(err){if(progress)progress.textContent='فشل الرفع: '+err.message;toast(err.message,'error');return null;}
 }
 

@@ -20,7 +20,7 @@
       <div class="field"><label>كلمة المرور</label><input id="loginPassword" type="password" autocomplete="current-password" required></div>
       <button class="btn btn-primary" type="submit" style="width:100%">دخول</button>
       <div id="loginError" class="login-error"></div>
-      <div id="setupNote" class="setup-note hidden">Supabase لسه مش متوصل. افتح ملف <b>SUPABASE-SETUP.md</b> ونفّذ الخطوات مرة واحدة.</div>
+      <div id="setupNote" class="setup-note hidden">Neon لسه مش متوصل. افتح ملف <b>NEON-SETUP.md</b> ونفّذ الخطوات مرة واحدة.</div>
     </form>
   </section>
 
@@ -56,11 +56,11 @@
         <section class="section-view active" data-section="overview">
           <div class="page-head"><div><div class="eyebrow">DASHBOARD</div><h2>إدارة موقع TIGRESS</h2><p class="muted">تعديل واحد هنا = تحديث مباشر للموقع المفتوح عند العملاء.</p></div></div>
           <div class="grid-3">
-            <div class="metric"><span class="muted">حالة Supabase</span><strong id="metricDb">—</strong></div>
+            <div class="metric"><span class="muted">حالة Neon</span><strong id="metricDb">—</strong></div>
             <div class="metric"><span class="muted">Hero Slides</span><strong id="metricHero">—</strong></div>
             <div class="metric"><span class="muted">حقول قابلة للتعديل</span><strong id="metricTexts">—</strong></div>
           </div>
-          <div class="panel"><h3>طريقة الشغل السريعة</h3><p class="muted">الموقع يعرض الـHTML فورًا، ثم يطبّق آخر نسخة محفوظة محليًا ويعمل مزامنة في الخلفية. بعد النشر، Supabase Realtime يدفع التغيير للصفحات المفتوحة من غير Refresh.</p><div class="notice">للصور: الـHero والصور الكبيرة تتحول تلقائيًا إلى WebP مضغوط قبل الرفع، وتُرفع باسم جديد قابل للكاش الطويل حتى التغيير الجديد يظهر فورًا من غير ما نكسر الكاش القديم.</div></div>
+          <div class="panel"><h3>طريقة الشغل السريعة</h3><p class="muted">الموقع يعرض الـHTML فورًا، ثم يطبّق آخر نسخة محفوظة محليًا ويعمل مزامنة في الخلفية. بعد النشر، Neon Data API يزامن المحتوى، والصفحات المفتوحة تتحقق من آخر نسخة تلقائيًا أثناء التصفح.</p><div class="notice">للصور: الـHero والصور الكبيرة تتحول تلقائيًا إلى WebP مضغوط قبل الرفع، وتُرفع باسم جديد قابل للكاش الطويل حتى التغيير الجديد يظهر فورًا من غير ما نكسر الكاش القديم.</div></div>
         </section>
 
         <section class="section-view" data-section="hero">
@@ -75,7 +75,7 @@
         </section>
 
         <section class="section-view" data-section="media">
-          <div class="page-head"><div><div class="eyebrow">MEDIA</div><h2>الصور والملفات</h2><p class="muted">رفع مباشر إلى Supabase Storage CDN. الصور الكبيرة يتم ضغطها قبل الرفع.</p></div></div>
+          <div class="page-head"><div><div class="eyebrow">MEDIA</div><h2>الصور والملفات</h2><p class="muted">رفع آمن إلى Neon Object Storage. الصور الكبيرة يتم ضغطها قبل الرفع.</p></div></div>
           <div id="mediaGrid" class="media-grid"></div>
         </section>
 
@@ -99,7 +99,7 @@
   </section>
 </div>
 <div id="toast" class="toast"></div>
-<script src="js/supabase-config.js?v=20261016-cms1"></script>
+<script src="js/neon-config.js?v=20261016-cms1"></script>
 <script src="js/cms-defaults.js?v=20261016-cms1"></script>
 <script type="module" src="js/admin.js?v=20261016-cms1"></script>
 </body>

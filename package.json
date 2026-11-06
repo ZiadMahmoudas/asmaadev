@@ -1,0 +1,19 @@
+{
+  "name": "tigress-neon-cms",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "neon:deploy": "neon deploy",
+    "neon:status": "neon config status"
+  },
+  "dependencies": {
+    "aws4fetch": "^1.0.20",
+    "hono": "^4.10.5",
+    "jose": "^6.1.0",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@neondatabase/config": "latest",
+    "neon": "latest"
+  }
+}

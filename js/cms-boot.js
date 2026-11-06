@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const cfg = window.TIGRESS_SUPABASE || {};
+  const cfg = window.TIGRESS_NEON || {};
   const siteId = cfg.siteId || 'main';
   const cacheKey = `tigress:cms:${siteId}:v1`;
 
