@@ -72,3 +72,9 @@ Once the CMS is confirmed, enable Neon Object Storage + the provided `media-uplo
 After deploying and while Sign-up with Email is ON, open:
 `https://tigress-designs.vercel.app/setup-admin`
 Create your one admin account. Then add the email to `site_admins` with the SQL above, turn Sign-up with Email OFF, and use `/admin` from then on.
+
+
+## Fix if site_admins.user_id was created as UUID
+Run `neon/FIX-ADMIN-NOW.sql` once on database `neondb`. It converts `site_admins.user_id` to `text`, recreates RLS policies, adds `asma@gmail.com` as admin if that Auth user already exists, and verifies the join.
+
+The `/setup-admin` page now uses the native Better Auth `signUp.email(...)` API and no longer imports `SupabaseAuthAdapter` from the auth-only package, avoiding the browser CDN export error.

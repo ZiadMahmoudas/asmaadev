@@ -22,11 +22,11 @@
   </main>
   <script src="js/neon-config.js"></script>
   <script type="module">
-    import { createAuthClient, SupabaseAuthAdapter } from 'https://cdn.jsdelivr.net/npm/@neondatabase/auth@0.7.0-beta/+esm';
+    import { createAuthClient } from 'https://cdn.jsdelivr.net/npm/@neondatabase/auth@0.7.0-beta/+esm';
     const cfg=window.TIGRESS_NEON||{};
     const msg=document.querySelector('#msg');
     if(!cfg.authUrl){msg.className='msg err';msg.textContent='Auth URL غير موجود في js/neon-config.js';}
-    const auth=cfg.authUrl?createAuthClient(cfg.authUrl,{adapter:SupabaseAuthAdapter()}):null;
+    const auth=cfg.authUrl?createAuthClient(cfg.authUrl):null;
     document.querySelector('#form').addEventListener('submit',async(e)=>{
       e.preventDefault();
       if(!auth)return;
@@ -35,7 +35,7 @@
       const password=document.querySelector('#password').value;
       const name=document.querySelector('#name').value.trim();
       try{
-        const {data,error}=await auth.signUp({email,password,options:{data:{name}}});
+        const {data,error}=await auth.signUp.email({email,password,name});
         if(error)throw error;
         msg.className='msg ok';
         msg.textContent=`تم إنشاء الحساب ✅\n\nEmail: ${email}\n\nالآن أضف هذا البريد إلى site_admins من SQL Editor، وبعدها اقفل Sign-up with Email وافتح /admin.`;
